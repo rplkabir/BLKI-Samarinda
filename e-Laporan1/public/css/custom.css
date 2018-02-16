@@ -1,0 +1,12 @@
+ .butt {
+   
+   background-color: lightBlue;
+   height:300px;
+   width:300px;
+   cursor:pointer;
+}
+
+.butt:hover {
+   background-color: blue;
+   color:white;
+}
