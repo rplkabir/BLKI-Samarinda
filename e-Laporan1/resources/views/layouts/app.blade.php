@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
-    html, body {
+     html, body {
                 color: #636b6f;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 100;
@@ -41,6 +41,12 @@
             }
         a {
             color: #97a39f !important;
+            }
+    input   {
+                font-size: 13px !important;
+            }
+    label   {
+                font-size: 13px !important;
             }
         </style>
 </head>

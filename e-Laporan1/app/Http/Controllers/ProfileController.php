@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
 use Auth;
-
 class ProfileController extends Controller
 {
     /**
@@ -66,8 +65,8 @@ class ProfileController extends Controller
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
                 $profile->save();
-                Session::flash('message', 'Berhasil Tambah Data Profile');
-                Session::flash('alert-class', 'alert-success');
+                \Session::flash('message', 'Berhasil Tambah Data Profile');
+                \Session::flash('alert-class', 'alert-success');
                 return redirect()->route('profile');
     }
 

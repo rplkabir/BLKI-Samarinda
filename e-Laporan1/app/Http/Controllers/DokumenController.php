@@ -27,7 +27,7 @@ class DokumenController extends Controller
 
     public function index()
     {
-        $dokumen = Dokumen::all()->orderBy('created_at','desc');
+        $dokumen = Dokumen::orderBy('created_at','desc')->get();
         return view('dokumen.index', compact('dokumen'));
     }
 

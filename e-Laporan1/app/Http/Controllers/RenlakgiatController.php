@@ -39,13 +39,13 @@ class RenlakgiatController extends Controller
     public function index()
     {   
         $profile = Profile::all();
-        $renlakgiat = Renlakgiat::all()->orderBy('users_id','asc')->paginate(5);
+        $renlakgiat = Renlakgiat::all()->sortable()->paginate(8);
         return view('renlakgiat.index', compact('renlakgiat','profile'));
     }
 
     public function indexadmin()
     {   
-        $renlakgiat = Renlakgiat::paginate(5);
+        $renlakgiat = Renlakgiat::sortable()->paginate(5);
         return view('admin.indexRenlakgiat', compact('renlakgiat','profile'));
     }
 

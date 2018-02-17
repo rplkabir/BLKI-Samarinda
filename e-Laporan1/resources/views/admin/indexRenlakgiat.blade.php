@@ -10,16 +10,16 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>UPTD Terkait</th>
-                            <th>Kejuruan</th>
-                            <th>Program Pelatihan</th>
-                            <th>Sumber Dana</th>
-                            <th>Durasi</th>
-                            <th>Paket</th>
-                            <th>Orang</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
-                            <th>status</th>
+                            <th>@sortablelink('users_id')</th>
+                            <th>@sortablelink('kejuruan')</th>
+                            <th>@sortablelink('program_pelatihan', 'Program Pelatihan')</th>
+                            <th>@sortablelink('sumber_Dana', 'Sumber Dana')</th>
+                            <th>@sortablelink('durasi')</th>
+                            <th>@sortablelink('paket')</th>
+                            <th>@sortablelink('orang')</th>
+                            <th>@sortablelink('tanggal_mulai', 'Tanggal Mulai')</th>
+                            <th>@sortablelink('tanggal_selesai', 'Tanggal Selesai')</th>
+                            <th>@sortablelink('status') </th>
                             <th>Edit</th>
                             <th>Hapus</th>
                             <th>Detail & Laporan</th>

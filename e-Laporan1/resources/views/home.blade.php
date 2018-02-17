@@ -20,9 +20,24 @@
                         @else
                                 @foreach($user as $datauser)
                                 <li>
-                                
-                                <div class="collapsible-header"><i class="material-icons">insert_chart</i>@foreach(DB::table('profils')->where('id',$datauser->id)->get() as $data) {{ $data->nama_lembaga }} @endforeach</div>
-                                <div class="collapsible-body"><span>{!! $datauser->nama_lembaga->render() !!}</span></div>
+                                    <div class="collapsible-header"><i class="material-icons">insert_chart</i>@foreach(DB::table('profils')->where('id',$datauser->id)->get() as $datar) {{ $datar->nama_lembaga }} </div>
+                                    @endforeach
+
+                                            <?php
+                                                     $userid = $datauser->users_id;
+                                                     $belum = DB::table('renlakgiats')->where('users_id',$userid)->where('status', 'Belum Berjalan')->get();
+                                                     $sedang = DB::table('renlakgiats')->where('users_id',$userid)->where('status', 'Sedang Berjalan')->get();
+                                                     $telah = DB::table('renlakgiats')->where('users_id',$userid)->where('status', 'Sudah Selesai')->get();
+                                                     $null = DB::table('renlakgiats')->where('users_id',$userid)->where('status', (NULL))->get();
+                                                     $datauser->nama_lembaga = Charts::create('donut', 'highcharts')
+                                                    ->title($datauser->nama_lembaga)
+                                                    ->labels(['Belum Berjalan', 'Sedang Berjalan', 'Sudah Selesai','Belum Direncanakan'])
+                                                    ->values([count($belum),count($sedang),count($telah),count($null)])
+                                                    ->dimensions(1000,500)
+                                                    ->responsive(false)
+                                                    ->credits(false);
+                                            ?>
+                                    <div class="collapsible-body"><span>{!! $datauser->nama_lembaga->render() !!}</span></div>
                                 <div class="collapsible-body">
                                         <table class="table">
                                             <tr>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "202506b5150fc6fcc9bbbc903c24baa4",
+    "content-hash": "1a01eb57ed320366b723fcb1859ec60e",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3488,6 +3488,57 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "kyslik/column-sortable",
+            "version": "5.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kyslik/column-sortable.git",
+                "reference": "fa7635d2ce28faf2599bf752428acc64437acf7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kyslik/column-sortable/zipball/fa7635d2ce28faf2599bf752428acc64437acf7c",
+                "reference": "fa7635d2ce28faf2599bf752428acc64437acf7c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.4.*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Kyslik\\ColumnSortable\\": "src/ColumnSortable/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Kiesel",
+                    "email": "martin.kiesel@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Package for handling column sorting in Laravel 5.4",
+            "keywords": [
+                "column",
+                "laravel",
+                "one-to-one",
+                "sort",
+                "sortable",
+                "sorting"
+            ],
+            "time": "2017-11-29T12:29:06+00:00"
         },
         {
             "name": "mockery/mockery",
