@@ -124,6 +124,7 @@ Route::get('admin/renlakgiat/laporan/fsp/tambah/{id}','AdminController@formFsp')
 Route::post('admin/renlakgiat/laporan/fsp/simpan/{id}','AdminController@uploadFsp');
 
 Route::get('/admin/cetak/{id}','AdminController@mergePdf');
+Route::post('/admin/renlakgiat/cari','AdminController@cari');
 
 //uptd renlakgiat
 Route::get('/uptd/renlakgiat','UptdController@indexRenlakgiat')->name('uptd.renlakgiat');

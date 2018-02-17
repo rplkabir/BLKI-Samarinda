@@ -2,7 +2,9 @@
 @section('content')
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">Dashboard Renlakgiat</div>
+        <div class="panel-heading">Dashboard Renlakgiat
+            @include('renlakgiat.renlakgiat-cari')
+        </div>
             <div class="panel-body">
                 <table class="table">
                     <thead>

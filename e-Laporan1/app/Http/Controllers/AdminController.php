@@ -781,4 +781,16 @@ class AdminController extends Controller
             // Zipper::make('upload/Laporan'.$id.'.zip')->add(['upload/'.$cover,'upload/'.$pendahuluan,'upload/'.$surat_keputusan,'upload/'.$nominatif_peserta_pelatihan,'upload/'.$nominatif_instruktur]);
             // return response()->download('upload/Laporan'.$id.'.zip');      
 		}
+        public function cari(Request $request){
+            
+            if ($request->cariK AND $request->cariP != "") {
+                $renlakgiat = Renlakgiat::where('kejuruan','LIKE','%'.$request->cariK.'%')->where('program_pelatihan','LIKE','%'.$request->cariP.'%')->paginate(10);
+            }elseif ($request->cariK != "" AND $request->cariP == "") {
+                $renlakgiat = Renlakgiat::where('kejuruan','LIKE','%'.$request->cariK.'%')->paginate(10);
+            }elseif ($request->cariK == "" AND $request->cariP != "") {
+                $renlakgiat = Renlakgiat::where('program_pelatihan','LIKE','%'.$request->cariP.'%')->paginate(10);
+            }
+
+            return view('admin.indexRenlakgiat', compact('renlakgiat'));
+        }
 }
