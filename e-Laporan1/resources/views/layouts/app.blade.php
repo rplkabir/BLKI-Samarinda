@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{URL::asset('image/logo.png')}}" />
-    <title>BLKI Provinsi Kalimantan Timur</title>
+    <title>BLK Samarinda</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -185,7 +185,7 @@
           <div class="footer-copyright" >
             <div class="container" style="color: white">
                 <p align="center">
-                    © Copyright BLKI Provinsi Kalimantan Timur 2018 | Powered By: D'canteen Corp
+                    © Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
                 </p>
             
             

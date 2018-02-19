@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <link rel="shortcut icon" href="{{URL::asset('image/logo.png')}}" />
-    <title>BLKI Provinsi Kalimantan Timur</title>
+    <title>BLK Samarinda</title>
 
     <!-- Bootstrap core CSS -->
     <link href=" {{asset('gg/vendor/bootstrap/css/bootstrap.min.css')}} " rel="stylesheet">
@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" style="background: grey;">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{asset('image/logo.png')}}" width="35" height="35"> BLK</a>
+        <a class="navbar-brand" href="{{URL('/')}}">BLK Samarinda</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,59 +69,29 @@
     </nav>
 
     <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
+      
+        <div class="carousel">
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active" style="background-image: url('image/bg/20171206_102719.jpg')">
             <div class="carousel-caption d-none d-md-block">
               
             </div>
           </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('image/bg/20171206_102846.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              
-            </div>
           </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('image/bg/20171206_103012.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
     </header>
 
-    <!-- Page Content -->
-    <section class="py-5">
-      <div class="container">
-        <p align="center"><img src="{{asset('image/logo.png')}}" ></p>
-        <H2 align="center">KEMENTERIAN KETENAGAKERJAAN REPUBLIK INDONESIA</H2>
-        <h2 align="center">DIREKTORAT JENDERAL PEMBINAAN PELATIHAN DAN PRODUKTIVITAS</h2>
-        <h1 align="center">BALAI LATIHAN KERJA SAMARINDA</h1>
-      </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; BLK Samarinda 2018 | Powered By: D'Canteen Coworking</p>
-      </div>
-      <!-- /.container -->
+    <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
+          <div class="footer-copyright" >
+            <div class="container" style="color: white">
+                <p align="center">
+                    © Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
+                </p>
+            
+            
+            </div>
+          </div>
     </footer>
 
     <!-- Bootstrap core JavaScript -->
