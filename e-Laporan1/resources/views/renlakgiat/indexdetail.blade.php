@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-13 col-md-offset-1">
-            <div class="col-md-5">
-                <div class="panel panel-default" style="position: fixed;">
-                    <div class="panel-body">
-                        @foreach($renlakgiat as $data)
-                        <table class="table">
+        <div class="panel panel-default" style="width: 100% !important;">
+            <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
+                <div class="panel-body">
+                 <table>
+                @foreach($renlakgiat as $data)
+                <table class="table" style="position: fixed; width: 40%">
                             <tr>
                                 <th>Id Renlakgiat</th >
                                 <td>:</td>
@@ -86,6 +86,8 @@
                                     @endif
                           </tr>
                           <tr>
+                                <th>Histori Perubahan</th>
+                                <td>:</td>
                                 <td>
                                     <strong>Jumlah Perubahan: </strong>{{DB::table('historis')->where('renlakgiat_id',$data->id)->count()}}/3 <br>
 
@@ -100,16 +102,8 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <table>
+                        <table class="table" align="right" style="width: 30%; border-left: 1px solid;">
                         <tr>
-                            <td>Laporan</td>
-                            <td>:</td>
                             <td align="center">
                                 <div class="well">
                                 <a href="{{url('admin/renlakgiat/laporan/cover/tambah/'.$data->id)}}">
@@ -390,12 +384,10 @@
                             </div>
                         @endif
                         
-                    </div>
                 </div>
-            @endforeach      
-        </div>
+            </div>
+        @endforeach      
     </div>
-</div>
 </div>   
- 
+</div>
 @endsection

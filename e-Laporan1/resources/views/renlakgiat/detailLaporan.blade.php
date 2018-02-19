@@ -3,9 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
 
                 <div class="panel-body">
                     @foreach($renlakgiat as $data)
