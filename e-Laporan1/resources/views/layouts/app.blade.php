@@ -21,6 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
+    
      html, body {
                 color: #636b6f;
                 font-family: 'Roboto', sans-serif;
@@ -29,7 +30,7 @@
                 margin: 0;
                 background-blend-mode: true;
                 background-size:100%;
-                background-image: url("{{URL::asset('image/bghome.jpg')}}");
+                background-color: #bdc3c7;
                 height: 100%;
                 width: 100%;
                 overflow: scroll;
@@ -39,23 +40,23 @@
             display: none;
             -ms-overflow-style: none;
             }
-        a {
-            color: #97a39f !important;
-            }
-    input   {
-                font-size: 13px !important;
-            }
-    label   {
-                font-size: 13px !important;
-            }
+        
+        input{
+            font-size: 15px !important;
+        }
+        label{
+            font-size: 15px !important;
+        }
+        .dropdown{
+            color: white;
+        }
         </style>
 </head>
 <body>
-        <nav style="background-color: rgba(255,255,255,0.8) !important;">
+        <nav style="background-color: grey; !important;">
             <div class="nav-wrapper">
                     <!-- Left Side Of Navbar -->
                     @if (Auth::guest())
-                    
                     @else
                     <ul class="nav navbar-nav navbar-left" >
                         <li>
@@ -71,7 +72,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                         <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#"  style="font-size: 15px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Login <span class="caret"></span>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{route('login')}}">Login as UPTD</a></li>
@@ -79,12 +80,11 @@
                                         <li><a href="{{route('admin.login')}}">Login as Admin</a></li>
                                     </ul>
                                 </a>
-                            
                         </li>
                         
                         @elseif (Auth::guard('web')->check())
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" style="font-size: 15px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
@@ -110,7 +110,7 @@
                             </li>
                         @elseif(Auth::guard('admin')->check()) 
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Admin <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
@@ -181,11 +181,14 @@
                 @yield('content')
             </div>   
         </div>
-    <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: rgba(255,255,255,0.6);">
-          <div class="footer-copyright">
-            <div class="container" style="color: grey">
-            © 2018 Copyright D'canteen Corp
-            <a class="grey-text text-lighten-4 right" href="#!" style="color: grey">BLKI Provinsi Kalimantan Timur</a>
+    <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
+          <div class="footer-copyright" >
+            <div class="container" style="color: white">
+                <p align="center">
+                    © Copyright BLKI Provinsi Kalimantan Timur 2018 | Powered By: D'canteen Corp
+                </p>
+            
+            
             </div>
           </div>
     </footer>

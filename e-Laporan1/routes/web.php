@@ -194,7 +194,7 @@ Route::get('/uptd/sendEmail/{id}','UptdController@sendEmail');
 //uptd ubah password
 Route::get('/uptd/editpass/{id}','UptdController@editpass');
 Route::post('/uptd/editpass/update/{id}', 'UptdController@verif');
-Route::get('/uptd/renlakgiat/cetak/{id}','UptdController@cetakRenlakgiat');
+Route::get('/uptd/renlakgiat/cetak/','UptdController@cetakRenlakgiat');
 
 //uptd kelola pktp
 Route::get('uptd/pktp/{id}','PktpController@indexpktp');

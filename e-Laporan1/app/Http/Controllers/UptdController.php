@@ -51,8 +51,8 @@ class UptdController extends Controller
         return redirect()->route('uptd.renlakgiat');
     }
 
-    public function cetakRenlakgiat($id){
-        $renlakgiat = Renlakgiat::where('id',$id)->get();
+    public function cetakRenlakgiat(){
+        $renlakgiat = Renlakgiat::where('users_id',Auth::user()->id)->get();
         $pdf = PDF::loadView('user.cetakRenlakgiat',compact('renlakgiat'));
         return $pdf->stream('Renlakgiat.pdf');
     }

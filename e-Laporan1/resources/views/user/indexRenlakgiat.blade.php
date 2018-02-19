@@ -4,6 +4,7 @@
     <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard Renlakgiat
+                    <div class="pull-right"><a href="{{url('/uptd/renlakgiat/cetak/')}}"><button class="btn btn-link">Cetak Data Renlakgiat</button></a></div>
                 </div>
                 <div class="panel-body">
                     <table class="table">

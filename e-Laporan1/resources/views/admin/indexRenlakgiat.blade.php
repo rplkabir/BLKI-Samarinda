@@ -10,7 +10,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>@sortablelink('users_id')</th>
+                            <th>@sortablelink('users_id','UPTD/BLK Terkait')</th>
                             <th>@sortablelink('kejuruan')</th>
                             <th>@sortablelink('program_pelatihan', 'Program Pelatihan')</th>
                             <th>@sortablelink('sumber_Dana', 'Sumber Dana')</th>

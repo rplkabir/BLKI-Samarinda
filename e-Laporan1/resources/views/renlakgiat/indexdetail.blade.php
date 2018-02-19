@@ -3,87 +3,110 @@
 @section('content')
 <div class="container">
     <div class="row">
-            <div class="panel panel-default pull-center">
-                <div class="panel-body">
-                    @foreach($renlakgiat as $data)
-                    <table class="table">
-                      <tr>
-                          <th >Id Renlakgiat</th  >
-                          <th >kejuruan</th >
-                          <th >Program Pelatihan</th  >
-                          <th >Sumber Dana</th  >
-                          <th >Durasi</th >
-                          <th >Paket</th  >
-                          <th >Orang</th  >
-                          <th >Tanggal Mulai</th  >
-                          <th >Tanggal Selesai</th  >
-                          <th>Status</th>
-                      </tr>
-                      <tr>
-                          <td>{{ $data->id }}</td>
-                          <td>{{ $data->kejuruan }}</td>
-                          <td>{{ $data->program_pelatihan }}</td>
-                          <td>{{ $data->sumber_dana }}</td>
-                          <td>{{$data->durasi}}</td>
-                          <td>{{$data->paket}}</td>
-                          <td>{{$data->orang}}</td>
-                          <td>{{date('d M Y', strtotime($data->tgl_mulai))}}</td>
-                          <td> {{date('d M Y', strtotime($data->tgl_selesai))}}</td>
-                            @if($data->tgl_mulai == "")
-                                <td>Belum Direncanakan</td>
-                                @else
-                                    @if(Carbon\Carbon::now() < $data->tgl_mulai)
-
-                                        <?php DB::table('renlakgiats')
-                                            ->where('id', $data->id)
-                                            ->update(['status' => 'Belum Berjalan']); ?>
-                                           <td> Belum Berjalan</td>
-
-                                    @elseif(Carbon\Carbon::now() > $data->tgl_selesai)
-
-                                        <?php DB::table('renlakgiats')
-                                                ->where('id', $data->id)
-                                                ->update(['status' => 'Sudah Selesai']) ?>
-                                        <td> Sudah Selesai</td>
-
+        <div class="col-md-13 col-md-offset-1">
+            <div class="col-md-5">
+                <div class="panel panel-default" style="position: fixed;">
+                    <div class="panel-body">
+                        @foreach($renlakgiat as $data)
+                        <table class="table">
+                            <tr>
+                                <th>Id Renlakgiat</th >
+                                <td>:</td>
+                                <td>{{ $data->id }}</td>
+                            </tr>
+                            <tr>
+                                <th>kejuruan</th>
+                                <td>:</td>
+                                <td>{{ $data->kejuruan }}</td>
+                            </tr>
+                            <tr>
+                                <th>Program Pelatihan</th >
+                                 <td>:</td>
+                                 <td>{{ $data->program_pelatihan }}</td>
+                            </tr> 
+                            <tr>
+                                <th>Sumber Dana</th >
+                                <td>:</td>
+                                <td>{{ $data->sumber_dana }}</td>
+                            </tr>
+                            <tr>
+                                <th>Durasi</th>
+                                <td>:</td>
+                                <td>{{$data->durasi}}</td>
+                            </tr>
+                            <tr>
+                                 <th>Paket</th >
+                                 <td>:</td>
+                                 <td>{{$data->paket}}</td>
+                            </tr> 
+                            <tr>
+                                  <th>Orang</th >
+                                  <td>:</td>
+                                  <td>{{$data->orang}}</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Mulai</th >
+                                <td>:</td>
+                                <td>{{date('d M Y', strtotime($data->tgl_mulai))}}</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Selesai</th>
+                                <td>:</td>
+                                  <td> {{date('d M Y', strtotime($data->tgl_selesai))}}</td>
+                            </tr>
+                            <tr> 
+                              <th>Status</th>
+                              <td>:</td>
+                              @if($data->tgl_mulai == "")
+                                    <td>Belum Direncanakan</td>
                                     @else
+                                        @if(Carbon\Carbon::now() < $data->tgl_mulai)
 
-                                        <?php DB::table('renlakgiats')
+                                            <?php DB::table('renlakgiats')
                                                 ->where('id', $data->id)
-                                                ->update(['status' => 'Sedang Berjalan']) ?>
+                                                ->update(['status' => 'Belum Berjalan']); ?>
+                                               <td> Belum Berjalan</td>
 
-                                        <td> Sedang Berjalan</td>
+                                        @elseif(Carbon\Carbon::now() > $data->tgl_selesai)
 
+                                            <?php DB::table('renlakgiats')
+                                                    ->where('id', $data->id)
+                                                    ->update(['status' => 'Sudah Selesai']) ?>
+                                            <td> Sudah Selesai</td>
+
+                                        @else
+
+                                            <?php DB::table('renlakgiats')
+                                                    ->where('id', $data->id)
+                                                    ->update(['status' => 'Sedang Berjalan']) ?>
+
+                                            <td> Sedang Berjalan</td>
+
+                                        @endif
                                     @endif
-                                @endif
-                        </tr>
-                      </table>
+                          </tr>
+                          <tr>
+                                <td>
+                                    <strong>Jumlah Perubahan: </strong>{{DB::table('historis')->where('renlakgiat_id',$data->id)->count()}}/3 <br>
+
+                                    <?php $x = 1; ?>
+                                    @foreach(DB::table('historis')->where('renlakgiat_id',$data->id)->orderBy('created_at','desc')->get() as $hs)
+                                        <div class="well">
+                                            <strong>Tanggal Sebelum Perubahan:</strong> {{$hs->tgl_mulai_lama}} - {{$hs->tgl_selesai_lama}} <br>
+                                            <strong>Alasan Perubahan:</strong> {{$hs->alasan}} <br>
+                                            <strong>Tanggal Melakukan Perubahan:</strong> {{ $hs->created_at }} <br>
+                                        </div>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="panel panel-default">
+            <div class="col-md-7">
+                <div class="panel panel-default">
                     <div class="panel-body">
                         <table>
-                        <tr>
-                            <td>Histori Perubahan</td>
-                            <td>:</td>
-                            <td>
-                                <strong>Jumlah Perubahan: </strong>{{DB::table('historis')->where('renlakgiat_id',$data->id)->count()}}/3 <br>
-
-                                <?php $x = 1; ?>
-                                @foreach(DB::table('historis')->where('renlakgiat_id',$data->id)->orderBy('created_at','desc')->get() as $hs)
-                                    <div class="well">
-                                        <strong>Tanggal Sebelum Perubahan:</strong> {{$hs->tgl_mulai_lama}} - {{$hs->tgl_selesai_lama}} <br>
-                                        <strong>Alasan Perubahan:</strong> {{$hs->alasan}} <br>
-                                        <strong>Tanggal Melakukan Perubahan:</strong> {{ $hs->created_at }} <br>
-                                    </div>
-                                @endforeach
-                            </td>
-                        </tr>
                         <tr>
                             <td>Laporan</td>
                             <td>:</td>
@@ -370,9 +393,9 @@
                     </div>
                 </div>
             @endforeach      
-         </div>
+        </div>
     </div>
 </div>
-                
+</div>   
  
 @endsection
