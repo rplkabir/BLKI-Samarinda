@@ -12,6 +12,7 @@ use Session;
 use App\User;
 use App\Dokumen;
 use App\Admin;
+use App\Profile;
 use PDF;
 use Mail;
 use App\Mail\LaporanMail;
@@ -24,7 +25,7 @@ class UptdController extends Controller
     }
 
     public function indexRenlakgiat(){
-    	$renlakgiat = Renlakgiat::where('users_id','=',Auth::user()->id)->orderBy('tgl_mulai','desc')->paginate(5);
+    	$renlakgiat = Renlakgiat::where('users_id','=',Auth::user()->id)->sortable()->paginate(5);
     	return view('user.indexRenlakgiat', compact('renlakgiat','current'));
     }
 
@@ -52,8 +53,11 @@ class UptdController extends Controller
     }
 
     public function cetakRenlakgiat(){
-        $renlakgiat = Renlakgiat::where('users_id',Auth::user()->id)->get();
-        $pdf = PDF::loadView('user.cetakRenlakgiat',compact('renlakgiat'));
+        $renlakgiat = Renlakgiat::where('users_id', Auth::user()->id)->get();
+        $datenow = Carbon::now()->formatLocalized('%d %B %Y');
+        $ketua = Profile::where('users_id', Auth::user()->id)->get();
+        $pdf = PDF::loadView('user.cetakRenlakgiat',compact('renlakgiat','ketua', 'datenow'));
+        
         return $pdf->stream('Renlakgiat.pdf');
     }
 

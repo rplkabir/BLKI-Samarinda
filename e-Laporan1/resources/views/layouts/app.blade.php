@@ -53,14 +53,14 @@
         </style>
 </head>
 <body>
-        <nav style="background-color: grey; !important;">
+        <nav style="background-color: #2c3e50;">
             <div class="nav-wrapper">
                     <!-- Left Side Of Navbar -->
                     @if (Auth::guest())
                     @else
                     <ul class="nav navbar-nav navbar-left" >
                         <li>
-                            <a href="#" data-activates="slide-out" class="button-collapse menu" style="background-color: rgba(190,200,255,0.8) !important;"><i class="material-icons" style=" color: #97a39f">dehaze</i></a>
+                            <a href="#" data-activates="slide-out" class="button-collapse menu" style="background-color: rgba(190,200,255,0.8) !important;"><i class="material-icons" style=" color: white;">dehaze</i></a>
                         </li>
                     </ul>
                     @endif  
@@ -84,7 +84,7 @@
                         
                         @elseif (Auth::guard('web')->check())
                             <li class="dropdown">
-                                <a href="#" style="font-size: 15px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" style="font-size: 13px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
@@ -185,7 +185,7 @@
           <div class="footer-copyright" >
             <div class="container" style="color: white">
                 <p align="center">
-                    © Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
+                    &c Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
                 </p>
             
             

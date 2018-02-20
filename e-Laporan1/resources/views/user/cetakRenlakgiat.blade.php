@@ -25,7 +25,8 @@
                 <center><h2>Recana Pelaksanaan Kegiatan</h2></center>
             </div>
             <br>
-            
+                <br>
+                <br>
                <table class="tb-as" border="1">
                         <tr>
                             <th>No</th>
@@ -52,6 +53,37 @@
                                 <td>@if($data->tgl_selesai == "") Silahkan Mengisi data tanggal @else {{date('d M Y', strtotime($data->tgl_selesai))}} @endif</td>
                                     
                         @endforeach
+                            @foreach($ketua as $dataketua)
+                            <table align="right">
+                                <tr>
+                                    <td>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                     <td width='230'>Samarinda, {{ $datenow }}</td>
+                                  </tr>
+                                   <tr>
+                                     <td width='230'>Kepala,</td>
+                                  </tr>
+                                   <tr>
+                                     <td width='230' height='80'></td>
+                                     <td width='230'></td>
+                                     <td width='230'></td>
+                                  </tr>
+                                   <tr>
+                                     <td width='230'><u> {{ $dataketua->nama_pimpinan }} </u></td>
+                                  </tr>
+                                   <tr>
+                                     <td width='230'>NIP:{{ $dataketua->nip }}</td>
+                                  </tr>
+                            </table> 
+                            @endforeach
                     </table>
         </body>
     </head>

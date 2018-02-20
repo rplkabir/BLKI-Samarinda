@@ -11,11 +11,12 @@
     <link rel="shortcut icon" href="{{URL::asset('image/logo.png')}}" />
     <title>BLK Samarinda</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href=" {{asset('gg/vendor/bootstrap/css/bootstrap.min.css')}} " rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{{asset('gg/css/full-slider.css')}}" rel="stylesheet">
+    <!-- materialize css -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
+      <!--Import materialize.css-->
     <style type="text/css">
         .nav-link{
             color: white;
@@ -23,64 +24,47 @@
         .navbar-brand{
             color: white;
         }
+        body {
+          background-size: 100%;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center;
+          background-image: url({{ asset('image/bg/20171206_102719.jpg') }});
+        }
     </style>
   </head>
 
-  <body>
+  <body style="background-image: ">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" style="background: grey;">
-      <div class="container">
-        <a class="navbar-brand" href="{{URL('/')}}">BLK Samarinda</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                @if (Route::has('login'))
+    <nav style="background-color: #2c3e50 !important;">
+    <div class="nav-wrapper">
+      <a class="navbar-brand" href="{{URL('/')}}" style="padding-left: 20px;">BLK Samarinda</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#" class="nav-link">About</a></li>
+        <li><a href="#" class="nav-link">Contact</a></li>
+        <li>
+          @if (Route::has('login'))
                 @if (Auth::guard('web')->check())
                     <a href="{{ url('/home') }}" class="nav-link">Home</a>
                 @elseif(Auth::guard('admin')->check())
                     <a href="{{ route('admin') }}" class="nav-link">Home</a>
-            </li>
-            
-                    @else
-                            <li class="nav-item">  
-                                <a class="waves-effect waves-light btn" href="{{ url('/login') }}" style="color: white">Login UPTD</a>
-                            </li>
-                            <li>
-                                <a class="waves-effect waves-light btn" href="{{ route('admin.login') }}" style="color: white">Login Admin</a>
-                            </li>
-                         
-                    @endif
-                @endif
                 
-        
+                @else
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+                @endif
+          @endif
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+        <ul id="dropdown1" class="dropdown-content" style="background-color: #2c3e50;">
+            <li><a class="waves-effect waves-light" href="{{ url('/login') }}" style="color: white">Login UPTD</a></li>
+            <li><a class="waves-effect waves-light" href="{{ route('admin.login') }}" style="color: white">Login Admin</a></li>
           </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header>
-      
-        <div class="carousel">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('image/bg/20171206_102719.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              
-            </div>
-          </div>
-          </div>
-      </div>
-    </header>
-
+<header>
+</header>
     <!-- Footer -->
     <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
           <div class="footer-copyright" >
@@ -96,8 +80,10 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('gg/vendor/jquery/jquery.min.js')}} "></script>
-    <script src="{{asset('gg/vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
-
+    <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+    <script type="text/javascript">
+     $('.dropdown-button').dropdown();
+    </script>
   </body>
 
 </html>

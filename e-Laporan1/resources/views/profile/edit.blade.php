@@ -37,7 +37,7 @@
                                         @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('provinsi') ? 'has-error': ''}}">
-                                    <label for="provinsi" class="col-md-4 control-label">provinsi</label>
+                                    <label for="provinsi" class="col-md-4 control-label">Provinsi</label>
                                         <div class="col-md-6">
                                             <input type="text" name="provinsi" id="provinsi" class="form-control" value="{{ $data->provinsi }}">
                                         </div>

@@ -12,8 +12,9 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        
+    {   
+        setlocale(LC_TIME, 'id');
+        \Carbon\Carbon::setLocale('id');
     }
 
     /**
@@ -23,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }

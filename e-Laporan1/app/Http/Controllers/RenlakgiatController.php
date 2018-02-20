@@ -32,7 +32,7 @@ class RenlakgiatController extends Controller
         foreach ($id as $c) {
                 $users_id = $c->users_id;
         }
-     $renlakgiat = Renlakgiat::where('users_id',$users_id)->orderBy('users_id','asc')->paginate(5);    
+     $renlakgiat = Renlakgiat::where('users_id',$users_id)->sortable()->paginate(5);    
      return view('renlakgiat.index', compact('renlakgiat','profile'));
     }
 
