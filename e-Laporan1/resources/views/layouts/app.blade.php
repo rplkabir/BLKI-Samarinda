@@ -155,7 +155,7 @@
                                 <a href="{{ route('profile')}}"><span class="white-text name"><i class="material-icons">person</i>{{ $data->nama_lembaga }}</span></a>
                             </div></li>
                             <li><a href=" {{ route('home')}}"><i class="material-icons">dashboard</i>Dashboard</a></li>
-                            <li><a href="{{url('uptd/pktp/'.Auth::user()->id)}}"><i class="material-icons">assignment_ind</i>Data PKTP</a></li>
+                            <li><a href="{{url('uptd/pktp/'.Auth::user()->id)}}"><i class="material-icons">assignment_ind</i>Data Pengelola</a></li>
                             <li><a href="{{route('uptd.renlakgiat')}}"><i class="material-icons">storage</i>Data Renlakgiat</a></li>
                             <li><div class="divider"></div></li>
                             <li><a class="subheader">Other</a></li>

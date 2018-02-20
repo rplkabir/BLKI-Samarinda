@@ -132,6 +132,18 @@
                                             </span>
                                         @endif
                                 </div>
+                                <div class="form-group{{ $errors->has('nip') ? 'has-error': ''}}">
+                                    <label for="nip" class="col-md-4 control-label">NIP</label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="nip" id="nip" class="form-control">
+                                        </div>
+
+                                         @if ($errors->has('nip'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('nip') }}</strong>
+                                            </span>
+                                        @endif
+                                </div>
                                 <div class="form-group{{ $errors->has('no_hp_pimpinan') ? 'has-error': ''}}">
                                     <label for="no_hp_pimpinan" class="col-md-4 control-label">No Hp Pimpinan</label>
                                         <div class="col-md-6">

@@ -14,7 +14,7 @@
                             <th>Eselonisasi</th>
                             <th>Kab/Kota - Provinsi</th>
                             <th>Nama Pimpinan</th>
-                            <th>PKTP</th>
+                            <th>Data Pengelola</th>
                             <th>Detail UPTD/BLK</th>
                             <th>Renlakgiat</th>
                         </tr>
@@ -29,7 +29,7 @@
                                 <td>{{ $data->kab_kota }} - {{$data->provinsi}}</td>
                                 <td>{{ $data->nama_pimpinan }}</td>
                                 <td>
-                                    <a href="{{url('admin/pktp/'.$data->users_id)}}"><i class="material-icons">assignment_ind</i> PKTP</a>
+                                    <a href="{{url('admin/pktp/'.$data->users_id)}}"><i class="material-icons">assignment_ind</i> Pengelola</a>
                                 </td>
                                 <td>
                                     <a href="{{url('admin/profile/detail/'.$data->id)}}"><i class="material-icons">details</i>Details</a>

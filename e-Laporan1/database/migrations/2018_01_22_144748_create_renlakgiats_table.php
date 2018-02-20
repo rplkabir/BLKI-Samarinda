@@ -22,8 +22,8 @@ class CreateRenlakgiatsTable extends Migration
             $table->string('paket'); 
             $table->string('orang');
             $table->string('csv');
-            $table->string('tgl_mulai');
-            $table->string('tgl_selesai');
+            $table->string('tgl_mulai')->nullable();
+            $table->string('tgl_selesai')->nullable();
             $table->timestamps();
         });
     }

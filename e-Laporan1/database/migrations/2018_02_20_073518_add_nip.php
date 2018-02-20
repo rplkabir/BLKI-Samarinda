@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBatasLaporan extends Migration
+class AddNip extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddBatasLaporan extends Migration
      */
     public function up()
     {
-        Schema::table('renlakgiats', function($table) {
-            $table->string('tgl_kumpul_laporan')->nullable();
+        Schema::table('profils', function($table) {
+            $table->string('nip');
         });
     }
 

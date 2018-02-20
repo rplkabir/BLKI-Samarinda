@@ -2,9 +2,9 @@
 @section('content')
     <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard pktp
+                <div class="panel-heading">Dashboard Pengelola
                     
-                     <a class="pull-right" align="right" href="{{url('uptd/pktp/tambah/'.Auth::user()->id)}}"><button class="btn btn-link">Tambah PKTP</button></a>
+                     <a class="pull-right" align="right" href="{{url('uptd/pktp/tambah/'.Auth::user()->id)}}"><button class="btn btn-link">Tambah Data Pengelola</button></a>
                     
                 </div>
 

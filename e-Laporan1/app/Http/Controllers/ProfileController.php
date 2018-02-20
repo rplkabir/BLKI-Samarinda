@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
+use Session;
 use Auth;
 class ProfileController extends Controller
 {
@@ -64,6 +65,7 @@ class ProfileController extends Controller
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
+                $profile->nip = $request->nip;
                 $profile->save();
                 \Session::flash('message', 'Berhasil Tambah Data Profile');
                 \Session::flash('alert-class', 'alert-success');
@@ -120,7 +122,7 @@ class ProfileController extends Controller
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
-
+                $profile->nip = $request->nip;
 
         }elseif ($request->hasFile('foto_pimpinan')) {
              $request->file('foto_pimpinan')->move('upload', $request->foto_pimpinan->getClientOriginalName());
@@ -137,6 +139,7 @@ class ProfileController extends Controller
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
+                $profile->nip = $request->nip;
         }elseif ($request->hasFile('foto_gedung')) {
             $request->file('foto_gedung')->move('upload', $request->foto_gedung->getClientOriginalName());
                 $profile->users_id = Auth::user()->id;
@@ -152,6 +155,7 @@ class ProfileController extends Controller
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
+                $profile->nip = $request->nip;
         }else{
                 $profile->users_id = Auth::user()->id;
                 $profile->nama_lembaga = $request->nama_lembaga;
@@ -165,6 +169,7 @@ class ProfileController extends Controller
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
+                $profile->nip = $request->nip;
         }
         Session::flash('message', 'Berhasil Ubah Data Profile');
         Session::flash('alert-class', 'alert-success');

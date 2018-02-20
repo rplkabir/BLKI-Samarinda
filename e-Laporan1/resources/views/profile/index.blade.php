@@ -23,12 +23,12 @@
                 </div>
                     @foreach($profile as $data)
                     <div style="width: 100%; height: 100%; position: relative;">
-                    <img class="img materialboxed" src="{{asset('upload/'.$data->foto_gedung)}}" height="500" style="width: 100%; z-index: 1; position: relative;">
-                    <img class="img materialboxed img-thumbnail" align="center" src="{{asset('upload/'.$data->foto_pimpinan)}}" width="180" height="180" style=" left:5%; top: 70%;  z-index: 2; position: absolute; float: left;">  
+                    <img class="img materialboxed" src="{{asset('upload/'.$data->foto_gedung)}}" height="500" style="width: 100%; z-index: 0; position: relative;">
+                    <img class="img materialboxed img-thumbnail" align="center" src="{{asset('upload/'.$data->foto_pimpinan)}}" width="180" height="150" style=" left:5%; top: 60%;  z-index: 0; position: absolute; float: left;">  
                     </div>
                     @endforeach
                 <div class="panel-body">
-                    <table class="responsive-table" style="width: 100%">
+                    <table class="table" style="width: 100%">
                         @foreach($profile as $data)
 
                             <tr>
@@ -66,7 +66,14 @@
                                 <th>Email Kantor</th>
                                 <td>{{ $data->email_kantor }}</td>
                             </tr>
-                            
+                            <tr>
+                                <th>Nama Pimpinan/Kepala</th>
+                                <td>{{ $data->nama_pimpinan }}</td>
+                            </tr>
+                            <tr>
+                                <th>NIP Pimpinan/Kepala</th>
+                                <td>{{ $data->nip }}</td>
+                            </tr>
                         @endforeach
                         
                         </table>

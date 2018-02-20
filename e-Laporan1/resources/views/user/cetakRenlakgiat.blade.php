@@ -53,8 +53,6 @@
                                     
                         @endforeach
                     </table>
-             
-            
         </body>
     </head>
 </html>

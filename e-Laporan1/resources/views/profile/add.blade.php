@@ -35,7 +35,7 @@
                                         @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('provinsi') ? 'has-error': ''}}">
-                                    <label for="provinsi" class="col-md-4 control-label">provinsi</label>
+                                    <label for="provinsi" class="col-md-4 control-label">Provinsi</label>
                                         <div class="col-md-6">
                                             <input type="text" name="provinsi" id="provinsi" class="form-control">
                                         </div>
@@ -127,6 +127,18 @@
                                          @if ($errors->has('nama_pimpinan'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('nama_pimpinan') }}</strong>
+                                            </span>
+                                        @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('nip') ? 'has-error': ''}}">
+                                    <label for="nip" class="col-md-4 control-label">NIP</label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="nip" id="nip" class="form-control">
+                                        </div>
+
+                                         @if ($errors->has('nip'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('nip') }}</strong>
                                             </span>
                                         @endif
                                 </div>

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>DATA PKTP @foreach($pktp as $ss) {{ $ss->User->name }} @endforeach</strong></div>
+                <div class="panel-heading"><strong>DATA Pengelola @foreach($pktp as $ss) {{ $ss->User->name }} @endforeach</strong></div>
                     
                 <div class="panel-body">
                     <table class="table">
