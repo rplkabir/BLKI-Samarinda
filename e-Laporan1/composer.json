@@ -9,7 +9,9 @@
         "barryvdh/laravel-dompdf": "^0.8.1",
         "chumper/zipper": "^1.0",
         "consoletvs/charts": "3.*",
+        "goodnesskay/laravelpdfviewer": "^1.0",
         "iio/libmergepdf": "3.1",
+        "jurosh/pdf-merge": "dev-master",
         "khill/lavacharts": "3.0.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
@@ -18,10 +20,9 @@
         "maatwebsite/excel": "^2.1",
         "pusher/pusher-php-server": "~2.6",
         "rguedes/pdfmerger": "^1.0",
-        "webklex/laravel-pdfmerger": "^1.0",
-        "jurosh/pdf-merge": "dev-master",
         "setasign/fpdi-fpdf": "^2.0",
-        "tecnickcom/tcpdf": "^6.2"
+        "tecnickcom/tcpdf": "^6.2",
+        "webklex/laravel-pdfmerger": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

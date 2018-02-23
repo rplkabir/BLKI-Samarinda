@@ -339,13 +339,13 @@ class AdminController extends Controller
 
     public function uploadDpbl($id, Request $request ){
         $this->validate($request,[
-            'status_daftar_permintaan_bahan_latihan' => 'required',
-            'catatan_daftar_permintaan_bahan_latihan' => 'required',
+            'status_daftar_permintaan_bahan_pelatihan' => 'required',
+            'catatan_daftar_permintaan_bahan_pelatihan' => 'required',
         ]);
 
             $renlakgiat = Renlakgiat::find($id);
-            $renlakgiat->status_daftar_permintaan_bahan_latihan = $request->status_daftar_permintaan_bahan_latihan;
-            $renlakgiat->catatan_daftar_permintaan_bahan_latihan = $request->catatan_daftar_permintaan_bahan_latihan;
+            $renlakgiat->status_daftar_permintaan_bahan_pelatihan = $request->status_daftar_permintaan_bahan_pelatihan;
+            $renlakgiat->catatan_daftar_permintaan_bahan_pelatihan = $request->catatan_daftar_permintaan_bahan_pelatihan;
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Daftar Permintaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');
@@ -381,13 +381,13 @@ class AdminController extends Controller
 
     public function uploadLmpbl($id, Request $request ){
         $this->validate($request,[
-            'status_laporan_mingguan_penggunaan_bahan_latihan' => 'required',
-            'catatan_laporan_mingguan_penggunaan_bahan_latihan' => 'required',
+            'status_laporan_mingguan_penggunaan_bahan_pelatihan' => 'required',
+            'catatan_laporan_mingguan_penggunaan_bahan_pelatihan' => 'required',
         ]);
 
             $renlakgiat = Renlakgiat::find($id);
-            $renlakgiat->status_laporan_mingguan_penggunaan_bahan_latihan = $request->status_laporan_mingguan_penggunaan_bahan_latihan;
-            $renlakgiat->catatan_laporan_mingguan_penggunaan_bahan_latihan = $request->catatan_laporan_mingguan_penggunaan_bahan_latihan;
+            $renlakgiat->status_laporan_mingguan_penggunaan_bahan_pelatihan = $request->status_laporan_mingguan_penggunaan_bahan_pelatihan;
+            $renlakgiat->catatan_laporan_mingguan_penggunaan_bahan_pelatihan = $request->catatan_laporan_mingguan_penggunaan_bahan_pelatihan;
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Laporan Mingguan Penggunaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');

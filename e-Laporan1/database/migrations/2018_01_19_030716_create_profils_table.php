@@ -25,12 +25,11 @@ class CreateProfilsTable extends Migration
             $table->string('no_telp');
             $table->string('no_fax');
             $table->string('email_kantor');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('nama_pimpinan');
             $table->string('no_hp_pimpinan');
             $table->string('foto_pimpinan');
             $table->string('foto_gedung');
-            $table->string('renklakgiats');
             $table->timestamps();
         });
     }

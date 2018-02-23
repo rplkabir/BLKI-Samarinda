@@ -5,7 +5,7 @@
     <div class="row">
             <div class="panel panel-default" style="width: 100% !important;">
                 <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
-                <div class="panel-body">
+                <div class="panel-body" style="width: 100%;">
                     <table>
                     @foreach($renlakgiat as $data)
                     <table class="table" style="position: fixed; width: 40%">
@@ -124,7 +124,8 @@
                         <tr>
                             <td align="center">
                                 @if(Carbon\Carbon::now() > $data->tgl_kumpul_laporan)
-                                   <strong>Maaf, Pengumpulan laporan untuk kegiatan ini sudah ditutup karena telah melewati batas pengumpulan laporan yang sudah ditetapkan, silahkan menghubungi admin untuk melakukan permintaan pembukaan sistem untuk melakukan/melengkapi laporan yang masih ingin dikumpulkan</strong>
+                                   <h2>Maaf, Pengumpulan laporan untuk kegiatan ini sudah ditutup karena telah melewati batas pengumpulan laporan yang sudah ditetapkan, silahkan menghubungi admin untuk melakukan permintaan pembukaan sistem untuk melakukan/melengkapi laporan yang masih ingin dikumpulkan</h2>
+
                                 @else
 
                                 @if($data->status_cover == "Terverifikasi")
@@ -293,9 +294,9 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/dpbl/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">daftar permintaan bahan latihan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_latihan}}<br> 
-                                <strong>Status:</strong> {{$data->status_daftar_permintaan_bahan_latihan}}<br>
-                                <strong>Catatan:</strong> {{ $data->catatan_daftar_permintaan_bahan_latihan}}
+                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_pelatihan}}<br> 
+                                <strong>Status:</strong> {{$data->status_daftar_permintaan_bahan_pelatihan}}<br>
+                                <strong>Catatan:</strong> {{ $data->catatan_daftar_permintaan_bahan_pelatihan}}
                                 <br>
                                 </div>
                                 @endif
@@ -324,9 +325,9 @@
                                         <button class="btn btn-link">laporan mingguan penggunaan bahan latihan</button>
                                     </a>
                                     <br>
-                                    <strong>File: </strong>{{$data->laporan_mingguan_penggunaan_bahan_latihan}}<br>
-                                    <strong>Status:</strong> {{$data->status_laporan_mingguan_penggunaan_bahan_latihan}} <br>
-                                    <strong>Catatan:</strong> {{ $data->catatan_laporan_mingguan_penggunaan_bahan_latihan}}
+                                    <strong>File: </strong>{{$data->laporan_mingguan_penggunaan_bahan_pelatihan}}<br>
+                                    <strong>Status:</strong> {{$data->status_laporan_mingguan_penggunaan_bahan_pelatihan}} <br>
+                                    <strong>Catatan:</strong> {{ $data->catatan_laporan_mingguan_penggunaan_bahan_pelatihan}}
                                 <br>
                                 </div>
                                 @endif

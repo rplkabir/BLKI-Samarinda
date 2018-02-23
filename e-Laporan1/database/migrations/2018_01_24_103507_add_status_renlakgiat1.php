@@ -14,7 +14,7 @@ class AddStatusRenlakgiat1 extends Migration
     public function up()
     {
         Schema::table('renlakgiats', function($table) {
-            $table->string('status');
+            $table->string('status')->nullable();
         });
     }
 

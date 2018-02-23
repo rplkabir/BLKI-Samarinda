@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon" href="{{URL::asset('image/logo.png')}}" />
+    <link rel="shortcut icon" href="{{URL::asset('image/log.png')}}" />
     <title>BLK Samarinda</title>
 
 

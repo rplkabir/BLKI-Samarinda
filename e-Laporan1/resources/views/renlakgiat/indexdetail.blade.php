@@ -203,9 +203,9 @@
                                 <a href="{{url('admin/renlakgiat/laporan/dpbl/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">daftar permintaan bahan latihan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_latihan}}<br>
-                                <strong>Status:</strong> {{$data->status_daftar_permintaan_bahan_latihan}}<br>
-                                <strong>Catatan:</strong> {{ $data->catatan_daftar_permintaan_bahan_latihan}}
+                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_pelatihan}}<br>
+                                <strong>Status:</strong> {{$data->status_daftar_permintaan_bahan_pelatihan}}<br>
+                                <strong>Catatan:</strong> {{ $data->catatan_daftar_permintaan_bahan_pelatihan}}
                                 <br>
                                 </div>
                                 <div class="well">
@@ -222,9 +222,9 @@
                                     <button class="btn btn-link">laporan mingguan penggunaan bahan latihan</button>
                                 </a>
                                 <br>
-                                <strong>File: </strong>{{$data->laporan_mingguan_penggunaan_bahan_latihan}}<br>
-                                <strong>Status:</strong> {{$data->status_laporan_mingguan_penggunaan_bahan_latihan}} <br>
-                                <strong>Catatan:</strong> {{ $data->catatan_laporan_mingguan_penggunaan_bahan_latihan}}
+                                <strong>File: </strong>{{$data->laporan_mingguan_penggunaan_bahan_pelatihan}}<br>
+                                <strong>Status:</strong> {{$data->status_laporan_mingguan_penggunaan_bahan_pelatihan}} <br>
+                                <strong>Catatan:</strong> {{ $data->catatan_laporan_mingguan_penggunaan_bahan_pelatihan}}
                                 <br>
                                 </div>
                                 <div class="well">

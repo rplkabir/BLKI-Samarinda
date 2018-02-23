@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{URL::asset('image/logo.png')}}" />
+    <link rel="shortcut icon" href="{{URL::asset('image/log.png')}}" />
     <title>BLK Samarinda</title>
 
     <!-- Styles -->
@@ -185,7 +185,7 @@
           <div class="footer-copyright" >
             <div class="container" style="color: white">
                 <p align="center">
-                    &c Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
+                    &copy Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
                 </p>
             
             

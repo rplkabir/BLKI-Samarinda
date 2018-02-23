@@ -123,7 +123,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->cover = $fileName;
                 $renlakgiat->status_cover = "Belum Terverifikasi";
-                $renlakgiat->catatan_cover = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Cover');
@@ -149,7 +149,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->pendahuluan = $fileName;
                 $renlakgiat->status_pendahuluan = "Belum Terverifikasi";
-                $renlakgiat->catatan_pendahuluan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload pendahuluan');
@@ -174,7 +174,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->surat_keputusan = $fileName;
                 $renlakgiat->status_surat_keputusan = "Belum Terverifikasi";
-                $renlakgiat->catatan_surat_keputusan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload surat keputusan');
@@ -201,7 +201,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->nominatif_peserta_pelatihan = $fileName;
                 $renlakgiat->status_nominatif_peserta_pelatihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_nominatif_peserta_pelatihan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Nominatif Peserta Pelatihan');
@@ -228,7 +228,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->nominatif_instruktur = $fileName;
                 $renlakgiat->status_nominatif_instruktur = "Belum Terverifikasi";
-                $renlakgiat->catatan_nominatif_instruktur = "-";
+               
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Nominatif Instruktur');
@@ -255,7 +255,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->kurikulum = $fileName;
                 $renlakgiat->status_kurikulum = "Belum Terverifikasi";
-                $renlakgiat->catatan_kurikulum = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Kurikulum');
@@ -282,7 +282,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->jadwal_pelatihan_mingguan = $fileName;
                 $renlakgiat->status_jadwal_pelatihan_mingguan = "Belum Terverifikasi";
-                $renlakgiat->catatan_jadwal_pelatihan_mingguan = "-";
+               
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Jadwal Pelatihan Mingguan');
@@ -309,7 +309,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->daftar_hadir_instruktur = $fileName;
                 $renlakgiat->status_daftar_hadir_instruktur = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_hadir_instruktur = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Instruktur');
@@ -336,7 +336,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->daftar_jam_mengajar_instruktur = $fileName;
                 $renlakgiat->status_daftar_jam_mengajar_instruktur = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_jam_mengajar_instruktur = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Jam Mengajar Instruktur');
@@ -363,7 +363,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->daftar_hadir_peserta_pelatihan = $fileName;
                 $renlakgiat->status_daftar_hadir_peserta_pelatihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_hadir_peserta_pelatihan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Peserta Pelatihan');
@@ -388,9 +388,9 @@ class UptdController extends Controller
                 $fileName = "Daftar Permintaan Bahan latihan" . ' ' . $request->renlakgiat_id . '.' . $extension;
                 $request->file('file')->move('upload', $fileName);
                 $renlakgiat = Renlakgiat::find($id);
-                $renlakgiat->daftar_permintaan_bahan_latihan = $fileName;
-                $renlakgiat->status_daftar_permintaan_bahan_latihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_permintaan_bahan_latihan = "-";
+                $renlakgiat->daftar_permintaan_bahan_pelatihan = $fileName;
+                $renlakgiat->status_daftar_permintaan_bahan_pelatihan = "Belum Terverifikasi";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Permintaan Bahan Latihan');
@@ -417,7 +417,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->bukti_penerimaan_bahan_pelatihan = $fileName;
                 $renlakgiat->status_bukti_penerimaan_bahan_pelatihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_bukti_penerimaan_bahan_pelatihan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Bukti Penerimaan Bahan Pelatihan');
@@ -442,9 +442,9 @@ class UptdController extends Controller
                 $fileName = "Laporan Mingguan Penggunaan Bahan Latihan" . ' ' . $request->renlakgiat_id . '.' . $extension;
                 $request->file('file')->move('upload', $fileName);
                 $renlakgiat = Renlakgiat::find($id);
-                $renlakgiat->laporan_mingguan_penggunaan_bahan_latihan = $fileName;
-                $renlakgiat->status_laporan_mingguan_penggunaan_bahan_latihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_laporan_mingguan_penggunaan_bahan_latihan = "-";
+                $renlakgiat->laporan_mingguan_penggunaan_bahan_pelatihan = $fileName;
+                $renlakgiat->status_laporan_mingguan_penggunaan_bahan_pelatihan = "Belum Terverifikasi";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Laporan Mingguan Penggunaan Bahan Latihan');
@@ -471,7 +471,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->undangan_sidang_kelulusan = $fileName;
                 $renlakgiat->status_undangan_sidang_kelulusan = "Belum Terverifikasi";
-                $renlakgiat->catatan_undangan_sidang_kelulusan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Undangan Sidang Kelulusan');
@@ -498,7 +498,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->berita_acara_sidang_kelulusan = $fileName;
                 $renlakgiat->status_berita_acara_sidang_kelulusan = "Belum Terverifikasi";
-                $renlakgiat->catatan_berita_acara_sidang_kelulusan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Berita Acara Sidang Kelulusan');
@@ -525,7 +525,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->daftar_hadir_pertemuan_sidang_kelulusan = $fileName;
                 $renlakgiat->status_daftar_hadir_pertemuan_sidang_kelulusan = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_hadir_pertemuan_sidang_kelulusan = "-";
+               
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Pertemuan Sidang Kelulusan');
@@ -552,7 +552,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->daftar_nilai_akhir = $fileName;
                 $renlakgiat->status_daftar_nilai_akhir = "Belum Terverifikasi";
-                $renlakgiat->catatan_daftar_nilai_akhir = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Nilai Akhir');
@@ -579,7 +579,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->rekap_penilaian_pelatihan_berbasis_kompetensi = $fileName;
                 $renlakgiat->status_rekap_penilaian_pelatihan_berbasis_kompetensi = "Belum Terverifikasi";
-                $renlakgiat->catatan_rekap_penilaian_pelatihan_berbasis_kompetensi = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Rekap Penilaian Pelatihan Berbasis Kompetensi');
@@ -606,7 +606,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->rekapitulasi_akhir_hasil_pelatihan = $fileName;
                 $renlakgiat->status_rekapitulasi_akhir_hasil_pelatihan = "Belum Terverifikasi";
-                $renlakgiat->catatan_rekapitulasi_akhir_hasil_pelatihan = "-";
+               
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Rekapitulasi Akhir hasil Pelatihan');
@@ -633,7 +633,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_transport_peserta = $fileName;
                 $renlakgiat->status_tanda_terima_transport_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_transport_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Transport Peserta');
@@ -661,7 +661,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_asuransi_peserta = $fileName;
                 $renlakgiat->status_tanda_terima_asuransi_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_asuransi_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima kartu Asuransi Peserta');
@@ -689,7 +689,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_pakaian_kerja_peserta = $fileName;
                 $renlakgiat->status_tanda_terima_pakaian_kerja_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_pakaian_kerja_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Pakaian Kerja Peserta');
@@ -717,7 +717,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_atk_peserta = $fileName;
                 $renlakgiat->status_tanda_terima_atk_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_atk_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima ATK Peserta');
@@ -745,7 +745,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_modul = $fileName;
                 $renlakgiat->status_tanda_terima_modul = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_modul = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Modul');
@@ -773,7 +773,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->tanda_terima_konsumsi_peserta = $fileName;
                 $renlakgiat->status_tanda_terima_konsumsi_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_tanda_terima_konsumsi_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Konsumsi Peserta');
@@ -801,7 +801,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->foto_dokumentasi_kegiatan = $fileName;
                 $renlakgiat->status_foto_dokumentasi_kegiatan = "Belum Terverifikasi";
-                $renlakgiat->catatan_foto_dokumentasi_kegiatan = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Foto Dokumentasi Kegiatan');
@@ -829,7 +829,7 @@ class UptdController extends Controller
                 $renlakgiat = Renlakgiat::find($id);
                 $renlakgiat->fotocopy_sertifikasi_peserta = $fileName;
                 $renlakgiat->status_fotocopy_sertifikasi_peserta = "Belum Terverifikasi";
-                $renlakgiat->catatan_fotocopy_sertifikasi_peserta = "-";
+                
             }
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Fotocopy Sertifikasi Peserta');
@@ -867,9 +867,9 @@ class UptdController extends Controller
                 $daftar_hadir_instruktur = $key->daftar_hadir_instruktur;
                 $daftar_jam_mengajar_instruktur = $key->daftar_jam_mengajar_instruktur;
                 $daftar_hadir_peserta_pelatihan = $key->daftar_hadir_peserta_pelatihan;
-                $daftar_permintaan_bahan_latihan = $key->daftar_permintaan_bahan_latihan;
+                $daftar_permintaan_bahan_pelatihan = $key->daftar_permintaan_bahan_pelatihan;
                 $bukti_penerimaan_bahan_pelatihan = $key->bukti_penerimaan_bahan_pelatihan;
-                $laporan_mingguan_penggunaan_bahan_latihan = $key->laporan_mingguan_penggunaan_bahan_latihan;
+                $laporan_mingguan_penggunaan_bahan_pelatihan = $key->laporan_mingguan_penggunaan_bahan_pelatihan;
                 $undangan_sidang_kelulusan = $key->undangan_sidang_kelulusan;
                 $berita_acara_sidang_kelulusan = $key->berita_acara_sidang_kelulusan;
                 $daftar_hadir_pertemuan_sidang_kelulusan = $key->daftar_hadir_pertemuan_sidang_kelulusan;
@@ -898,9 +898,9 @@ class UptdController extends Controller
             $pdf->addPDF('upload/'.$daftar_hadir_instruktur, 'all');
             $pdf->addPDF('upload/'.$daftar_jam_mengajar_instruktur, 'all');
             $pdf->addPDF('upload/'.$daftar_hadir_peserta_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$daftar_permintaan_bahan_latihan, 'all');
+            $pdf->addPDF('upload/'.$daftar_permintaan_bahan_pelatihan, 'all');
             $pdf->addPDF('upload/'.$bukti_penerimaan_bahan_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_latihan, 'all');
+            $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_pelatihan, 'all');
             $pdf->addPDF('upload/'.$undangan_sidang_kelulusan, 'all');
             $pdf->addPDF('upload/'.$berita_acara_sidang_kelulusan, 'all');
             $pdf->addPDF('upload/'.$daftar_hadir_pertemuan_sidang_kelulusan, 'all');

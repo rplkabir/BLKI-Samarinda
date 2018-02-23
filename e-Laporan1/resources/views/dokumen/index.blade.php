@@ -13,8 +13,8 @@
                     <table class="responsive-table">
                         <tr>
                             <th>No</th>
-                            <th>judul Dokumen</th>
-                            <th>isi</th>
+                            <th>Judul</th>
+                            <th>Isi</th>
                             <th>Nama File</th>
                             <th>Aksi</th>
                         </tr>

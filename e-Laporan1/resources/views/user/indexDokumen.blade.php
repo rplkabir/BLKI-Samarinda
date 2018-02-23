@@ -9,6 +9,7 @@
                         <div class="well well-md">
                             <strong>Judul: {{$data->judul}}</strong><br>
                             {{$data->isi}} - File: {{$data->file}}
+                            <a href="{{asset('dokumen/'.$data->file)}}" download>Download</a>
                         </div>
                     @endforeach
                 </div>

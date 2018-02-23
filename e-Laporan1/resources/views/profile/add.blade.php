@@ -13,7 +13,7 @@
                     		    <div class="form-group{{ $errors->has('nama_lembaga') ? 'has-error': ''}}">
                                     <label for="nama_lembaga" class="col-md-4 control-label">Nama Lembaga</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="nama_lembaga" id="nama_lembaga" class="form-control">
+                                            <input type="text" name="nama_lembaga" id="nama_lembaga" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('nama_lembaga'))
@@ -25,7 +25,7 @@
                     			<div class="form-group{{ $errors->has('eselonisasi') ? 'has-error': ''}}">
                                     <label for="eselonisasi" class="col-md-4 control-label">Eselonisasi</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="eselonisasi" id="eselonisasi" class="form-control">
+                                            <input type="text" name="eselonisasi" id="eselonisasi" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('eselonisasi'))
@@ -37,7 +37,7 @@
                                 <div class="form-group{{ $errors->has('provinsi') ? 'has-error': ''}}">
                                     <label for="provinsi" class="col-md-4 control-label">Provinsi</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="provinsi" id="provinsi" class="form-control">
+                                            <input type="text" name="provinsi" id="provinsi" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('provinsi'))
@@ -49,7 +49,7 @@
                                 <div class="form-group{{ $errors->has('kab_kota') ? 'has-error': ''}}">
                                     <label for="kab_kota" class="col-md-4 control-label">Kab/Kota</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="kab_kota" id="kab_kota" class="form-control">
+                                            <input type="text" name="kab_kota" id="kab_kota" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('kab_kota'))
@@ -61,7 +61,7 @@
                                 <div class="form-group{{ $errors->has('alamat') ? 'has-error': ''}}">
                                     <label for="alamat" class="col-md-4 control-label">Alamat Lengkap</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="alamat" id="alamat" class="form-control">
+                                            <input type="text" name="alamat" id="alamat" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('alamat'))
@@ -73,7 +73,7 @@
                                 <div class="form-group{{ $errors->has('no_telp') ? 'has-error': ''}}">
                                     <label for="no_telp" class="col-md-4 control-label">No Telepon</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="no_telp" id="no_telp" class="form-control">
+                                            <input type="text" name="no_telp" id="no_telp" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('no_telp'))
@@ -85,7 +85,7 @@
                                 <div class="form-group{{ $errors->has('no_fax') ? 'has-error': ''}}">
                                     <label for="no_fax" class="col-md-4 control-label">No Fax</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="no_fax" id="no_fax" class="form-control">
+                                            <input type="text" name="no_fax" id="no_fax" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('no_fax'))
@@ -97,7 +97,7 @@
                                 <div class="form-group{{ $errors->has('email_kantor') ? 'has-error': ''}}">
                                     <label for="email_kantor" class="col-md-4 control-label">Email Kantor</label>
                                         <div class="col-md-6">
-                                            <input type="email" name="email_kantor" id="email_kantor" class="form-control">
+                                            <input type="email" name="email_kantor" id="email_kantor" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('email_kantor'))
@@ -121,7 +121,7 @@
                                 <div class="form-group{{ $errors->has('nama_pimpinan') ? 'has-error': ''}}">
                                     <label for="nama_pimpinan" class="col-md-4 control-label">Nama Pimpinan</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="nama_pimpinan" id="nama_pimpinan" class="form-control">
+                                            <input type="text" name="nama_pimpinan" id="nama_pimpinan" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('nama_pimpinan'))
@@ -133,7 +133,7 @@
                                 <div class="form-group{{ $errors->has('nip') ? 'has-error': ''}}">
                                     <label for="nip" class="col-md-4 control-label">NIP</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="nip" id="nip" class="form-control">
+                                            <input type="text" name="nip" id="nip" class="form-control" required>
                                         </div>
 
                                          @if ($errors->has('nip'))
@@ -158,7 +158,7 @@
                                     <label for="foto_pimpinan" class="col-md-4 control-label" id="foto_pimpinan">Foto Pimpinan</label>
                                         <div class="col-md-6">
                                             <input type="file" name="foto_pimpinan" id="foto_pimpinan" onchange="loadFile(event)"><br>
-                                            <img id="pimpinan" width="100" height="100" >
+                                            <img id="pimpinan" width="100" height="100" required>
                                             <script>
                                               var loadFile = function(event) {
                                                 var pimpinan = document.getElementById('pimpinan');
@@ -175,7 +175,7 @@
                                 <div class="form-group{{ $errors->has('foto_gedung')}}">
                                     <label for="foto_gedung" class="col-md-4 control-label" id="foto_gedung">Foto Gedung</label>
                                         <div class="col-md-6">
-                                            <input type="file" name="foto_gedung" id="foto_gedung" onchange="loadFilegedung(event)"><br>
+                                            <input type="file" name="foto_gedung" id="foto_gedung" onchange="loadFilegedung(event)" required><br>
                                             <img id="gedung" width="100" height="100" >
                                             <script>
                                               var loadFilegedung = function(event) {
