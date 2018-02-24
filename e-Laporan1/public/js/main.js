@@ -1,3 +1,7 @@
 function marknotifasread() {
-	$.get('/markAsRead')
+	$.get('/markAsRead');
+}
+
+function marknotifasreads() {
+	$.get('/usermark');
 }

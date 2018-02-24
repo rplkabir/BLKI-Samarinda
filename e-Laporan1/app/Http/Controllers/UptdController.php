@@ -15,6 +15,8 @@ use App\Admin;
 use App\Profile;
 use PDF;
 use Mail;
+use App\Notifications;
+use App\Notifications\Newlaporan;
 use App\Mail\LaporanMail;
 
 class UptdController extends Controller
@@ -128,6 +130,23 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Cover');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $aidi = $id;
+            $jenis = $renlakgiat->cover;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+            
+            
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -154,6 +173,21 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload pendahuluan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->pendahuluan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
     public function formSK($id){
@@ -179,6 +213,23 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload surat keputusan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->surat_keputusan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -206,6 +257,23 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Nominatif Peserta Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->nominatif_peserta_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -233,6 +301,23 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Nominatif Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->nominatif_instruktur;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -260,6 +345,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Kurikulum');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->kurikulum;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -287,6 +388,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Jadwal Pelatihan Mingguan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->jadwal_pelatihan_mingguan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -314,6 +431,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_hadir_instrukturn;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -341,6 +474,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Jam Mengajar Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_jam_mengajar_instruktur;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -368,6 +517,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Peserta Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_hadir_peserta_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -395,6 +560,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Permintaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_permintaan_bahan_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -422,6 +603,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Bukti Penerimaan Bahan Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->bukti_penerimaan_bahan_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -449,6 +646,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Laporan Mingguan Penggunaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->laporan_mingguan_penggunaan_bahan_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -476,6 +689,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Undangan Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->undangan_sidang_kelulusan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -503,6 +732,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Berita Acara Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->berita_acara_sidang_kelulusan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -530,6 +775,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Hadir Pertemuan Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_hadir_pertemuan_sidang_kelulusan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -557,6 +818,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Daftar Nilai Akhir');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->daftar_nilai_akhir;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -584,6 +861,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Rekap Penilaian Pelatihan Berbasis Kompetensi');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->rekap_penilaian_pelatihan_berbasis_kompetensi;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -611,6 +904,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Rekapitulasi Akhir hasil Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->rekapitulasi_akhir_hasil_pelatihan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -638,6 +947,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Transport Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_transport_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -666,6 +991,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima kartu Asuransi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_asuransi_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -694,6 +1035,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Pakaian Kerja Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_pakaian_kerja_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -722,6 +1079,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima ATK Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_atk_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -750,6 +1123,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Modul');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_modul;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -778,6 +1167,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Tanda Terima Konsumsi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->tanda_terima_konsumsi_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -806,6 +1211,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Foto Dokumentasi Kegiatan');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->foto_dokumentasi_kegiatan;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 
@@ -834,6 +1255,22 @@ class UptdController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Upload Fotocopy Sertifikasi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $uptdh = Profile::where('users_id', Auth::user()->id)->get();
+            foreach ($uptdh as $key => $valued) {
+               $namauptd = $valued->nama_lembaga;
+            }
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            }
+            $jenis = $renlakgiat->fotocopy_sertifikasi_peserta;
+            $aidi = $id;
+            $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+            }
+            
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
 

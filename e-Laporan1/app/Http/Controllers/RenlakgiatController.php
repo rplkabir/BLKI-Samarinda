@@ -10,6 +10,7 @@ use App\Admin;
 use App\Laporan;
 use Carbon\Carbon;
 use App\Histori;
+use App\Notifications;
 use PDF;
 use Session;
 use Excel;

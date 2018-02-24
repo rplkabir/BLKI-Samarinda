@@ -198,7 +198,7 @@ Route::get('/uptd/renlakgiat/cetak/','UptdController@cetakRenlakgiat');
 
 //uptd kelola pktp
 Route::get('uptd/pktp/{id}','PktpController@indexpktp');
-Route::get('uptd/pktp/edit/{id}','PktpController@editpktp');
+Route::get('uptd/pktp/edit/{id}','PktpController@editpktp');	
 Route::get('uptd/pktp/tambah/{id}','PktpController@create');
 Route::post('uptd/pktp/update/{id}','PktpController@update');
 Route::post('uptd/pktp/simpan','PktpController@store');
@@ -206,6 +206,18 @@ Route::get('uptd/pktp/hapus/{id}','PktpController@destroy');
 Route::get('/uptd/dokumen','UptdController@indexDokumen')->name('uptd.dokumen');
 
 
+
 Route::get('/markAsRead', function() {
-	\Auth::user()->unreadNotifications->markAsRead();
-} );
+	$user = App\Admin::find(1);
+
+foreach ($user->unreadNotifications as $notification) {
+    $notification->markAsRead();
+}
+});
+
+Route::get('/usermark', function()
+{
+	Auth::user()->unreadNotifications->markAsRead();
+}
+);
+

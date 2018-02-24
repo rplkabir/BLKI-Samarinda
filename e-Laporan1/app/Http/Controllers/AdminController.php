@@ -20,6 +20,7 @@ use Symfony\Component\Finder\Finder;
 use setasign\Fpdi;
 use Storage;
 use Zipper;
+use App\Notifications\Catatan;
 
 class AdminController extends Controller
 {
@@ -129,6 +130,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Data Status dan Catatan Cover');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            $usrid = $valuer->users_id;
+            }
+            $jenis = "Cover";
+            $aidi = $id;
+            $status = $request->status_cover;
+            $user = User::where('id', $usrid)->get();
+            foreach ($user as $key => $pengguna) {
+               $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+            }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -149,6 +164,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Data Status dan Catatan Pendahuluan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+            foreach ($renlakgiatz as $key => $valuer) {
+            $nama = $valuer->kejuruan;
+            $usrid = $valuer->users_id;
+            }
+            $jenis = "Pendahuluan";
+            $aidi = $id;
+            $status = $request->status_pendahuluan;
+            $user = User::where('id', $usrid)->get();
+            foreach ($user as $key => $pengguna) {
+               $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+            }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
     public function formSK($id){
@@ -169,6 +198,20 @@ class AdminController extends Controller
                 $renlakgiat->save();
                 Session::flash('message', 'Berhasil Update Data Status dan Catatan Surat Keputusan');
                 Session::flash('alert-class', 'alert-success');
+
+                $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Surat Keputusan";
+                $aidi = $id;
+                $status = $request->status_surat_keputusan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
                 return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -193,6 +236,21 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Data Status dan Catatan Nominatif Peserta Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Nominatif Peserta Pelatihan";
+                $aidi = $id;
+                $status = $request->status_nominatif_peserta_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -216,6 +274,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Status dan Catatan Nominatif Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Nominatif Instruktur";
+                $aidi = $id;
+                $status = $request->status_nominatif_instruktur;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -238,6 +310,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Status dan Catatan Kurikulum');
             Session::flash('alert-class', 'alert-success');
+
+              $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Kurikulum";
+                $aidi = $id;
+                $status = $request->status_kurikulum;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -260,6 +346,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Status dan Catatan Jadwal Pelatihan Mingguan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Jadwal Pelatihan Mingguan";
+                $aidi = $id;
+                $status = $request->status_jadwal_pelatihan_mingguan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -282,6 +382,21 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Status dan Catatan Daftar Hadir Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Hadir Instruktur";
+                $aidi = $id;
+                $status = $request->status_daftar_hadir_instruktur;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -304,6 +419,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update Status dan Catatan Daftar Jam Mengajar Instruktur');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Jam Mengajar Instruktur";
+                $aidi = $id;
+                $status = $request->status_daftar_jam_mengajar_instruktur;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -328,6 +457,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Daftar Hadir Peserta Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Hadir Peserta Pelatihan";
+                $aidi = $id;
+                $status = $request->status_daftar_hadir_peserta_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -349,6 +492,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Daftar Permintaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');
+
+             $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Permintaan Bahan Pelatihan";
+                $aidi = $id;
+                $status = $request->status_daftar_permintaan_bahan_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -370,6 +527,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Bukti Penerimaan Bahan Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Penerimaan Bahan Pelatihan";
+                $aidi = $id;
+                $status = $request->status_bukti_penerimaan_bahan_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -391,6 +562,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Laporan Mingguan Penggunaan Bahan Latihan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Laporan Mingguan Penggunaan Bahan Pelatihan";
+                $aidi = $id;
+                $status = $request->status_laporan_mingguan_penggunaan_bahan_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -411,6 +596,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Undangan Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Undangan Sidang Kelulusan";
+                $aidi = $id;
+                $status = $request->status_undangan_sidang_kelulusan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -434,6 +633,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Berita Acara Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Berita Acara Sidang Kelulusan";
+                $aidi = $id;
+                $status = $request->status_berita_acara_sidang_kelulusan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -455,6 +668,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Daftar Hadir Pertemuan Sidang Kelulusan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Hadir Sidang Kelulusan";
+                $aidi = $id;
+                $status = $request->status_daftar_hadir_pertemuan_sidang_kelulusan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -477,6 +704,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Daftar Nilai Akhir');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Daftar Nilai Akhir";
+                $aidi = $id;
+                $status = $request->status_daftar_nilai_akhir;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -499,6 +740,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil Update status dan catatan Rekap Penilaian Pelatihan Berbasis Kompetensi');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Rekap Penilaian Berbasis Kompetensi";
+                $aidi = $id;
+                $status = $request->status_rekap_penilaian_pelatihan_berbasis_kompetensi;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -520,6 +775,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Rekapitulasi Akhir hasil Pelatihan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Rekap Akhir Hasil Pelatihan";
+                $aidi = $id;
+                $status = $request->status_rekapitulasi_akhir_hasil_pelatihan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -542,6 +811,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima Transport Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima Transport Peserta";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_transport_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -563,6 +846,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima kartu Asuransi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima Asuransi Peserta";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_asuransi_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -584,6 +881,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima Pakaian Kerja Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima Pakaian Kerja";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_pakaian_kerja_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -605,6 +916,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima ATK Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima ATK Kerja";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_atk_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -625,6 +950,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima Modul');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima Modul";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_modul;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -646,6 +985,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Tanda Terima Konsumsi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Tanda Terima Konsumsi Peserta";
+                $aidi = $id;
+                $status = $request->status_tanda_terima_konsumsi_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -667,6 +1020,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Foto Dokumentasi Kegiatan');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Foto Dokumentasi Kegiatan";
+                $aidi = $id;
+                $status = $request->status_foto_dokumentasi_kegiatan;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
 
@@ -688,6 +1055,20 @@ class AdminController extends Controller
             $renlakgiat->save();
             Session::flash('message', 'Berhasil update status dan catatan Fotocopy Sertifikasi Peserta');
             Session::flash('alert-class', 'alert-success');
+
+            $renlakgiatz = Renlakgiat::where('id', $id)->get();
+                foreach ($renlakgiatz as $key => $valuer) {
+                $nama = $valuer->kejuruan;
+                $usrid = $valuer->users_id;
+                }
+                $jenis = "Fotocopy Sertifikasi Peserta";
+                $aidi = $id;
+                $status = $request->status_fotocopy_sertifikasi_peserta;
+                $user = User::where('id', $usrid)->get();
+                foreach ($user as $key => $pengguna) {
+                   $pengguna->notify(new Catatan($jenis, $nama, $aidi, $status));
+                }
+
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
     public function mergePdf($id){
