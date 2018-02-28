@@ -221,3 +221,10 @@ Route::get('/usermark', function()
 }
 );
 
+Route::get('/notifreload', function() {
+	return view ('layouts.notif');
+});
+Route::get('/notifcommentreload', function() {
+	return view ('layouts.notifcomment');
+});
+

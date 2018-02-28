@@ -7,7 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    Use Notifiable;
+
+    public function unreadNotificationsByAdmin()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                            ->whereNull('read_at')
+                            ->where('type', 'App\Notifications\Newlaporan');
+    }
 
     protected $guard = 'admin';
     /**

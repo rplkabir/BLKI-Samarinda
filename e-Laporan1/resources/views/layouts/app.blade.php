@@ -96,14 +96,14 @@
                         
                         @elseif (Auth::guard('web')->check())
                         <li class="dropdown">
-                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong>{{ count(Auth::user()->unreadNotifications ) }}</strong></span><span class="caret"></span></a>
+                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong></span><span class="caret"></span></a>
                                   <ul class='dropdown-menu' role="menu" >
-                                     @foreach(Auth::user()->unreadNotifications as $notif)
+                                     @foreach(Auth::user()->unreadNotificationsnotifcomment as $notif)
                                     <li style="background-color: #42f459; " ><a onclick="marknotifasreads()" href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b>  </a></li>
                                     @endforeach
                                         <li><div class="divider"></div></li>
                                         <?php  $i = 0  ?>
-                                     @foreach(Auth::user()->readNotifications as $notif)
+                                     @foreach(Auth::user()->Notificationsnotifcomment as $notif)
                                      <?php if (++$i > 5) {
                                          break;
                                      } ?>
@@ -139,7 +139,7 @@
                             </li>
                         @elseif(Auth::guard('admin')->check())
                         <li class="dropdown">
-                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong>{{ count(Auth::user()->unreadNotifications ) }}</strong></span><span class="caret"></span></a>
+                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotifications ) }}</strong></span><span class="caret"></span></a>
                                   <ul class='dropdown-menu' role="menu" >
                                      @foreach(Auth::user()->unreadNotifications as $notif)
                                     <li style="background-color: #42f459; " ><a onclick="marknotifasread()" href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b>mengupload Laporan : </b> {{ $notif->data['jenis'] }} <b> pada kejuruan  </b>{{ $notif->data['nama'] }}</a></li>
@@ -205,9 +205,11 @@
                             <li><a href="{{route('uptd.renlakgiat')}}"><i class="material-icons">storage</i>Data Renlakgiat</a></li>
                             <li><div class="divider"></div></li>
                             <li><a class="subheader">Other</a></li>
-                            <li id="markasread" onclick="marknotifasreads()"><a class="waves-effect" href="{{route('uptd.dokumen')}}"><i class="material-icons">announcement</i>Pemberitahuan<span class="badge" style="color: pink; font-size: 15px"><strong>{{ count( \Auth::user()->unreadNotifications ) }}</strong></span></a></li>
-
-
+                            <li onclick="marknotifasreads()"><a class="waves-effect" href="{{route('uptd.dokumen')}}"><i class="material-icons">announcement</i>Pemberitahuan<span class="badge" style="color: pink; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a></li>
+                            <li><div id="load_notif"> </div></li>
+                            <li>
+                                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/130499429&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            </li>
                             @endforeach
                         </ul>
 
@@ -243,6 +245,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">

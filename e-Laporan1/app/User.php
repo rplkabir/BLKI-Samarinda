@@ -8,6 +8,30 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function unreadNotificationsByType()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                            ->whereNull('read_at')
+                            ->where('type', 'App\Notifications\notifdokumen');
+    }
+
+    public function unreadNotificationsnotifcomment()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                            ->whereNull('read_at')
+                             ->where('type', 'App\Notifications\Catatan');
+    }
+
+    public function Notificationsnotifcomment()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                             ->where('type', 'App\Notifications\Catatan');
+    }
+
+    
     /**
      * The attributes that are mass assignable.
      *

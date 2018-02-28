@@ -68,7 +68,6 @@ class DokumenController extends Controller
 
         $isi = $request->isi;
         Session::flash('message','Berhasil Menambahkan Dokumen Khusus untuk diberikan ke seluruh UPTD/BLK');
-
         $User = User::All();
         foreach ($User as $user) {
             $user->notify(new notifdokumen($isi));
