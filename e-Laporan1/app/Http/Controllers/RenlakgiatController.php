@@ -230,10 +230,7 @@ class RenlakgiatController extends Controller
 
     public function updateTanggal(Request $request, $id)
     {
-        $cek = Histori::where('renlakgiat_id',$id)->get();
-        if (count($cek) < 3) {
             $histori = new Histori;
-            
             $renlakgiat_id = $id;
             $histori->renlakgiat_id = $id;
             $histori->tgl_mulai_lama = $request->tgl_mulai;
@@ -251,12 +248,6 @@ class RenlakgiatController extends Controller
             Session::flash('message', 'Berhasil merubah tanggal rencana pelaksanaan kegiatan'); 
             Session::flash('alert-class', 'alert-success');
             return redirect()->route('admin.renlakgiat');
-        }else{
-            Session::flash('message', 'Tidak bisa merubah tanggal rencana pelaksanaan kegiatan karena sudah mencapai batas maksimal untuk melakukan perubahan tanggal'); 
-            Session::flash('alert-class', 'alert-danger');
-            return redirect()->route('admin.renlakgiat');
-        }
-
         
     }
 }

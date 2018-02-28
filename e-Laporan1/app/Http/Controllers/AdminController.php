@@ -8,6 +8,7 @@ use App\User;
 use App\Renlakgiat;
 use App\Pktp;
 use App\Dokumen;
+use App\DokumenUptd;
 use Lava;
 use Charts;
 use Notification;
@@ -1154,5 +1155,25 @@ class AdminController extends Controller
             }
 
             return view('admin.indexRenlakgiat', compact('renlakgiat'));
+        }
+
+        public function formEditTanggalLaporan($id){
+            $renlakgiat = Renlakgiat::find($id);
+            return view('renlakgiat.editTanggalLaporan', compact('renlakgiat'));
+        }
+
+        public function updateTanggalLaporan($id, Request $request){
+            $renlakgiat = Renlakgiat::find($id);
+            $renlakgiat->tgl_kumpul_laporan = $request->new_tgl_kumpul_laporan;
+
+            $renlakgiat->save();
+            Session::flash('message','Berhasil Ubah Batas Pengumpulan Laporan');
+            return redirect('admin/renlakgiat/laporan/'.$id);
+
+        }
+
+        public function dokumenuptd(){
+            $dokumenuptd = DokumenUptd::orderBy('created_at','desc')->get();
+            return view('dokumen.dokumenuptd', compact('dokumenuptd'));
         }
 }

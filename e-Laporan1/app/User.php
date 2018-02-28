@@ -60,7 +60,12 @@ class User extends Authenticatable
     public function notifdokumen(){
         return $this->hasMany(notifdokumen::class);
     }
+
     public function Pktp(){
         return $this->hasMany(pktp::class);
+    }
+
+    public function DokumenUptd(){
+        return $this->hasMany(DokumenUptd::class);
     }
 }

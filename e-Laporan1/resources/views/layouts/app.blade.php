@@ -95,6 +95,7 @@
                         </li>
                         
                         @elseif (Auth::guard('web')->check())
+                        <li><a href="{{url('uptd/dokumen/index')}}"><strong>Upload Dokumen</strong></a></li>
                         <li class="dropdown">
                             <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong></span><span class="caret"></span></a>
                                   <ul class='dropdown-menu' role="menu" >
@@ -138,6 +139,7 @@
                                 </ul>
                             </li>
                         @elseif(Auth::guard('admin')->check())
+                        <li><a href="{{url('admin/dokumenuptd')}}"><strong>Dokumen Uptd</strong></a></li>
                         <li class="dropdown">
                             <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotifications ) }}</strong></span><span class="caret"></span></a>
                                   <ul class='dropdown-menu' role="menu" >
@@ -208,7 +210,7 @@
                             <li onclick="marknotifasreads()"><a class="waves-effect" href="{{route('uptd.dokumen')}}"><i class="material-icons">announcement</i>Pemberitahuan<span class="badge" style="color: pink; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a></li>
                             <li><div id="load_notif"> </div></li>
                             <li>
-                                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/130499429&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                                
                             </li>
                             @endforeach
                         </ul>

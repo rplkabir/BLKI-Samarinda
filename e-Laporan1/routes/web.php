@@ -1,16 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -126,6 +114,11 @@ Route::post('admin/renlakgiat/laporan/fsp/simpan/{id}','AdminController@uploadFs
 Route::get('/admin/cetak/{id}','AdminController@mergePdf');
 Route::post('/admin/renlakgiat/cari','AdminController@cari');
 
+Route::get('admin/edit-tanggal-laporan/{id}','AdminController@formEditTanggalLaporan');
+Route::post('admin/updateTanggalLaporan/{id}','AdminController@updateTanggalLaporan');
+
+Route::get('admin/dokumenuptd','AdminController@dokumenuptd');
+
 //uptd renlakgiat
 Route::get('/uptd/renlakgiat','UptdController@indexRenlakgiat')->name('uptd.renlakgiat');
 Route::get('/uptd/laporan/detail/{id}','UptdController@detailRenlakgiat');
@@ -205,7 +198,10 @@ Route::post('uptd/pktp/simpan','PktpController@store');
 Route::get('uptd/pktp/hapus/{id}','PktpController@destroy');
 Route::get('/uptd/dokumen','UptdController@indexDokumen')->name('uptd.dokumen');
 
-
+Route::get('uptd/dokumen/index','DokumenUptdController@index');
+Route::get('uptd/dokumen/upload','DokumenUptdController@create');
+Route::post('uptd/dokumen/simpan','DokumenUptdController@store');
+Route::get('uptd/dokumen/hapus/{id}','DokumenUptdController@destroy');
 
 Route::get('/markAsRead', function() {
 	$user = App\Admin::find(1);
