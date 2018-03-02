@@ -17,7 +17,7 @@ class PktpController extends Controller
     }
 
     public function indexpktp($id){
-	    $pktp = Pktp::where('users_id',Auth::user()->id)->orderBy('nama','asc')->paginate(5);
+	    $pktp = Pktp::where('users_id',Auth::user()->id)->sortable()->paginate(5);
 	    return view('user.indexpktp', compact('pktp'), compact('renlakgiat'));
     }
 

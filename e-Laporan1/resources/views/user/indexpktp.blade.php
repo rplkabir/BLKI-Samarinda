@@ -12,12 +12,12 @@
                     <table class="table">
                         <tr>
                             <th>Nama</th>
-                            <th>Nip</th>
-                            <th>Pangkat</th>
-                            <th>Jabatan</th>
-                            <th>Kedudukan Tim</th>
-                            <th>Alamat</th>
-                            <th>No. Hp</th>
+                            <th>@sortablelink('Nip')</th>
+                            <th>@sortablelink('Pangkat')</th>
+                            <th>@sortablelink('Jabatan')</th>
+                            <th>@sortablelink('Kedudukan Tim')</th>
+                            <th>@sortablelink('Alamat')</th>
+                            <th>@sortablelink('No. Hp')</th>
                             <th>Foto</th>
                             <th>Aksi</th>
                         </tr>

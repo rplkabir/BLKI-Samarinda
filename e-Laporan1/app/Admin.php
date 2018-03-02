@@ -17,6 +17,14 @@ class Admin extends Authenticatable
                             ->where('type', 'App\Notifications\Newlaporan');
     }
 
+    public function unreadNotificationsuptd()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                            ->whereNull('read_at')
+                             ->where('type', 'App\Notifications\notifuptd');
+    }
+
     protected $guard = 'admin';
     /**
      * The attributes that are mass assignable.

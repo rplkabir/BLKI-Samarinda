@@ -7,6 +7,13 @@ use App\DokumenUptd;
 use Session;
 use Auth;
 
+
+use App\Admin;
+use App\User;
+use App\Notifications\notifuptd;
+use App\Notifications;
+use Illuminate\Notifications\Notifiable;
+
 class DokumenUptdController extends Controller
 {
     public function __construct()
@@ -56,7 +63,14 @@ class DokumenUptdController extends Controller
         $dokumenuptd->save();
 
         Session::flash('message','Berhasil Mengupload Dokumen');
-        
+
+        $isi = $request->judul;
+        $user = Auth::user()->id;
+        $admen = Admin::all();
+            foreach ($admen as $key => $asu) {
+            $asu->notify(new notifuptd($isi, $user));
+        }
+
         return redirect('uptd/dokumen/index');
     }
 
