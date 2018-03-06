@@ -118,6 +118,7 @@ Route::get('admin/edit-tanggal-laporan/{id}','AdminController@formEditTanggalLap
 Route::post('admin/updateTanggalLaporan/{id}','AdminController@updateTanggalLaporan');
 
 Route::get('admin/dokumenuptd','AdminController@dokumenuptd');
+Route::get('admin/laporanuptd','AdminController@laporanuptd');
 
 //uptd renlakgiat
 Route::get('/uptd/renlakgiat','UptdController@indexRenlakgiat')->name('uptd.renlakgiat');
@@ -217,6 +218,13 @@ Route::get('/usermark', function()
 }
 );
 
+Route::get('/markuptdAsRead', function()
+{
+	Auth::user()->unreadNotifications->markAsRead();
+}
+);
+
+
 Route::get('/notifreload', function() {
 	return view ('layouts.notif');
 });
@@ -229,4 +237,6 @@ Route::get('/notifcommentreloaduptd', function() {
 	return view ('layouts.notifcommentuptd');
 });
 
-
+Route::get('/listreload', function() {
+	return view ('layouts.listreload');
+});

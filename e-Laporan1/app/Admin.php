@@ -17,6 +17,13 @@ class Admin extends Authenticatable
                             ->where('type', 'App\Notifications\Newlaporan');
     }
 
+    public function readNotificationsByAdmin()
+    {
+    // Return sorted notifications
+        return $this->notifications()
+                            ->where('type', 'App\Notifications\Newlaporan');
+    }
+
     public function unreadNotificationsuptd()
     {
     // Return sorted notifications

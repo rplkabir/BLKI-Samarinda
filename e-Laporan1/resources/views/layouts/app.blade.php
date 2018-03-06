@@ -139,22 +139,9 @@
                                 </ul>
                             </li>
                         @elseif(Auth::guard('admin')->check())
-                        <li><a href="{{url('admin/dokumenuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a></li>
+                        <li><a href="{{url('admin/dokumenuptd')}}" onclick="marknotifasread()"><span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a></li>
                         <li class="dropdown">
-                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span><span class="caret"></span></a>
-                                  <ul class='dropdown-menu' role="menu" >
-                                     @foreach(Auth::user()->unreadNotificationsByAdmin as $notif)
-                                    <li style="background-color: #42f459; " ><a onclick="marknotifasread()" href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b>mengupload Laporan : </b> {{ $notif->data['jenis'] }} <b> pada kejuruan  </b>{{ $notif->data['nama'] }}</a></li>
-                                    @endforeach
-                                        <li><div class="divider"></div></li>
-                                        <?php  $i = 0  ?>
-                                     @foreach(Auth::user()->readNotifications as $notif)
-                                     <?php if (++$i > 5) {
-                                         break;
-                                     } ?>
-                                    <li ><a href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }}</a></li>
-                                    @endforeach
-                                  </ul>
+                            <a href="{{url('admin/laporanuptd')}}" onclick="marknotifasread()" style="font-size: 15px; font-weight:bold;"  crole="button">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span></a>
                                   
                         </li>
                             <li class="dropdown">
@@ -249,6 +236,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $(".button-collapse").sideNav({

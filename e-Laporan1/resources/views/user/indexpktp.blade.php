@@ -11,6 +11,7 @@
                 <div class="panel-body">
                     <table class="table">
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>@sortablelink('Nip')</th>
                             <th>@sortablelink('Pangkat')</th>
@@ -26,6 +27,7 @@
                             <tr>
                                 <td>{{ $x++ }}</td>
                                 <td>{{ $data->nama }}</td>
+                                <td>{{ $data->nip }}</td>
                                 <td>{{ $data->pangkat }}</td>
                                 <td>{{ $data->jabatan }}</td>
                                 <td>{{ $data->kedudukan }}</td>

@@ -10,6 +10,7 @@
         "chumper/zipper": "^1.0",
         "consoletvs/charts": "3.*",
         "goodnesskay/laravelpdfviewer": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
         "iio/libmergepdf": "3.1",
         "jurosh/pdf-merge": "dev-master",
         "khill/lavacharts": "3.0.*",

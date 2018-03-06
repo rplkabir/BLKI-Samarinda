@@ -1176,4 +1176,9 @@ class AdminController extends Controller
             $dokumenuptd = DokumenUptd::orderBy('created_at','desc')->get();
             return view('dokumen.dokumenuptd', compact('dokumenuptd'));
         }
+
+        public function laporanuptd(){
+            $laporanuptd = \DB::table('notifications')->where('type', 'App\Notifications\Newlaporan')->orderBy('created_at','desc')->get();
+            return view('dokumen.laporanuptd', compact('laporanuptd'));
+        }
 }
