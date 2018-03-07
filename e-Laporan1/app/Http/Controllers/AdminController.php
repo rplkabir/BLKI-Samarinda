@@ -7,6 +7,7 @@ use App\Profile;
 use App\User;
 use App\Renlakgiat;
 use App\Pktp;
+use App\Admin;
 use App\Dokumen;
 use App\DokumenUptd;
 use Lava;
@@ -22,6 +23,8 @@ use setasign\Fpdi;
 use Storage;
 use Zipper;
 use App\Notifications\Catatan;
+use Auth;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -1136,16 +1139,16 @@ class AdminController extends Controller
             $pdf->addPDF('upload/'.$fotocopy_sertifikasi_peserta, 'all');
 
             //You can optionally specify a different orientation for each PDF
-            
+
 
             $pdf->merge('browser','Laporan Renlakgiat Id-'.$id.'.pdf');
 
 
             // Zipper::make('upload/Laporan'.$id.'.zip')->add(['upload/'.$cover,'upload/'.$pendahuluan,'upload/'.$surat_keputusan,'upload/'.$nominatif_peserta_pelatihan,'upload/'.$nominatif_instruktur]);
-            // return response()->download('upload/Laporan'.$id.'.zip');      
+            // return response()->download('upload/Laporan'.$id.'.zip');
 		}
         public function cari(Request $request){
-            
+
             if ($request->cariK AND $request->cariP != "") {
                 $renlakgiat = Renlakgiat::where('kejuruan','LIKE','%'.$request->cariK.'%')->where('program_pelatihan','LIKE','%'.$request->cariP.'%')->paginate(10);
             }elseif ($request->cariK != "" AND $request->cariP == "") {
@@ -1177,8 +1180,80 @@ class AdminController extends Controller
             return view('dokumen.dokumenuptd', compact('dokumenuptd'));
         }
 
-        public function laporanuptd(){
-            $laporanuptd = \DB::table('notifications')->where('type', 'App\Notifications\Newlaporan')->orderBy('created_at','desc')->get();
-            return view('dokumen.laporanuptd', compact('laporanuptd'));
+        public function editemail(){
+          $admin = Admin::where('id',Auth::user()->id)->get();
+          return view('profile.admineditemail', compact('admin'));
+        }
+
+        public function updateEmail($id, Request $request){
+
+          $this->validate($request, [
+              'newemail' => 'required|email',
+              'password' => 'required|min:6',
+          ]);
+          $admin = Auth::user();
+          $id = Auth::user()->id;
+          $password = Hash::check($request->password, $admin->password);
+          $check = Admin::where('password', $password)->where('id', $id)->get();
+
+          if (Hash::check($request->password, $admin->password)) {
+              $admin->email = $request->newemail;
+              $admin->save();
+
+              Session::flash('message', 'Berhasil Ubah Email');
+              Session::flash('alert-class', 'alert-success');
+              return redirect('profile');
+
+          }
+          else
+          {
+              Session::flash('message', 'Password salah!');
+              Session::flash('alert-class', 'alert-danger');
+
+              return redirect('/admin');
+          }
+        }
+        public function editpass($id){
+            $admin = Admin::where('id', $id)->get();
+            return view('admin.editpass', compact('admin'));
+
+
+        }
+        public function verif(Request $request, $id){
+            $this->validate($request, [
+              'old' => 'required|min:6',
+              'new' => 'required|min:6',
+            ]);
+
+            $admin = Auth::user();
+
+            $old = $request->old;
+            $new = $request->new;
+            $confirm = $request->confirm;
+
+            $admin = User::find($id);
+            $check = User::where('password', $old)->where('id', $id)->get();
+            $cek = count($check);
+
+
+
+
+            if (Hash::check($old, $admin->password)) {
+                $admin->password = bcrypt($new);
+                $admin->save();
+
+                Session::flash('message', 'Berhasil Ubah Password');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('admin');
+
+            }
+            else
+            {
+                Session::flash('message', 'Password lama salah!');
+                Session::flash('alert-class', 'alert-danger');
+
+                return redirect()->back();
+            }
+
         }
 }

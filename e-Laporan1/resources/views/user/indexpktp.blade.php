@@ -3,16 +3,16 @@
     <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard Pengelola
-                    
+
                      <a class="pull-right" align="right" href="{{url('uptd/pktp/tambah/'.Auth::user()->id)}}"><button class="btn btn-link">Tambah Data Pengelola</button></a>
-                    
+
                 </div>
 
                 <div class="panel-body">
                     <table class="table">
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
+                            <th>@sortablelink('Nama')</th>
                             <th>@sortablelink('Nip')</th>
                             <th>@sortablelink('Pangkat')</th>
                             <th>@sortablelink('Jabatan')</th>

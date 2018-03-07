@@ -26,26 +26,26 @@ class RenlakgiatController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     public function uptdrenlakgiat($id){
      $profile = Profile::where('id', $id)->get();
      $id = Profile::where('id',$id)->get();
         foreach ($id as $c) {
                 $users_id = $c->users_id;
         }
-     $renlakgiat = Renlakgiat::where('users_id',$users_id)->sortable()->paginate(5);    
+     $renlakgiat = Renlakgiat::where('users_id',$users_id)->sortable()->paginate(5);
      return view('renlakgiat.index', compact('renlakgiat','profile'));
     }
 
     public function index()
-    {   
+    {
         $profile = Profile::all();
         $renlakgiat = Renlakgiat::all()->sortable()->paginate(8);
         return view('renlakgiat.index', compact('renlakgiat','profile'));
     }
 
     public function indexadmin()
-    {   
+    {
         $renlakgiat = Renlakgiat::sortable()->paginate(5);
         return view('admin.indexRenlakgiat', compact('renlakgiat','profile'));
     }
@@ -64,7 +64,7 @@ class RenlakgiatController extends Controller
     }
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function create($id)
@@ -91,7 +91,7 @@ class RenlakgiatController extends Controller
         $renlakgiat->orang = $request->orang;
         $renlakgiat->users_id = $request->users_id;
         $renlakgiat->save();
-        Session::flash('message', 'Berhasil input data renlakgiat'); 
+        Session::flash('message', 'Berhasil input data renlakgiat');
         Session::flash('alert-class', 'alert-success');
         return redirect()->route('admin.profile','profile');
     }
@@ -106,7 +106,7 @@ class RenlakgiatController extends Controller
     public function upload(Request $request, $id){
 
         $upload = $request->file('excel');
-        
+
         $filepath = $upload->getRealPath();
 
         $file = fopen($filepath, 'r');
@@ -122,16 +122,16 @@ class RenlakgiatController extends Controller
 
 
         foreach ($row as $data) {
-            
+
             $countheader= count($header);
             $data = Excel::load($filepath, function($reader) {
             })->get();
 
          if($countheader<7  && in_array('kejuruan',$header) && in_array('program_pelatihan',$header) && in_array('sumber_dana',$header)&& in_array('durasi',$header)&& in_array('paket',$header)&& in_array('orang',$header)){
-            $countheader= count($header); 
+            $countheader= count($header);
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
-                    $insert[] = ['kejuruan' => $value->kejuruan, 
+                    $insert[] = ['kejuruan' => $value->kejuruan,
                                  'program_pelatihan' => $value->program_pelatihan,
                                  'sumber_dana' => $value->sumber_dana,
                                  'durasi' => $value->durasi,
@@ -142,13 +142,13 @@ class RenlakgiatController extends Controller
                 }
                 if(!empty($insert)){
                     \DB::table('renlakgiats')->insert($insert);
-                    Session::flash('message', 'Success Uploading Csv file'); 
+                    Session::flash('message', 'Success Uploading Csv file');
                     Session::flash('alert-class', 'alert-success');
                 }
             }
         }
         else {
-                    Session::flash('message', 'Failed Upload file Csv, Please Check your csv file format!'); 
+                    Session::flash('message', 'Failed Upload file Csv, Please Check your csv file format!');
                     Session::flash('alert-class', 'alert-danger');
         }
             return redirect()->route('admin.profile');
@@ -197,7 +197,7 @@ class RenlakgiatController extends Controller
         $renlakgiat->tgl_mulai = $request->tgl_mulai;
         $renlakgiat->tgl_selesai = $request->tgl_selesai;
         $renlakgiat->save();
-        Session::flash('message', 'Berhasil update data renlakgiat'); 
+        Session::flash('message', 'Berhasil update data renlakgiat');
         Session::flash('alert-class', 'alert-success');
         return redirect()->route('admin.renlakgiat');
     }
@@ -212,7 +212,7 @@ class RenlakgiatController extends Controller
     {
         $renlakgiat = Renlakgiat::find($id);
         $renlakgiat->delete();
-        Session::flash('message', 'Berhasil hapus data renlakgiat'); 
+        Session::flash('message', 'Berhasil hapus data renlakgiat');
         Session::flash('alert-class', 'alert-success');
         return redirect()->route('admin.renlakgiat');
     }
@@ -245,9 +245,14 @@ class RenlakgiatController extends Controller
             $renlakgiat->tgl_selesai  = $request->newtgl_selesai;
             $renlakgiat->tgl_kumpul_laporan = date('Y-m-d', strtotime($request->newtgl_selesai. "+7 day"));
             $renlakgiat->save();
-            Session::flash('message', 'Berhasil merubah tanggal rencana pelaksanaan kegiatan'); 
+            Session::flash('message', 'Berhasil merubah tanggal rencana pelaksanaan kegiatan');
             Session::flash('alert-class', 'alert-success');
             return redirect()->route('admin.renlakgiat');
-        
+
+    }
+
+    public function histori($id){
+        $histori = Histori::where('renlakgiat_id',$id)->orderBy('created_at','asc')->get();
+        return view('renlakgiat.histori', compact('histori'));
     }
 }

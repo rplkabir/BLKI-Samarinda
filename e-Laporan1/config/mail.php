@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -112,7 +112,7 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-    'pretend' => false,
+
     'markdown' => [
         'theme' => 'default',
 

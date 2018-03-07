@@ -118,7 +118,13 @@ Route::get('admin/edit-tanggal-laporan/{id}','AdminController@formEditTanggalLap
 Route::post('admin/updateTanggalLaporan/{id}','AdminController@updateTanggalLaporan');
 
 Route::get('admin/dokumenuptd','AdminController@dokumenuptd');
-Route::get('admin/laporanuptd','AdminController@laporanuptd');
+Route::get('admin/detailhistori/{id}','RenlakgiatController@histori');
+
+Route::get('/admin/editemail/{id}','AdminController@editemail');
+Route::post('/admin/updateemail/{id}', 'AdminController@updateEmail');
+
+Route::get('/admin/editpass/{id}','AdminController@editpass');
+Route::post('/admin/updatepass/{id}', 'AdminController@verif');
 
 //uptd renlakgiat
 Route::get('/uptd/renlakgiat','UptdController@indexRenlakgiat')->name('uptd.renlakgiat');
@@ -188,11 +194,13 @@ Route::get('/uptd/sendEmail/{id}','UptdController@sendEmail');
 //uptd ubah password
 Route::get('/uptd/editpass/{id}','UptdController@editpass');
 Route::post('/uptd/editpass/update/{id}', 'UptdController@verif');
+Route::get('/uptd/editemail/{id}','ProfileController@editemail');
+Route::post('/uptd/updateemail/{id}', 'ProfileController@updateEmail');
 Route::get('/uptd/renlakgiat/cetak/','UptdController@cetakRenlakgiat');
 
 //uptd kelola pktp
 Route::get('uptd/pktp/{id}','PktpController@indexpktp');
-Route::get('uptd/pktp/edit/{id}','PktpController@editpktp');	
+Route::get('uptd/pktp/edit/{id}','PktpController@editpktp');
 Route::get('uptd/pktp/tambah/{id}','PktpController@create');
 Route::post('uptd/pktp/update/{id}','PktpController@update');
 Route::post('uptd/pktp/simpan','PktpController@store');
@@ -218,13 +226,6 @@ Route::get('/usermark', function()
 }
 );
 
-Route::get('/markuptdAsRead', function()
-{
-	Auth::user()->unreadNotifications->markAsRead();
-}
-);
-
-
 Route::get('/notifreload', function() {
 	return view ('layouts.notif');
 });
@@ -235,8 +236,4 @@ Route::get('/notifcommentreload', function() {
 
 Route::get('/notifcommentreloaduptd', function() {
 	return view ('layouts.notifcommentuptd');
-});
-
-Route::get('/listreload', function() {
-	return view ('layouts.listreload');
 });

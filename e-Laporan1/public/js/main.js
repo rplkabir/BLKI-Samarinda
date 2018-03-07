@@ -6,10 +6,6 @@ function marknotifasreads() {
 	$.get('/usermark');
 }
 
-function marknotifuptdasread() {
-	$.get('/markuptdAsRead');
-}
-
 var auto_refresh = setInterval(
 function ()
 {
@@ -22,10 +18,9 @@ function ()
 $('#load_comment').load('/notifcommentreload').fadeIn("slow");
 }, 10000);
 
-var auto_refreshhh = setInterval(
+var auto_refreshh = setInterval(
 function ()
 {
 $('#load_notifuptd').load('/notifcommentreloaduptd').fadeIn("slow");
 }, 10000);
-
 

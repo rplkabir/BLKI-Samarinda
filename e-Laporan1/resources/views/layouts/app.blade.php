@@ -17,11 +17,11 @@
 
       <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- 
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
-    
+
      html, body {
                 color: #636b6f;
                 font-family: 'Roboto', sans-serif;
@@ -40,7 +40,7 @@
             display: none;
             -ms-overflow-style: none;
             }
-        
+
         input{
             font-size: 15px !important;
         }
@@ -75,10 +75,10 @@
                             <a href="#" data-activates="slide-out" class="button-collapse menu" style="background-color: rgba(190,200,255,0.8) !important;"><i class="material-icons" style=" color: white;">dehaze</i></a>
                         </li>
                     </ul>
-                    @endif  
+                    @endif
                     <a href="/">
                     <img class="brand-logo center" src="{{ asset('image/logo.png') }}" height="60" style="padding-top: 5"></a>
-                        
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right" style="padding-right: 30px">
                         <!-- Authentication Links -->
@@ -93,7 +93,7 @@
                                     </ul>
                                 </a>
                         </li>
-                        
+
                         @elseif (Auth::guard('web')->check())
                         <li><a href="{{url('uptd/dokumen/index')}}"><strong>Upload Dokumen</strong></a></li>
                         <li class="dropdown">
@@ -111,7 +111,7 @@
                                     <li ><a href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b></a></li>
                                     @endforeach
                                   </ul>
-                                  
+
                         </li>
                             <li class="dropdown">
                                 <a href="#" style="font-size: 13px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -130,25 +130,47 @@
                                         </li>
                                 @endif
                                     <li>
+                                      <a href="{{ url('uptd/editemail/'.Auth::user()->id)}}"><i class="material-icons">email</i> Edit Email</a>
+                                    </li>
+                                    <li>
                                        <a href="{{ url('/uptd/editpass/'.Auth::user()->id) }}"><i class="material-icons">lock</i> Ubah Password</a>
                                     </li>
                                     <li>
                                        <a href="{{route('user.logout')}}"><i class="material-icons">power_settings_new</i> Logout</a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                         @elseif(Auth::guard('admin')->check())
-                        <li><a href="{{url('admin/dokumenuptd')}}" onclick="marknotifasread()"><span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a></li>
+                        <li><a href="{{url('admin/dokumenuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a></li>
                         <li class="dropdown">
-                            <a href="{{url('admin/laporanuptd')}}" onclick="marknotifasread()" style="font-size: 15px; font-weight:bold;"  crole="button">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span></a>
-                                  
+                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span><span class="caret"></span></a>
+                                  <ul class='dropdown-menu' role="menu" >
+                                     @foreach(Auth::user()->unreadNotificationsByAdmin as $notif)
+                                    <li style="background-color: #42f459; " ><a onclick="marknotifasread()" href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b>mengupload Laporan : </b> {{ $notif->data['jenis'] }} <b> pada kejuruan  </b>{{ $notif->data['nama'] }}</a></li>
+                                    @endforeach
+                                        <li><div class="divider"></div></li>
+                                        <?php  $i = 0  ?>
+                                     @foreach(Auth::user()->readNotifications as $notif)
+                                     <?php if (++$i > 5) {
+                                         break;
+                                     } ?>
+                                    <li ><a href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }}</a></li>
+                                    @endforeach
+                                  </ul>
+
                         </li>
                             <li class="dropdown">
                                 <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Admin <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                      <a href="{{ url('admin/editemail/'.Auth::user()->id)}}"><i class="material-icons">email</i> Edit Email</a>
+                                    </li>
+                                    <li>
+                                       <a href="{{ url('/admin/editpass/'.Auth::user()->id) }}"><i class="material-icons">lock</i> Ubah Password</a>
+                                    </li>
                                     <li>
                                         <a href="{{route('admin.logout')}}"><i class="material-icons">power_settings_new</i> Logout</a>
                                     </li>
@@ -157,9 +179,9 @@
 
                         @endif
                     </ul>
-                 
 
-                        @if(Auth::guard('admin')->check()) 
+
+                        @if(Auth::guard('admin')->check())
                           <ul id="slide-out" class="side-nav">
                             <li><div class="user-view">
                               <div class="background">
@@ -175,8 +197,8 @@
                             <li><div class="divider"></div></li>
                             <li><a class="subheader">Other</a></li>
                             <li><a href="{{route('dokumen')}}"><i class="material-icons">list</i> Upload Dokumen Khusus</a></li>
-                            
-              
+
+
                         @elseif (Auth::guard('web')->check())
 
                         <ul id="slide-out" class="side-nav">
@@ -186,7 +208,7 @@
                                 <img src="{{asset('upload/'.$data->foto_gedung)}}">
                               </div>
                               <a href="#!user"><img class="circle" src="{{asset('upload/'.$data->foto_pimpinan)}}"></a>
-                              
+
                                 <a href="{{ route('profile')}}"><span class="white-text name"><i class="material-icons">person</i>{{ $data->nama_lembaga }}</span></a>
                             </div></li>
                             <li><a href=" {{ route('home')}}"><i class="material-icons">dashboard</i>Dashboard</a></li>
@@ -197,17 +219,17 @@
                             <li onclick="marknotifasreads()"><a class="waves-effect" href="{{route('uptd.dokumen')}}"><i class="material-icons">announcement</i>Pemberitahuan<span class="badge" style="color: pink; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a></li>
                             <li><div id="load_notif"> </div></li>
                             <li>
-                                
+
                             </li>
                             @endforeach
                         </ul>
 
                         @endif
             </div>
-        </nav> 
+        </nav>
        <div id="app" style="background-color: rgba(255,255,255,0.4) !important;">
             <div class="container" >
-               
+
             </div>
         </div>
         <br>
@@ -217,7 +239,7 @@
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                 @endif
                 @yield('content')
-            </div>   
+            </div>
         </div>
     <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
           <div class="footer-copyright" >
@@ -225,8 +247,8 @@
                 <p align="center">
                     &copy Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
                 </p>
-            
-            
+
+
             </div>
           </div>
     </footer>
@@ -236,14 +258,13 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $(".button-collapse").sideNav({
               menuWidth: 300,
-              edge: 'left', 
+              edge: 'left',
               closeOnClick: true,
-              draggable: true, 
+              draggable: true,
               onOpen: function(el) {},
               onClose: function(el) {  },
         });

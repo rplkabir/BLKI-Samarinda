@@ -10,20 +10,15 @@
                 @foreach($renlakgiat as $data)
                     <table class="table" style="position: fixed; width: 40% ;">
                                 <tr>
-                                    <th>Id Renlakgiat</th >
+                                    <th>Id Renlakgiat/kejuruan</th>
                                     <td>:</td>
-                                    <td>{{ $data->id }}</td>
-                                </tr>
-                                <tr>
-                                    <th>kejuruan</th>
-                                    <td>:</td>
-                                    <td>{{ $data->kejuruan }}</td>
+                                    <td>{{$data->id}}/{{ $data->kejuruan }}</td>
                                 </tr>
                                 <tr>
                                     <th>Program Pelatihan</th >
                                      <td>:</td>
                                      <td>{{ $data->program_pelatihan }}</td>
-                                </tr> 
+                                </tr>
                                 <tr>
                                     <th>Sumber Dana</th >
                                     <td>:</td>
@@ -38,7 +33,7 @@
                                      <th>Paket</th >
                                      <td>:</td>
                                      <td>{{$data->paket}}</td>
-                                </tr> 
+                                </tr>
                                 <tr>
                                       <th>Orang</th >
                                       <td>:</td>
@@ -63,7 +58,7 @@
                                                 Tanggal Belum Diisi
                                             @else
                                                 {{date('d M Y', strtotime($data->tgl_selesai))}}
-                                            @endif 
+                                            @endif
                                       </td>
                                 </tr>
                                 <tr>
@@ -77,7 +72,7 @@
                                             @endif
                                       </td>
                                 </tr>
-                                <tr> 
+                                <tr>
                                   <th>Status</th>
                                   <td>:</td>
                                   @if($data->tgl_mulai == "")
@@ -107,34 +102,20 @@
 
                                             @endif
                                         @endif
-                              </tr>
-                              <tr>
-                                    <th>Histori Perubahan</th>
-                                    <td>:</td>
-                                    <td>
-                                        <strong>Jumlah Perubahan: </strong>{{DB::table('historis')->where('renlakgiat_id',$data->id)->count()}} <br>
-
-                                        <?php $x = 1; ?>
-                                        @foreach(DB::table('historis')->where('renlakgiat_id',$data->id)->orderBy('created_at','desc')->get() as $hs)
-                                            <div class="well">
-                                                <strong>Tanggal Sebelum Perubahan:</strong> {{$hs->tgl_mulai_lama}} - {{$hs->tgl_selesai_lama}} <br>
-                                                <strong>Alasan Perubahan:</strong> {{$hs->alasan}} <br>
-                                                <strong>Tanggal Melakukan Perubahan:</strong> {{ $hs->created_at }} <br>
-                                            </div>
-                                        @endforeach
-                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Aksi</th>
                                     <td>:</td>
                                     <td>
+                                        <a href="{{url('admin/detailhistori/'.$data->id)}}"><button class="btn btn-link">Perubahan rencana: {{ DB::table('historis')->where('renlakgiat_id',$data->id)->count() }}</button></a> 
+
                                         @if($data->status_cover == "Terverifikasi" and $data->status_pendahuluan == "Terverifikasi" and $data->status_surat_keputusan == "Terverifikasi" and $data->status_nominatif_peserta_pelatihan == "Terverifikasi"and $data->status_nominatif_instruktur == "Terverifikasi" and $data->status_kurikulum == "Terverifikasi" and $data->status_jadwal_pelatihan_mingguan == "Terverifikasi" and $data->status_daftar_hadir_instruktur == "Terverifikasi" and $data->status_daftar_jam_mengajar_instruktur == "Terverifikasi" and $data->status_daftar_hadir_peserta_pelatihan == "Terverifikasi" and $data->status_daftar_permintaan_bahan_latihan == "Terverifikasi" and $data->status_bukti_penerimaan_bahan_pelatihan == "Terverifikasi" and $data->status_lapandan_mingguan_penggunaan_bahan_latihan == "Terverifikasi" and $data->status_undangan_sidang_kelulusan == "Terverifikasi" and $data->status_berita_acara_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_hadir_pertemuan_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_nilai_akhir == "Terverifikasi"and $data->status_rekap_penilaian_pelatihan_berbasis_kompetensi == "Terverifikasi" and $data->status_rekapitulasi_akhir_hasil_pelatihan == "Terverifikasi" and $data->status_tanda_terima_transpandt_peserta == "Terverifikasi" and $data->status_tanda_terima_asuransi_peserta == "Terverifikasi" and $data->status_tanda_terima_pakaian_kerja_peserta == "Terverifikasi" and $data->status_tanda_terima_atk_peserta == "Terverifikasi" and $data->status_tanda_terima_modul == "Terverifikasi"and $data->status_tanda_terima_konsumsi_peserta == "Terverifikasi" and $data->status_foto_dokumentasi_kegiatan == "Terverifikasi" and $data->status_fotocopy_sertifikasi_peserta == "Terverifikasi")
                                             <a href="{{ url('admin/cetak/'.$data->id)}}"><button class="btn btn-info">Cetak</button></a>
-                                                
+
                                         @else
                                             <button class="btn btn-danger" disabled>Cetak</button>
                                         @endif
-                                        <a href="{{url('admin/edit-tanggal-laporan/'.$data->id)}}"><button class="btn btn-ink">Ubah batas pengumpulan laporan</button></a>
+                                        <a href="{{url('admin/edit-tanggal-laporan/'.$data->id)}}"><button class="btn btn-ink" title="Ubah Batas Tanggal Pengumpulan Laporan"><i class="large material-icons">date_range</i></button></a>
                                     </td>
                                 </tr>
                             </table>
@@ -408,8 +389,8 @@
                         </table>
                     </div>
                 </div>
-            @endforeach      
+            @endforeach
         </div>
-    </div>   
+    </div>
 </div>
 @endsection

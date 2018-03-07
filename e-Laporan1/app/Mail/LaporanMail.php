@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Auth;
+
 class LaporanMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -17,7 +18,7 @@ class LaporanMail extends Mailable
      * @return void
      */
     public $rr;
-
+    public $user
     public function __construct($rr)
     {
         $this->rr = $rr;
@@ -30,7 +31,7 @@ class LaporanMail extends Mailable
      */
     public function build()
     {
-        return $this->from(Auth::user()->email)
+        return $this->from($user)
             ->markdown('emails.email');
     }
 }

@@ -7,6 +7,8 @@ use App\Profile;
 use App\User;
 use Session;
 use Auth;
+use Hash;
+
 class ProfileController extends Controller
 {
     /**
@@ -186,6 +188,40 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editemail(){
+      $user = User::where('id',Auth::user()->id)->get();
+      return view('profile.editemail', compact('user'));
+    }
+
+    public function updateEmail($id, Request $request){
+
+      $this->validate($request, [
+          'newemail' => 'required|email',
+          'password' => 'required|min:6',
+      ]);
+      $user = Auth::user();
+      $id = Auth::user()->id;
+      $password = Hash::check($request->password, $user->password);
+      $check = User::where('password', $password)->where('id', $id)->get();
+
+      if (Hash::check($request->password, $user->password)) {
+          $user->email = $request->newemail;
+          $user->save();
+
+          Session::flash('message', 'Berhasil Ubah Email');
+          Session::flash('alert-class', 'alert-success');
+          return redirect('profile');
+
+      }
+      else
+      {
+          Session::flash('message', 'Password salah!');
+          Session::flash('alert-class', 'alert-danger');
+
+          return redirect()->back();
+      }
     }
 
 }

@@ -46,8 +46,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
-                                
                             </div>
                         </div>
                     </form>
