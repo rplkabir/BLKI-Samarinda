@@ -5,8 +5,8 @@ if (Auth::guard('web')->check()) {
 	$result = count($data);
 		echo $result;
 	}
-elseif (Auth::guard('admin')->check()) {
-	$data = \DB::table('notifications')->where('type', 'App\Notifications\Newlaporan')->whereNull('read_at')->get();
+elseif (Auth::guard('admin')->check()) {unreadNotificationsuptd
+	$data = Auth::user()->unreadNotificationsuptd;
 	$result = count($data);
 		echo $result;
 	}

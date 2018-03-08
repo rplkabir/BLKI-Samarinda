@@ -11,6 +11,7 @@
     <title>BLK Samarinda</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
@@ -21,6 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
+        nav {
+            color: white !important;
+        }
 
      html, body {
                 color: #636b6f;
@@ -65,7 +69,7 @@
         </style>
 </head>
 <body>
-        <nav style="background-color: #2c3e50;">
+        <nav class="navbar navbar-fixed-top" style=" background-color: #2c3e50; " >
             <div class="nav-wrapper">
                     <!-- Left Side Of Navbar -->
                     @if (Auth::guest())
@@ -96,23 +100,11 @@
 
                         @elseif (Auth::guard('web')->check())
                         <li><a href="{{url('uptd/dokumen/index')}}"><strong>Upload Dokumen</strong></a></li>
-                        <li class="dropdown">
-                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong></span><span class="caret"></span></a>
-                                  <ul class='dropdown-menu' role="menu" >
-                                     @foreach(Auth::user()->unreadNotificationsnotifcomment as $notif)
-                                    <li style="background-color: #42f459; " ><a onclick="marknotifasreads()" href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b>  </a></li>
-                                    @endforeach
-                                        <li><div class="divider"></div></li>
-                                        <?php  $i = 0  ?>
-                                     @foreach(Auth::user()->Notificationsnotifcomment as $notif)
-                                     <?php if (++$i > 5) {
-                                         break;
-                                     } ?>
-                                    <li ><a href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b></a></li>
-                                    @endforeach
-                                  </ul>
 
-                        </li>
+                        <li>
+                                <a href="{{url('uptd/commentadmin')}}">
+                                <span class="badge" style="color: #42f459; font-size: 15px   "> <strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong>     </span><strong>Notif Laporan</strong></a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" style="font-size: 13px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -141,25 +133,17 @@
 
                                 </ul>
                             </li>
-                        @elseif(Auth::guard('admin')->check())
-                        <li><a href="{{url('admin/dokumenuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a></li>
-                        <li class="dropdown">
-                            <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notification <span class="badge" style="color: #42f459; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span><span class="caret"></span></a>
-                                  <ul class='dropdown-menu' role="menu" >
-                                     @foreach(Auth::user()->unreadNotificationsByAdmin as $notif)
-                                    <li style="background-color: #42f459; " ><a onclick="marknotifasread()" href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b>mengupload Laporan : </b> {{ $notif->data['jenis'] }} <b> pada kejuruan  </b>{{ $notif->data['nama'] }}</a></li>
-                                    @endforeach
-                                        <li><div class="divider"></div></li>
-                                        <?php  $i = 0  ?>
-                                     @foreach(Auth::user()->readNotifications as $notif)
-                                     <?php if (++$i > 5) {
-                                         break;
-                                     } ?>
-                                    <li ><a href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }}</a></li>
-                                    @endforeach
-                                  </ul>
 
-                        </li>
+                        @elseif(Auth::guard('admin')->check())
+                            <li>
+                                <a onclick="marknotifasread()" href="{{url('admin/dokumenuptd')}}">
+                                <span class="badge" style="color: #42f459; font-size: 15px "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong>     </span><strong>Dokumen Uptd</strong></a>
+                            </li>
+
+                            <li>
+                                <a href="{{url('admin/laporanuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px   "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong>     </span><strong>Laporan UPTD</strong></a>
+                            </li>
+
                             <li class="dropdown">
                                 <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Admin <span class="caret"></span>
@@ -233,7 +217,7 @@
             </div>
         </div>
         <br>
-        <div class="container">
+        <div class="container" style="padding-top: 50px;">
             <div class="row">
                 @if(Session::has('message'))
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>

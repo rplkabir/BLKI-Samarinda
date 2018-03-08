@@ -3,12 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row">
-            <div class="panel panel-default" style="width: 100% !important;">
-                <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
-                <div class="panel-body" style="width: 100%;">
+            <div class="panel">
+                <div class="panel-heading" style="position: fixed;"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
+                <div>
+                    <br>
+                </div>
+                <div class="panel-body">
                     <table>
                     @foreach($renlakgiat as $data)
-                    <table class="table" style="position: fixed; width: 40%">
+                    <table class="table" style="position: absolute; height: 70%; float: left !important; width: 40%; ">
                         <tr>
                             <td width="355">Id Renlakgiat</td>
                             <td>:</td>

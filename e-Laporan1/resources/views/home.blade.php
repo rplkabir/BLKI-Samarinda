@@ -37,7 +37,18 @@
                                                     ->responsive(false)
                                                     ->credits(false);
                                             ?>
-                                    <div class="collapsible-body"><span>{!! $datauser->nama_lembaga->render() !!}</span></div>
+                                    <div class="collapsible-body"><span>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    {!! $datauser->nama_lembaga->render() !!}
+                                                </td>
+                                                <td>
+                                                    {!! $datauser->nama_lembaga->render() !!}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </span></div>
                                 <div class="collapsible-body">
                                         <table class="table">
                                             <tr>

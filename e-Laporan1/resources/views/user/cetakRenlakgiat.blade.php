@@ -22,11 +22,13 @@
                 }
             </style>
             <div style="font-family:Arial; font-size:12px;">
-                <center><h2>Recana Pelaksanaan Kegiatan</h2></center>
+              @foreach($ketua as $dataketua)
+                <center><h2>RENCANA PELAKSANAAN KEGIATAN</h2>
+                <h2>{{ $dataketua->nama_lembaga }}</h2>
+                <h2> {{ $year }} </h2>
+              </center>
+                @endforeach
             </div>
-            <br>
-                <br>
-                <br>
                <table class="tb-as" border="1">
                         <tr>
                             <th>No</th>
@@ -55,16 +57,10 @@
                         @endforeach
                             @foreach($ketua as $dataketua)
                             <table align="right">
-                                <tr>
-                                    <td>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </td>
-                                </tr>
+                              <tr>
+                                     <td width='230' height='50'></td>
+                                     <td width='230'></td>
+                                  </tr>
                                  <tr>
                                      <td width='230'>Samarinda, {{ $datenow }}</td>
                                   </tr>
@@ -72,8 +68,7 @@
                                      <td width='230'>Kepala,</td>
                                   </tr>
                                    <tr>
-                                     <td width='230' height='80'></td>
-                                     <td width='230'></td>
+                                     <td width='230' height='50'></td>
                                      <td width='230'></td>
                                   </tr>
                                    <tr>

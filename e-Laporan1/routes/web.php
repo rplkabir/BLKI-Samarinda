@@ -237,3 +237,9 @@ Route::get('/notifcommentreload', function() {
 Route::get('/notifcommentreloaduptd', function() {
 	return view ('layouts.notifcommentuptd');
 });
+
+Route::get('/admin/laporanuptd', 'DokumenController@laporanuptd');
+
+Route::get('/uptd/commentadmin', function() {
+	return view ('dokumenuptd.commentadmin');
+});

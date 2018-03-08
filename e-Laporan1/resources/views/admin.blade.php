@@ -4,7 +4,7 @@
 <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
 <div class="container">
     <div class="row">
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col" style="width: 100% !important;">
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Dashboard
                 </div>
@@ -26,15 +26,45 @@
                                                      $sedang = DB::table('renlakgiats')->where('users_id',$userid)->where('status', 'Sedang Berjalan')->get();
                                                      $telah = DB::table('renlakgiats')->where('users_id',$userid)->where('status', 'Sudah Selesai')->get();
                                                      $null = DB::table('renlakgiats')->where('users_id',$userid)->where('status', (NULL))->get();
+
                                                      $datauser->nama_lembaga = Charts::create('donut', 'highcharts')
                                                     ->title($datauser->nama_lembaga)
                                                     ->labels(['Belum Berjalan', 'Sedang Berjalan', 'Sudah Selesai','Belum Direncanakan'])
                                                     ->values([count($belum),count($sedang),count($telah),count($null)])
-                                                    ->dimensions(1000,500)
+                                                    ->dimensions(500,300)
                                                     ->responsive(false)
                                                     ->credits(false);
+
                                             ?>
-                                    <div class="collapsible-body"><span>{!! $datauser->nama_lembaga->render() !!}</span></div>
+
+                                                <?php
+                                                    $statuslaporan = DB::table('renlakgiats')->where('users_id',$userid)->where('status_Laporan', 'Belum Lengkap')->get();
+
+                                                    $statuslaporanok = DB::table('renlakgiats')->where('users_id',$userid)->where('status_Laporan', 'Sudah Lengkap')->get();
+                                                    $blm = count($statuslaporan);
+                                                    $sdh = count($statuslaporanok);
+
+                                                    $laporans = Charts::create('donut', 'highcharts')
+                                                    ->title("laporan")
+                                                    ->labels(['Sudah Lengkap', 'Belum Lengkap'])
+                                                    ->values([$sdh,$blm])
+                                                    ->dimensions(500,300)
+                                                    ->responsive(false)
+                                                    ->credits(false);
+
+                                                ?>
+                                    <div class="collapsible-body"><span>
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="width: 50%">
+                                                    {!! $datauser->nama_lembaga->render() !!}
+                                                </td>
+                                                <td style="width: 50%">
+                                                    {!!  $laporans->render() !!}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </span></div>
                                 <div class="collapsible-body">
                                         <table class="table">
                                             <tr>

@@ -48,6 +48,7 @@ class UptdController extends Controller
         $renlakgiat->tgl_mulai = $request->tgl_mulai;
         $renlakgiat->tgl_selesai = $request->tgl_selesai;
         $renlakgiat->status = $request->status;
+        $renlakgiat->status_Laporan = "Belum Lengkap";
         $renlakgiat->tgl_kumpul_laporan = date('Y-m-d', strtotime($request->tgl_selesai. "+7 day"));
         $renlakgiat->save();
 
@@ -57,8 +58,9 @@ class UptdController extends Controller
     public function cetakRenlakgiat(){
         $renlakgiat = Renlakgiat::where('users_id', Auth::user()->id)->get();
         $datenow = Carbon::now()->formatLocalized('%d %B %Y');
+        $year = Carbon::now()->formatLocalized('%Y');
         $ketua = Profile::where('users_id', Auth::user()->id)->get();
-        $pdf = PDF::loadView('user.cetakRenlakgiat',compact('renlakgiat','ketua', 'datenow'));
+        $pdf = PDF::loadView('user.cetakRenlakgiat',compact('renlakgiat','ketua', 'datenow', 'year'));
 
         return $pdf->stream('Renlakgiat.pdf');
     }
@@ -1280,6 +1282,11 @@ class UptdController extends Controller
     public function sendEmail($id){
         $rr = Renlakgiat::find($id);
         $admin = Admin::all();
+
+        foreach ($rr as $keyy) {
+            $key->status_Laporan = "Sudah Lengkap";
+        }
+
         foreach ($admin as $key) {
             $email = $key->email;
         }

@@ -182,8 +182,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
-        // Webklex\PDFMerger\Providers\PDFMergerServiceProvider::class,
-        // LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
+        Webklex\PDFMerger\Providers\PDFMergerServiceProvider::class,
+        LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
     ],
 
     /*
@@ -239,8 +239,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Zipper' => Chumper\Zipper\Zipper::class,
         'Sortable' => Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
-        // 'PDFMerger' => Webklex\PDFMerger\Facades\PDFMergerFacade::class,
-        // 'PdfMerger' => LynX39\LaraPdfMerger\Facades\PdfMerger::class,
+        'PDFMerger' => Webklex\PDFMerger\Facades\PDFMergerFacade::class,
+        'PdfMerger' => LynX39\LaraPdfMerger\Facades\PdfMerger::class,
     ],
 
 ];

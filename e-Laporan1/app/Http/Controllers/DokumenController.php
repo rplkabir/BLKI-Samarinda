@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dokumen;
 use Auth;
+use App\Profile;
 use Session;
 use Carbon\Carbon;
 use App\User;
@@ -123,5 +124,16 @@ class DokumenController extends Controller
         $dokumen->delete();
         Session::flash('message','Berhasil Menghapus Dokumen Khusus untuk diberikan ke seluruh UPTD/BLK');
         return redirect()->route('dokumen');
+    }
+
+    public function laporanuptd()
+    {   
+        $useruptd = Profile::all();
+        foreach ($useruptd as $value) {
+            # code...
+        }
+        $data = Auth::user()->unreadNotificationsByAdmin;
+        $dataread = Auth::user()->unreadNotificationsLaporan;
+        return view('dokumen.laporanuptd', compact('useruptd'));
     }
 }
