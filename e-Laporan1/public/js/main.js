@@ -18,7 +18,7 @@ function ()
 $('#load_comment').load('/notifcommentreload').fadeIn("slow");
 }, 10000);
 
-var auto_refreshh = setInterval(
+var auto_refreshhh = setInterval(
 function ()
 {
 $('#load_notifuptd').load('/notifcommentreloaduptd').fadeIn("slow");
