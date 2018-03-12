@@ -107,14 +107,12 @@
                                     <th>Aksi</th>
                                     <td>:</td>
                                     <td>
-                                        <a href="{{url('admin/detailhistori/'.$data->id)}}"><button class="btn btn-link">Perubahan rencana: {{ DB::table('historis')->where('renlakgiat_id',$data->id)->count() }}</button></a> 
+                                        <a href="{{url('admin/detailhistori/'.$data->id)}}"><button class="btn btn-link">Perubahan rencana: {{ DB::table('historis')->where('renlakgiat_id',$data->id)->count() }}</button></a>
 
-                                        @if($data->status_cover == "Terverifikasi" and $data->status_pendahuluan == "Terverifikasi" and $data->status_surat_keputusan == "Terverifikasi" and $data->status_nominatif_peserta_pelatihan == "Terverifikasi"and $data->status_nominatif_instruktur == "Terverifikasi" and $data->status_kurikulum == "Terverifikasi" and $data->status_jadwal_pelatihan_mingguan == "Terverifikasi" and $data->status_daftar_hadir_instruktur == "Terverifikasi" and $data->status_daftar_jam_mengajar_instruktur == "Terverifikasi" and $data->status_daftar_hadir_peserta_pelatihan == "Terverifikasi" and $data->status_daftar_permintaan_bahan_latihan == "Terverifikasi" and $data->status_bukti_penerimaan_bahan_pelatihan == "Terverifikasi" and $data->status_lapandan_mingguan_penggunaan_bahan_latihan == "Terverifikasi" and $data->status_undangan_sidang_kelulusan == "Terverifikasi" and $data->status_berita_acara_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_hadir_pertemuan_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_nilai_akhir == "Terverifikasi"and $data->status_rekap_penilaian_pelatihan_berbasis_kompetensi == "Terverifikasi" and $data->status_rekapitulasi_akhir_hasil_pelatihan == "Terverifikasi" and $data->status_tanda_terima_transpandt_peserta == "Terverifikasi" and $data->status_tanda_terima_asuransi_peserta == "Terverifikasi" and $data->status_tanda_terima_pakaian_kerja_peserta == "Terverifikasi" and $data->status_tanda_terima_atk_peserta == "Terverifikasi" and $data->status_tanda_terima_modul == "Terverifikasi"and $data->status_tanda_terima_konsumsi_peserta == "Terverifikasi" and $data->status_foto_dokumentasi_kegiatan == "Terverifikasi" and $data->status_fotocopy_sertifikasi_peserta == "Terverifikasi")
-                                            <a href="{{ url('admin/cetak/'.$data->id)}}"><button class="btn btn-info">Cetak</button></a>
+                                        <a href="{{ url('admin/cetak/'.$data->id)}}"><button class="btn btn-info">Cetak</button></a>
 
-                                        @else
-                                            <button class="btn btn-danger" disabled>Cetak</button>
-                                        @endif
+
+                                            
                                         <a href="{{url('admin/edit-tanggal-laporan/'.$data->id)}}"><button class="btn btn-ink" title="Ubah Batas Tanggal Pengumpulan Laporan"><i class="large material-icons">date_range</i></button></a>
                                     </td>
                                 </tr>
