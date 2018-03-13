@@ -109,10 +109,13 @@
                                     <td>
                                         <a href="{{url('admin/detailhistori/'.$data->id)}}"><button class="btn btn-link">Perubahan rencana: {{ DB::table('historis')->where('renlakgiat_id',$data->id)->count() }}</button></a>
 
-                                        <a href="{{ url('admin/cetak/'.$data->id)}}"><button class="btn btn-info">Cetak</button></a>
+                                        
+
+                                            <a href="{{url('admin/cetak/'.$data->id)}}"><button class="btn btn-success">Cetak</button></a>
+
+                                       
 
 
-                                            
                                         <a href="{{url('admin/edit-tanggal-laporan/'.$data->id)}}"><button class="btn btn-ink" title="Ubah Batas Tanggal Pengumpulan Laporan"><i class="large material-icons">date_range</i></button></a>
                                     </td>
                                 </tr>

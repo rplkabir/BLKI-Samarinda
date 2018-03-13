@@ -72,26 +72,26 @@
                         <tr>
                             <td>Status</td>
                             <td>:</td>
-                            
+
                             @if($data->tgl_mulai == "")
                                 <td>Belum Direncanakan</td>
                                 @else
                                     @if(Carbon\Carbon::now() < $data->tgl_mulai)
-                                    
+
                                         <?php DB::table('renlakgiats')
                                             ->where('id', $data->id)
                                             ->update(['status' => 'Belum Berjalan']); ?>
                                            <td> Belum Berjalan</td>
-                                    
+
                                     @elseif(Carbon\Carbon::now() > $data->tgl_selesai)
-                                    
+
                                         <?php DB::table('renlakgiats')
                                                 ->where('id', $data->id)
                                                 ->update(['status' => 'Sudah Selesai']) ?>
                                         <td> Sudah Selesai</td>
-                                    
+
                                     @else
-                                    
+
                                         <?php DB::table('renlakgiats')
                                                 ->where('id', $data->id)
                                                 ->update(['status' => 'Sedang Berjalan']) ?>
@@ -110,12 +110,12 @@
                                         <button class="btn btn-danger" disabled>Kirim</button>
                                      @else
                                         <a href="{{url('uptd/sendEmail/'.$data->id)}}"><button class="btn btn-success">Kirim</button></a>
-                           
+
                                     @endif
                                     @if($data->status_cover == "Terverifikasi" and $data->status_pendahuluan == "Terverifikasi" and $data->status_surat_keputusan == "Terverifikasi" and $data->status_nominatif_peserta_pelatihan == "Terverifikasi"and $data->status_nominatif_instruktur == "Terverifikasi" and $data->status_kurikulum == "Terverifikasi" and $data->status_jadwal_pelatihan_mingguan == "Terverifikasi" and $data->status_daftar_hadir_instruktur == "Terverifikasi" and $data->status_daftar_jam_mengajar_instruktur == "Terverifikasi" and $data->status_daftar_hadir_peserta_pelatihan == "Terverifikasi" and $data->status_daftar_permintaan_bahan_latihan == "Terverifikasi" and $data->status_bukti_penerimaan_bahan_pelatihan == "Terverifikasi" and $data->status_lapandan_mingguan_penggunaan_bahan_latihan == "Terverifikasi" and $data->status_undangan_sidang_kelulusan == "Terverifikasi" and $data->status_berita_acara_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_hadir_pertemuan_sidang_kelulusan == "Terverifikasi" and $data->status_daftar_nilai_akhir == "Terverifikasi"and $data->status_rekap_penilaian_pelatihan_berbasis_kompetensi == "Terverifikasi" and $data->status_rekapitulasi_akhir_hasil_pelatihan == "Terverifikasi" and $data->status_tanda_terima_transpandt_peserta == "Terverifikasi" and $data->status_tanda_terima_asuransi_peserta == "Terverifikasi" and $data->status_tanda_terima_pakaian_kerja_peserta == "Terverifikasi" and $data->status_tanda_terima_atk_peserta == "Terverifikasi" and $data->status_tanda_terima_modul == "Terverifikasi"and $data->status_tanda_terima_konsumsi_peserta == "Terverifikasi" and $data->status_foto_dokumentasi_kegiatan == "Terverifikasi" and $data->status_fotocopy_sertifikasi_peserta == "Terverifikasi")
-                            
+
                                         <a href="{{url('uptd/cetak/'.$data->id)}}"><button class="btn btn-success">Cetak</button></a>
-                            
+
                                     @else
                                         <button class="btn btn-danger" disabled>Cetak</button>
                                     @endif
@@ -126,7 +126,13 @@
                         <table class="table" align="right" style="width: 30%; border-left: 1px solid;">
                         <tr>
                             <td align="center">
-                                @if(Carbon\Carbon::now() > $data->tgl_kumpul_laporan)
+                                @if($data->tgl_kumpul_laporan == "")
+                                  <h2>
+                                    Silahkan Isi tanggal untuk perencanaan agar sistem dapat menentukan tanggal batas pengumpulan laporan.
+                                    Batas pengumpulan laporan akan terisi otomatis ketika anda telah menginputkan tanggal mulai dan tanggal
+                                    selesai rencana pelaksanaan kegiatan.
+                                  </h2>
+                                @elseif(Carbon\Carbon::now() > $data->tgl_kumpul_laporan)
                                    <h2>Maaf, Pengumpulan laporan untuk kegiatan ini sudah ditutup karena telah melewati batas pengumpulan laporan yang sudah ditetapkan, silahkan menghubungi admin untuk melakukan permintaan pembukaan sistem untuk melakukan/melengkapi laporan yang masih ingin dikumpulkan</h2>
 
                                 @else
@@ -139,9 +145,9 @@
                                     <div class="well">
                                         <a href="{{url('uptd/renlakgiat/laporan/cover/tambah/'.$data->id)}}">
                                             <button class="btn btn-link"><strong>cover</strong></button>
-                                        </a><br> 
+                                        </a><br>
                                             <strong>File: </strong>{{$data->cover}}<br>
-                                            <strong>Status:</strong> {{ $data->status_cover}}<br> 
+                                            <strong>Status:</strong> {{ $data->status_cover}}<br>
                                             <strong> Catatan:</strong> {{ $data->catatan_cover}}
                                         <br>
                                     </div>
@@ -156,8 +162,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/pendahuluan/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">pengantar, pendahuluan dan isi laporan</button>
                                 </a><br>
-                                <strong>File: </strong> {{$data->pendahuluan}}<br> 
-                                <strong>Status:</strong> {{$data->status_pendahuluan}}<br> 
+                                <strong>File: </strong> {{$data->pendahuluan}}<br>
+                                <strong>Status:</strong> {{$data->status_pendahuluan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_pendahuluan}}
                                 <br>
                                 </div>
@@ -171,8 +177,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/sk/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">Surat Keputusan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->surat_keputusan}}<br> 
-                                <strong>Status</strong> {{$data->status_surat_keputusan}}<br> 
+                                <strong>File: </strong>{{$data->surat_keputusan}}<br>
+                                <strong>Status</strong> {{$data->status_surat_keputusan}}<br>
                                 <strong>Catatan</strong> {{$data->catatan_surat_keputusan}}
                                 <br>
                                 </div>
@@ -187,7 +193,7 @@
                                     <button class="btn btn-link">Nominatif Perserta Pelatihan</button>
                                 </a><br>
                                 <strong>File: </strong>{{$data->nominatif_peserta_pelatihan}}<br>
-                                <strong>Status:</strong> {{$data->status_nominatif_peserta_pelatihan}}<br> 
+                                <strong>Status:</strong> {{$data->status_nominatif_peserta_pelatihan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_nominatif_peserta_pelatihan}}
                                 <br>
                                 </div>
@@ -201,7 +207,7 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/ni/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">nominatif instruktur</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->nominatif_instruktur}}<br> 
+                                <strong>File: </strong>{{$data->nominatif_instruktur}}<br>
                                 <strong>Status:</strong> {{$data->status_nominatif_instruktur}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_nominatif_instruktur}}
                                 <br>
@@ -216,8 +222,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/kurikulum/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">kurikulum</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->kurikulum}}<br> 
-                                <strong>Status:</strong> {{$data->status_kurikulum}}<br> 
+                                <strong>File: </strong>{{$data->kurikulum}}<br>
+                                <strong>Status:</strong> {{$data->status_kurikulum}}<br>
                                 <strong>Catatan:</strong>{{ $data->catatan_kurikulum}}
                                 <br>
                                 </div>
@@ -231,8 +237,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/jpm/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">jadwal pelatihan mingguan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->jadwal_pelatihan_mingguan}}<br> 
-                                <strong>Status:</strong> {{$data->status_jadwal_pelatihan_mingguan}}<br> 
+                                <strong>File: </strong>{{$data->jadwal_pelatihan_mingguan}}<br>
+                                <strong>Status:</strong> {{$data->status_jadwal_pelatihan_mingguan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_jadwal_pelatihan_mingguan}}
                                 <br>
                                 </div>
@@ -248,8 +254,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/dhi/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">Daftar hadir instruktur</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->daftar_hadir_instruktur}}<br> 
-                                <strong>Status:</strong> {{$data->status_daftar_hadir_instruktur}}<br> 
+                                <strong>File: </strong>{{$data->daftar_hadir_instruktur}}<br>
+                                <strong>Status:</strong> {{$data->status_daftar_hadir_instruktur}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_daftar_hadir_instruktur}}
                                 <br>
                                 </div>
@@ -264,8 +270,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/djmi/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">daftar jam mengajar instruktur</button>
                                 </a> <br>
-                                <strong>File: </strong>{{$data->daftar_jam_mengajar_instruktur}}<br> 
-                                <strong>Status:</strong> {{$data->status_daftar_jam_mengajar_instruktur}}<br> 
+                                <strong>File: </strong>{{$data->daftar_jam_mengajar_instruktur}}<br>
+                                <strong>Status:</strong> {{$data->status_daftar_jam_mengajar_instruktur}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_daftar_jam_mengajar_instruktur}}
                                 <br>
                                 </div>
@@ -282,7 +288,7 @@
                                 </a>
                                 <br>
                                 <strong>File: </strong>{{$data->daftar_hadir_peserta_pelatihan}}<br>
-                                <strong>Status:</strong> {{$data->status_daftar_hadir_peserta_pelatihan}}<br> 
+                                <strong>Status:</strong> {{$data->status_daftar_hadir_peserta_pelatihan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_daftar_hadir_peserta_pelatihan}}
                                 <br>
                                 </div>
@@ -297,7 +303,7 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/dpbl/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">daftar permintaan bahan latihan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_pelatihan}}<br> 
+                                <strong>File: </strong>{{$data->daftar_permintaan_bahan_pelatihan}}<br>
                                 <strong>Status:</strong> {{$data->status_daftar_permintaan_bahan_pelatihan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_daftar_permintaan_bahan_pelatihan}}
                                 <br>
@@ -312,8 +318,8 @@
                                 <a href="{{url('uptd/renlakgiat/laporan/bpbl/tambah/'.$data->id)}}">
                                     <button class="btn btn-link">bukti penerimaan bahan pelatihan</button>
                                 </a><br>
-                                <strong>File: </strong>{{$data->bukti_penerimaan_bahan_pelatihan}}<br> 
-                                <strong>Status:</strong> {{$data->status_bukti_penerimaan_bahan_pelatihan}}<br> 
+                                <strong>File: </strong>{{$data->bukti_penerimaan_bahan_pelatihan}}<br>
+                                <strong>Status:</strong> {{$data->status_bukti_penerimaan_bahan_pelatihan}}<br>
                                 <strong>Catatan:</strong> {{ $data->catatan_bukti_penerimaan_bahan_pelatihan}}
                                 <br>
                                 </div>

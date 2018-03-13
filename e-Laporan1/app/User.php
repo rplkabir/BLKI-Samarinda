@@ -30,6 +30,7 @@ class User extends Authenticatable
         return $this->notifications()
                              ->where('type', 'App\Notifications\Catatan');
     }
+
     
     /**
      * The attributes that are mass assignable.

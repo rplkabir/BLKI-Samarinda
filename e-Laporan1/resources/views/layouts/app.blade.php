@@ -99,13 +99,12 @@
                         </li>
 
                         @elseif (Auth::guard('web')->check())
-                        <li>
-                            <a onclick="marknotifasreads()" href="{{route('uptd.dokumen')}}"><span class="badge" style="color: pink; "><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</span>Pemberitahuan</strong></a>
-                        </li>
+                        <li><a href="{{url('uptd/dokumen/index')}}"><strong>Upload Dokumen</strong></a></li>
+
                         <li>
                                 <a href="{{url('uptd/commentadmin')}}">
-                                <span class="badge" style="color: pink;    "> <strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong>     </span><strong>Notif Laporan</strong></a>
-                        </li>
+                                <span class="badge" style="color: #42f459; font-size: 15px"> <strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong>     </span><strong>Notif Laporan</strong></a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" style="font-size: 13px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -131,22 +130,23 @@
                                     <li>
                                        <a href="{{route('user.logout')}}"><i class="material-icons">power_settings_new</i> Logout</a>
                                     </li>
+
                                 </ul>
                             </li>
 
                         @elseif(Auth::guard('admin')->check())
                             <li>
                                 <a onclick="marknotifasread()" href="{{url('admin/dokumenuptd')}}">
-                                <span class="badge" style="color: #42f459; font-size: 15px"> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a>
+                                <span class="badge" style="color: #42f459; font-size: 15px "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong>     </span><strong>Dokumen Uptd</strong></a>
                             </li>
 
                             <li>
-                                <a href="{{url('admin/laporanuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px"> <strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong></span><strong>Laporan UPTD</strong></a>
+                                <a href="{{url('admin/laporanuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px   "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong>     </span><strong>Laporan UPTD</strong></a>
                             </li>
 
                             <li class="dropdown">
                                 <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Admin <span class="caret"></span>
+                                    {{Auth::user()->name}} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
@@ -193,14 +193,15 @@
                               </div>
                               <a href="#!user"><img class="circle" src="{{asset('upload/'.$data->foto_pimpinan)}}"></a>
 
-                                <a href="{{ route('profile')}}"><span class="white-text name"><i class="material-icons">person</i>{{ $data->nama_lembaga }}</span></a>
+                                <a href="{{ route('profile')}}"><span class="white-text name"><i class="material-icons">person</i>{{ Auth::user()->name}}</span></a>
                             </div></li>
                             <li><a href=" {{ route('home')}}"><i class="material-icons">dashboard</i>Dashboard</a></li>
                             <li><a href="{{url('uptd/pktp/'.Auth::user()->id)}}"><i class="material-icons">assignment_ind</i>Data Pengelola</a></li>
                             <li><a href="{{route('uptd.renlakgiat')}}"><i class="material-icons">storage</i>Data Renlakgiat</a></li>
                             <li><div class="divider"></div></li>
                             <li><a class="subheader">Other</a></li>
-                            <li><a href="{{url('uptd/dokumen/index')}}"><strong>Upload Dokumen</strong></a></li>
+                            <li onclick="marknotifasreads()"><a class="waves-effect" href="{{route('uptd.dokumen')}}"><i class="material-icons">announcement</i>Pemberitahuan<span class="badge" style="color: pink; font-size: 15px"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a></li>
+                            <li><div id="load_notif"> </div></li>
                             <li>
 
                             </li>
@@ -219,7 +220,10 @@
         <div class="container" style="padding-top: 50px;">
             <div class="row">
                 @if(Session::has('message'))
-                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ Session::get('message') }}
+                  </p>
                 @endif
                 @yield('content')
             </div>

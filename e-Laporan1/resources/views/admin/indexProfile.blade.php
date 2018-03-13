@@ -22,9 +22,9 @@
                         ?>
                         @foreach($profile as $data)
                             <tr>
-                                
+
                                 <td>{{ $x++ }}</td>
-                                <td>{{ $data->nama_lembaga }}</td>
+                                <td>{{ $data->user->name }}</td>
                                 <td>{{ $data->eselonisasi }}</td>
                                 <td>{{ $data->kab_kota }} - {{$data->provinsi}}</td>
                                 <td>{{ $data->nama_pimpinan }}</td>
@@ -43,7 +43,7 @@
                     {{$profile->links()}}
                 </div>
             </div>
-        
+
     </div>
 </div>
 @endsection

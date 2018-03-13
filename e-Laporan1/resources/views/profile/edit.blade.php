@@ -11,16 +11,16 @@
                     @foreach($profile as $data)
                     <form class="form-horizontal" action="{{url('profile/update/'.$data->id)}}" method="POST"  enctype="multipart/form-data">
                     	{{ csrf_field() }}
-                    	   
-                    		    <div class="form-group{{ $errors->has('nama_lembaga') ? 'has-error': ''}}">
-                                    <label for="nama_lembaga" class="col-md-4 control-label">Nama Lembaga</label>
+
+                    		    <div class="form-group{{ $errors->has('name') ? 'has-error': ''}}">
+                                    <label for="name" class="col-md-4 control-label">Nama Lembaga</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="nama_lembaga" id="nama_lembaga" class="form-control" required value="{{ $data->nama_lembaga }}">
+                                            <input type="text" name="name" id="name" class="form-control" required value="{{ $data->user->name }}">
                                         </div>
 
-                                         @if ($errors->has('nama_lembaga'))
+                                         @if ($errors->has('name'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('nama_lembaga') }}</strong>
+                                                <strong>{{ $errors->first('name') }}</strong>
                                             </span>
                                         @endif
                                 </div>
@@ -93,18 +93,6 @@
                                          @if ($errors->has('no_fax'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('no_fax') }}</strong>
-                                            </span>
-                                        @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('email_kantor') ? 'has-error': ''}}">
-                                    <label for="email_kantor" class="col-md-4 control-label">Email Kantor</label>
-                                        <div class="col-md-6">
-                                            <input type="email" name="email_kantor" required id="email_kantor" class="form-control" value="{{ $data->email_kantor }}">
-                                        </div>
-
-                                         @if ($errors->has('email_kantor'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('email_kantor') }}</strong>
                                             </span>
                                         @endif
                                 </div>
@@ -198,7 +186,7 @@
                     			<button class="btn btn-success">Update</button>
                     		</div>
                     	</div>
-                   		 
+
                     </form>
 
                 </div>

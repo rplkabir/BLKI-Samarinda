@@ -9,16 +9,17 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="{{url('profile/simpan/')}}" method="POST"  enctype="multipart/form-data">
                     	{{ csrf_field() }}
-                    	
-                    		    <div class="form-group{{ $errors->has('nama_lembaga') ? 'has-error': ''}}">
-                                    <label for="nama_lembaga" class="col-md-4 control-label">Nama Lembaga</label>
-                                        <div class="col-md-6">
-                                            <input type="text" name="nama_lembaga" id="nama_lembaga" class="form-control" required>
-                                        </div>
 
-                                         @if ($errors->has('nama_lembaga'))
+                    		    <div class="form-group{{ $errors->has('name') ? 'has-error': ''}}">
+                              @foreach($user as $data)
+                                    <label for="name" class="col-md-4 control-label">Nama Lembaga</label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="name" value="{{$data->name}}" id="name" class="form-control" required>
+                                        </div>
+                              @endforeach
+                                         @if ($errors->has('name'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('nama_lembaga') }}</strong>
+                                                <strong>{{ $errors->first('name') }}</strong>
                                             </span>
                                         @endif
                                 </div>
@@ -91,18 +92,6 @@
                                          @if ($errors->has('no_fax'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('no_fax') }}</strong>
-                                            </span>
-                                        @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('email_kantor') ? 'has-error': ''}}">
-                                    <label for="email_kantor" class="col-md-4 control-label">Email Kantor</label>
-                                        <div class="col-md-6">
-                                            <input type="email" name="email_kantor" id="email_kantor" class="form-control" required>
-                                        </div>
-
-                                         @if ($errors->has('email_kantor'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('email_kantor') }}</strong>
                                             </span>
                                         @endif
                                 </div>
@@ -195,7 +184,7 @@
                     			<button class="btn btn-success">Simpan</button>
                     		</div>
                     	</div>
-                   		
+
                     </form>
                 </div>
             </div>

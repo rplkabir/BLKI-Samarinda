@@ -10,21 +10,21 @@
     .pimpinan
     {
         position: absolute !important;
-        top: 70% !important; 
+        top: 70% !important;
         left:10% !important;
         z-index: 2;
     }
     </style>
 <div class="container">
     <div class="row">
-        
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard Profil UPTD
                 </div>
                     @foreach($profile as $data)
                     <div style="width: 100%; height: 100%; position: relative;">
                     <img class="img materialboxed" src="{{asset('upload/'.$data->foto_gedung)}}" height="500" style="width: 100%; z-index: 0; position: relative;">
-                    <img class="img materialboxed img-thumbnail" align="center" src="{{asset('upload/'.$data->foto_pimpinan)}}" width="180" height="150" style=" left:5%; top: 60%;  z-index: 0; position: absolute; float: left;">  
+                    <img class="img materialboxed img-thumbnail" align="center" src="{{asset('upload/'.$data->foto_pimpinan)}}" width="180" height="150" style=" left:5%; top: 60%;  z-index: 0; position: absolute; float: left;">
                     </div>
                     @endforeach
                 <div class="panel-body">
@@ -32,11 +32,8 @@
                         @foreach($profile as $data)
 
                             <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
                                 <th>Nama Lembaga</th>
-                                <td>{{ $data->nama_lembaga }}</td>
+                                <td>{{ $data->user->name }}</td>
                             </tr>
                             <tr>
                                 <th>Eselonisasi</th>
@@ -64,7 +61,7 @@
                             </tr>
                             <tr>
                                 <th>Email Kantor</th>
-                                <td>{{ $data->email_kantor }}</td>
+                                <td>{{ $data->user->email }}</td>
                             </tr>
                             <tr>
                                 <th>Nama Pimpinan/Kepala</th>
@@ -75,7 +72,7 @@
                                 <td>{{ $data->nip }}</td>
                             </tr>
                         @endforeach
-                        
+
                         </table>
                         @if($profile->count() > 0)
                              @foreach($profile as $data)
@@ -87,14 +84,10 @@
                             <p align="right">
                                 <a href="{{ url('/profile/tambah')}}"><button class="btn btn-primary">Tambah Profile</button></a>
                             </p>
-                        @endif   
+                        @endif
                 </div>
             </div>
-                
+
     </div>
 </div>
 @endsection
-
-
-
- 

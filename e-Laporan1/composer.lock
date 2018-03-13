@@ -325,19 +325,20 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "6678d59be48c4be64eaca6ce70bea48a09488cc2"
+                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/6678d59be48c4be64eaca6ce70bea48a09488cc2",
-                "reference": "6678d59be48c4be64eaca6ce70bea48a09488cc2",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
+                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -366,7 +367,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2018-02-28T11:41:37+00:00"
+            "time": "2018-03-08T01:11:30+00:00"
         },
         {
             "name": "goodnesskay/laravelpdfviewer",
@@ -1161,16 +1162,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8"
+                "reference": "94f6daf2131508cebd11cd6f8632ba586d7ecc41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
-                "reference": "eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/94f6daf2131508cebd11cd6f8632ba586d7ecc41",
+                "reference": "94f6daf2131508cebd11cd6f8632ba586d7ecc41",
                 "shasum": ""
             },
             "require": {
@@ -1220,7 +1221,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2018-03-06T13:48:07+00:00"
+            "time": "2018-03-06T17:34:36+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1407,16 +1408,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "2.1.26",
+            "version": "2.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "c93b4658e73e9bafc33ad26959402ab8e9722ca2"
+                "reference": "ea758fe5a9d33e0d88b40f099d1df652a0c99d38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/c93b4658e73e9bafc33ad26959402ab8e9722ca2",
-                "reference": "c93b4658e73e9bafc33ad26959402ab8e9722ca2",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/ea758fe5a9d33e0d88b40f099d1df652a0c99d38",
+                "reference": "ea758fe5a9d33e0d88b40f099d1df652a0c99d38",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1482,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2018-03-05T10:01:36+00:00"
+            "time": "2018-03-09T13:14:19+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3756,16 +3757,16 @@
         },
         {
             "name": "kyslik/column-sortable",
-            "version": "5.4.10",
+            "version": "5.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kyslik/column-sortable.git",
-                "reference": "fa7635d2ce28faf2599bf752428acc64437acf7c"
+                "reference": "cdcfd92a3daeac5c76f5c1b61909e7a75527bd15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kyslik/column-sortable/zipball/fa7635d2ce28faf2599bf752428acc64437acf7c",
-                "reference": "fa7635d2ce28faf2599bf752428acc64437acf7c",
+                "url": "https://api.github.com/repos/Kyslik/column-sortable/zipball/cdcfd92a3daeac5c76f5c1b61909e7a75527bd15",
+                "reference": "cdcfd92a3daeac5c76f5c1b61909e7a75527bd15",
                 "shasum": ""
             },
             "require": {
@@ -3803,7 +3804,7 @@
                 "sortable",
                 "sorting"
             ],
-            "time": "2017-11-29T12:29:06+00:00"
+            "time": "2018-03-08T15:37:29+00:00"
         },
         {
             "name": "mockery/mockery",

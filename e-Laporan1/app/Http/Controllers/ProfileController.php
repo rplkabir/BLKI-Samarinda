@@ -34,7 +34,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.add');
+        $user = User::where('id',Auth::user()->id)->get();
+        return view('profile.add', compact('user'));
     }
 
     /**
@@ -54,14 +55,12 @@ class ProfileController extends Controller
 
                 $profile = new Profile;
                 $profile->users_id = Auth::user()->id;
-                $profile->nama_lembaga = $request->nama_lembaga;
                 $profile->eselonisasi = $request->eselonisasi;
                 $profile->provinsi = $request->provinsi;
                 $profile->kab_kota = $request->kab_kota;
                 $profile->alamat = $request->alamat;
                 $profile->no_telp = $request->no_telp;
                 $profile->no_fax = $request->no_fax;
-                $profile->email_kantor = $request->email_kantor;
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
@@ -107,76 +106,81 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $profile = Profile::find($id);
+        $user = $profile->user;
         if($request->hasFile('foto_pimpinan') && $request->hasFile('foto_gedung')){
                 $request->file('foto_pimpinan')->move('upload', $request->foto_pimpinan->getClientOriginalName());
                 $request->file('foto_gedung')->move('upload', $request->foto_gedung->getClientOriginalName());
                 $profile->users_id = Auth::user()->id;
-                $profile->nama_lembaga = $request->nama_lembaga;
                 $profile->eselonisasi = $request->eselonisasi;
                 $profile->provinsi = $request->provinsi;
                 $profile->kab_kota = $request->kab_kota;
                 $profile->alamat = $request->alamat;
                 $profile->no_telp = $request->no_telp;
                 $profile->no_fax = $request->no_fax;
-                $profile->email_kantor = $request->email_kantor;
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
                 $profile->nip = $request->nip;
-
+                if (!is_null($request->name)) {
+                  $user->fill($request->only('name'));
+                }
         }elseif ($request->hasFile('foto_pimpinan')) {
              $request->file('foto_pimpinan')->move('upload', $request->foto_pimpinan->getClientOriginalName());
              $profile->users_id = Auth::user()->id;
-                $profile->nama_lembaga = $request->nama_lembaga;
                 $profile->eselonisasi = $request->eselonisasi;
                 $profile->provinsi = $request->provinsi;
                 $profile->kab_kota = $request->kab_kota;
                 $profile->alamat = $request->alamat;
                 $profile->no_telp = $request->no_telp;
                 $profile->no_fax = $request->no_fax;
-                $profile->email_kantor = $request->email_kantor;
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_pimpinan = $request->foto_pimpinan->getClientOriginalName();
                 $profile->nip = $request->nip;
+                if (!is_null($request->name)) {
+                  $user->fill($request->only('name'));
+                }
         }elseif ($request->hasFile('foto_gedung')) {
             $request->file('foto_gedung')->move('upload', $request->foto_gedung->getClientOriginalName());
                 $profile->users_id = Auth::user()->id;
-                $profile->nama_lembaga = $request->nama_lembaga;
                 $profile->eselonisasi = $request->eselonisasi;
                 $profile->provinsi = $request->provinsi;
                 $profile->kab_kota = $request->kab_kota;
                 $profile->alamat = $request->alamat;
                 $profile->no_telp = $request->no_telp;
                 $profile->no_fax = $request->no_fax;
-                $profile->email_kantor = $request->email_kantor;
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->foto_gedung = $request->foto_gedung->getClientOriginalName();
                 $profile->nip = $request->nip;
+                if (!is_null($request->name)) {
+                  $user->fill($request->only('name'));
+                }
         }else{
                 $profile->users_id = Auth::user()->id;
-                $profile->nama_lembaga = $request->nama_lembaga;
                 $profile->eselonisasi = $request->eselonisasi;
                 $profile->provinsi = $request->provinsi;
                 $profile->kab_kota = $request->kab_kota;
                 $profile->alamat = $request->alamat;
                 $profile->no_telp = $request->no_telp;
                 $profile->no_fax = $request->no_fax;
-                $profile->email_kantor = $request->email_kantor;
                 $profile->website = $request->website;
                 $profile->nama_pimpinan = $request->nama_pimpinan;
                 $profile->no_hp_pimpinan = $request->no_hp_pimpinan;
                 $profile->nip = $request->nip;
+                if (!is_null($request->name)) {
+                  $user->fill($request->only('name'));
+                }
         }
         Session::flash('message', 'Berhasil Ubah Data Profile');
         Session::flash('alert-class', 'alert-success');
-         $profile->save();
-         return redirect()->route('profile');
+        $profile->save();
+        $user->save();
+        return redirect()->route('profile');
     }
 
     /**

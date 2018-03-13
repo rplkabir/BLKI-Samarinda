@@ -22,15 +22,15 @@ height: 1px;
                         <li>
                           <div class="collapsible-header"><i class="material-icons">filter_drama</i>Laporan Baru</div>
                           <div class="collapsible-body">
-                              <?php 
+                              <?php
                                 $data = Auth::user()->unreadNotificationsByAdmin; ?>
                                 @foreach($data as $notif)
-                                                        <a onclick="marknotifasread()"  href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} 
-                                                        <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }} </a><i class="pull-right"> {{ $notif->created_at }} </i> 
-                                                        <hr>
-                                                        <br>
+                                <a onclick="marknotifasread()"  href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }}
+                                  <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }} </a><i class="pull-right"> {{ $notif->created_at }} </i>
+                                  <hr>
+                                <br>
                                 @endforeach
-                                
+
                           </div>
                         </li>
                       </ul>
@@ -38,14 +38,13 @@ height: 1px;
                         <li>
                           <div class="collapsible-header"><i class="material-icons">filter_drama</i>Laporan Sebelumnya</div>
                           <div class="collapsible-body">
-                              <?php 
+                              <?php
                                 $dataread = Auth::user()->unreadNotificationsLaporan; ?>
                                 @foreach($dataread as $notif)
-                                                        <a href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }} 
-                                                        <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }} </a> <br> <i class="pull-right"> {{ $notif->created_at }} </i> 
-                                                        <hr>
-                                                        <br>
-
+                                  <a href="{{url('admin/renlakgiat/detail/'.$notif->data['aidi'])}}">{{ $notif->data['namauptd'] }}
+                                    <b> mengupload Laporan :  </b>{{ $notif->data['jenis'] }} <b> pada kejuruan </b>{{ $notif->data['nama'] }} </a> <br> <i class="pull-right"> {{ $notif->created_at }} </i>
+                                    <hr>
+                                  <br>
                                 @endforeach
                           </div>
                         </li>

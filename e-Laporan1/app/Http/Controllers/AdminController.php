@@ -45,8 +45,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = Profile::all();
-            return view('admin', compact('user'));
+        $profile = Profile::all();
+        return view('admin', compact('profile'));
     }
 
     public function Renlakgiatdata(){
@@ -1076,12 +1076,12 @@ class AdminController extends Controller
             return redirect('admin/renlakgiat/laporan/'.$request->id);
     }
     public function mergePdf($id){
-			$renlakgiat = Renlakgiat::where('id',$id)->get();
-			foreach ($renlakgiat as $key) {
+      $renlakgiat = Renlakgiat::where('id',$id)->get();
+            foreach ($renlakgiat as $key) {
                 $id = $key->id;
-  				$cover = $key->cover;
-  				$pendahuluan = $key->pendahuluan;
-  				$surat_keputusan = $key->surat_keputusan;
+                $cover = $key->cover;
+                $pendahuluan = $key->pendahuluan;
+                $surat_keputusan = $key->surat_keputusan;
                 $nominatif_peserta_pelatihan = $key->nominatif_peserta_pelatihan;
                 $nominatif_instruktur = $key->nominatif_instruktur;
                 $kurikulum = $key->kurikulum;
@@ -1089,9 +1089,9 @@ class AdminController extends Controller
                 $daftar_hadir_instruktur = $key->daftar_hadir_instruktur;
                 $daftar_jam_mengajar_instruktur = $key->daftar_jam_mengajar_instruktur;
                 $daftar_hadir_peserta_pelatihan = $key->daftar_hadir_peserta_pelatihan;
-                $daftar_permintaan_bahan_latihan = $key->daftar_permintaan_bahan_latihan;
+                $daftar_permintaan_bahan_pelatihan = $key->daftar_permintaan_bahan_pelatihan;
                 $bukti_penerimaan_bahan_pelatihan = $key->bukti_penerimaan_bahan_pelatihan;
-                $laporan_mingguan_penggunaan_bahan_latihan = $key->laporan_mingguan_penggunaan_bahan_latihan;
+                $laporan_mingguan_penggunaan_bahan_pelatihan = $key->laporan_mingguan_penggunaan_bahan_pelatihan;
                 $undangan_sidang_kelulusan = $key->undangan_sidang_kelulusan;
                 $berita_acara_sidang_kelulusan = $key->berita_acara_sidang_kelulusan;
                 $daftar_hadir_pertemuan_sidang_kelulusan = $key->daftar_hadir_pertemuan_sidang_kelulusan;
@@ -1106,7 +1106,7 @@ class AdminController extends Controller
                 $tanda_terima_konsumsi_peserta = $key->tanda_terima_konsumsi_peserta;
                 $foto_dokumentasi_kegiatan = $key->foto_dokumentasi_kegiatan;
                 $fotocopy_sertifikasi_peserta = $key->fotocopy_sertifikasi_peserta;
-			}
+            }
 
             $pdf = new \LynX39\LaraPdfMerger\PdfManage;
 
@@ -1120,9 +1120,9 @@ class AdminController extends Controller
             $pdf->addPDF('upload/'.$daftar_hadir_instruktur, 'all');
             $pdf->addPDF('upload/'.$daftar_jam_mengajar_instruktur, 'all');
             $pdf->addPDF('upload/'.$daftar_hadir_peserta_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$daftar_permintaan_bahan_latihan, 'all');
+            $pdf->addPDF('upload/'.$daftar_permintaan_bahan_pelatihan, 'all');
             $pdf->addPDF('upload/'.$bukti_penerimaan_bahan_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_latihan, 'all');
+            $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_pelatihan, 'all');
             $pdf->addPDF('upload/'.$undangan_sidang_kelulusan, 'all');
             $pdf->addPDF('upload/'.$berita_acara_sidang_kelulusan, 'all');
             $pdf->addPDF('upload/'.$daftar_hadir_pertemuan_sidang_kelulusan, 'all');
@@ -1142,10 +1142,6 @@ class AdminController extends Controller
 
 
             $pdf->merge('browser','Laporan Renlakgiat Id-'.$id.'.pdf');
-
-
-            // Zipper::make('upload/Laporan'.$id.'.zip')->add(['upload/'.$cover,'upload/'.$pendahuluan,'upload/'.$surat_keputusan,'upload/'.$nominatif_peserta_pelatihan,'upload/'.$nominatif_instruktur]);
-            // return response()->download('upload/Laporan'.$id.'.zip');
 		}
         public function cari(Request $request){
 

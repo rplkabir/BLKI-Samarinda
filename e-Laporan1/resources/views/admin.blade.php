@@ -9,15 +9,15 @@
                 <div class="panel-heading">Admin Dashboard
                 </div>
                 <div class="panel-body">
-                
+
                     <ul class="collapsible" data-collapsible="accordion" style="">
-                        @if(count($user) < 1)
+                        @if(count($profile) < 1)
                             <strong>Belum Ada data</strong>
                         @else
-                                @foreach($user as $datauser)
-                   
+                                @foreach($profile as $datauser)
+
                                     <li>
-                                    <div class="collapsible-header"><i class="material-icons">insert_chart</i>@foreach(DB::table('profils')->where('id',$datauser->id)->get() as $datar) {{ $datar->nama_lembaga }} </div>
+                                    <div class="collapsible-header"><i class="material-icons">insert_chart</i>@foreach(DB::table('users')->where('id',$datauser->users_id)->get() as $datar) {{ $datar->name }} </div>
                                     @endforeach
 
                                             <?php
@@ -89,11 +89,11 @@
                                             </tr>
                                         </table>
                                     </div>
-                                
+
                                 </li>
                             @endforeach
                         @endif
-                        
+
                     </ul>
                 </div>
             </div>

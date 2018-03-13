@@ -10,6 +10,7 @@ use Lava;
 use Charts;
 use DB;
 use Carbon\Carbon;
+
 class HomeController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Profile::all();
-            return view('admin', compact('user'));
+        $profile = Profile::all();
+        return view('home', compact('profile'));
     }
 }

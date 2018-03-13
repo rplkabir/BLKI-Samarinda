@@ -25,7 +25,7 @@ height: 1px;
                               <?php 
                                 $data = Auth::user()->unreadNotificationsnotifcomment; ?>
                                 @foreach($data as $notif)
-                                                        <a onclick="marknotifasreads()"  href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b> </a><i class="pull-right"> {{ $notif->created_at }} </i> 
+                                                        <a onclick="marknotifasread()"  href="{{url('uptd/laporan/detail/'.$notif->data['aidi'])}}">Laporan {{ $notif->data['jenis'] }} pada kejuruan {{ $notif->data['nama'] }} : <b style="font-size: 18px;"> {{ $notif->data['status'] }} </b> </a><i class="pull-right"> {{ $notif->created_at }} </i> 
                                                         <hr>
                                                         <br>
                                 @endforeach

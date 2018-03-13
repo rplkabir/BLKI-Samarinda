@@ -14,7 +14,7 @@ class AddNotifIduser extends Migration
     public function up()
     {
         Schema::table('notifications', function($table) {
-            $table->string('iduser');
+            $table->string('iduser')->nullable();
         });
         //
     }
