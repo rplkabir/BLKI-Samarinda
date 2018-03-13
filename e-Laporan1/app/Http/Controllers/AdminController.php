@@ -15,6 +15,7 @@ use Charts;
 use Notification;
 use Session;
 use PDFMerger;
+use PDF;
 
 use iio\libmergepdf\Merger;
 use iio\libmergepdf\Pages;
@@ -1106,41 +1107,145 @@ class AdminController extends Controller
                 $tanda_terima_konsumsi_peserta = $key->tanda_terima_konsumsi_peserta;
                 $foto_dokumentasi_kegiatan = $key->foto_dokumentasi_kegiatan;
                 $fotocopy_sertifikasi_peserta = $key->fotocopy_sertifikasi_peserta;
-            }
 
+                $status_cover = $key->status_cover;
+                $status_pendahuluan = $key->status_pendahuluan;
+                $status_surat_keputusan = $key->status_surat_keputusan;
+                $status_nominatif_peserta_pelatihan = $key->status_nominatif_peserta_pelatihan;
+                $status_nominatif_instruktur = $key->status_nominatif_instruktur;
+                $status_kurikulum = $key->kurikulum;
+                $status_jadwal_pelatihan_mingguan = $key->status_jadwal_pelatihan_mingguan;
+                $status_daftar_hadir_instruktur = $key->status_daftar_hadir_instruktur;
+                $status_daftar_jam_mengajar_instruktur = $key->status_daftar_jam_mengajar_instruktur;
+                $status_daftar_hadir_peserta_pelatihan = $key->status_daftar_hadir_peserta_pelatihan;
+                $status_daftar_permintaan_bahan_pelatihan = $key->status_daftar_permintaan_bahan_pelatihan;
+                $status_bukti_penerimaan_bahan_pelatihan = $key->status_bukti_penerimaan_bahan_pelatihan;
+                $status_laporan_mingguan_penggunaan_bahan_pelatihan = $key->status_laporan_mingguan_penggunaan_bahan_pelatihan;
+                $status_undangan_sidang_kelulusan = $key->status_undangan_sidang_kelulusan;
+                $status_berita_acara_sidang_kelulusan = $key->status_berita_acara_sidang_kelulusan;
+                $status_daftar_hadir_pertemuan_sidang_kelulusan = $key->status_daftar_hadir_pertemuan_sidang_kelulusan;
+                $status_daftar_nilai_akhir = $key->status_daftar_nilai_akhir;
+                $status_rekap_penilaian_pelatihan_berbasis_kompetensi = $key->status_rekap_penilaian_pelatihan_berbasis_kompetensi;
+                $status_rekapitulasi_akhir_hasil_pelatihan = $key->status_rekapitulasi_akhir_hasil_pelatihan;
+                $status_tanda_terima_transport_peserta = $key->status_tanda_terima_transport_peserta;
+                $status_tanda_terima_asuransi_peserta = $key->status_tanda_terima_asuransi_peserta;
+                $status_tanda_terima_pakaian_kerja_peserta = $key->status_tanda_terima_pakaian_kerja_peserta;
+                $status_tanda_terima_atk_peserta = $key->status_tanda_terima_atk_peserta;
+                $status_tanda_terima_modul = $key->status_tanda_terima_modul;
+                $status_tanda_terima_konsumsi_peserta = $key->status_tanda_terima_konsumsi_peserta;
+                $status_foto_dokumentasi_kegiatan = $key->status_foto_dokumentasi_kegiatan;
+                $status_fotocopy_sertifikasi_peserta = $key->status_fotocopy_sertifikasi_peserta;
+            }
             $pdf = new \LynX39\LaraPdfMerger\PdfManage;
 
-            $pdf->addPDF('upload/'.$cover, 'all');
-            $pdf->addPDF('upload/'.$pendahuluan, 'all');
-            $pdf->addPDF('upload/'.$surat_keputusan, 'all');
-            $pdf->addPDF('upload/'.$nominatif_peserta_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$nominatif_instruktur, 'all');
-            $pdf->addPDF('upload/'.$kurikulum, 'all');
-            $pdf->addPDF('upload/'.$jadwal_pelatihan_mingguan, 'all');
-            $pdf->addPDF('upload/'.$daftar_hadir_instruktur, 'all');
-            $pdf->addPDF('upload/'.$daftar_jam_mengajar_instruktur, 'all');
-            $pdf->addPDF('upload/'.$daftar_hadir_peserta_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$daftar_permintaan_bahan_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$bukti_penerimaan_bahan_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$undangan_sidang_kelulusan, 'all');
-            $pdf->addPDF('upload/'.$berita_acara_sidang_kelulusan, 'all');
-            $pdf->addPDF('upload/'.$daftar_hadir_pertemuan_sidang_kelulusan, 'all');
-            $pdf->addPDF('upload/'.$daftar_nilai_akhir, 'all');
-            $pdf->addPDF('upload/'.$rekap_penilaian_pelatihan_berbasis_kompetensi, 'all');
-            $pdf->addPDF('upload/'.$rekapitulasi_akhir_hasil_pelatihan, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_transport_peserta, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_asuransi_peserta, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_pakaian_kerja_peserta, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_atk_peserta, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_modul, 'all');
-            $pdf->addPDF('upload/'.$tanda_terima_konsumsi_peserta, 'all');
-            $pdf->addPDF('upload/'.$foto_dokumentasi_kegiatan, 'all');
-            $pdf->addPDF('upload/'.$fotocopy_sertifikasi_peserta, 'all');
-
-            //You can optionally specify a different orientation for each PDF
-
-
+            if($status_cover == "Terverifikasi"){
+              # code...
+              $pdf->addPDF('upload/'.$cover, 'all');
+            }
+            if ($status_pendahuluan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$pendahuluan, 'all');
+            }
+            if ($status_surat_keputusan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$surat_keputusan, 'all');
+            }
+            if ($status_nominatif_peserta_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$nominatif_peserta_pelatihan, 'all');
+            }
+            if ($status_nominatif_instruktur == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$nominatif_instruktur, 'all');
+            }
+            if ($status_kurikulum == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$kurikulum, 'all');
+            }
+            if ($status_jadwal_pelatihan_mingguan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$jadwal_pelatihan_mingguan, 'all');
+            }
+            if ($status_daftar_hadir_instruktur == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_hadir_instruktur, 'all');
+            }
+            if ($status_daftar_jam_mengajar_instruktur == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_jam_mengajar_instruktur, 'all');
+            }
+            if ($status_daftar_hadir_peserta_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_hadir_peserta_pelatihan, 'all');
+            }
+            if ($status_daftar_permintaan_bahan_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_permintaan_bahan_pelatihan, 'all');
+            }
+            if ($status_bukti_penerimaan_bahan_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$bukti_penerimaan_bahan_pelatihan, 'all');
+            }
+            if ($status_laporan_mingguan_penggunaan_bahan_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$laporan_mingguan_penggunaan_bahan_pelatihan, 'all');
+            }
+            if ($status_undangan_sidang_kelulusan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$undangan_sidang_kelulusan, 'all');
+            }
+            if ($status_berita_acara_sidang_kelulusan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$berita_acara_sidang_kelulusan, 'all');
+            }
+            if ($status_daftar_hadir_pertemuan_sidang_kelulusan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_hadir_pertemuan_sidang_kelulusan, 'all');
+            }
+            if ($status_daftar_nilai_akhir == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$daftar_nilai_akhir, 'all');
+            }
+            if ($status_rekap_penilaian_pelatihan_berbasis_kompetensi == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$rekap_penilaian_pelatihan_berbasis_kompetensi, 'all');
+            }
+            if ($status_rekapitulasi_akhir_hasil_pelatihan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$rekapitulasi_akhir_hasil_pelatihan, 'all');
+            }
+            if ($status_tanda_terima_transport_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_transport_peserta, 'all');
+            }
+            if ($status_tanda_terima_asuransi_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_asuransi_peserta, 'all');
+            }
+            if ($status_tanda_terima_pakaian_kerja_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_pakaian_kerja_peserta, 'all');
+            }
+            if ($status_tanda_terima_atk_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_atk_peserta, 'all');
+            }
+            if ($status_tanda_terima_modul == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_modul, 'all');
+            }
+            if ($status_tanda_terima_konsumsi_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$tanda_terima_konsumsi_peserta, 'all');
+            }
+            if ($status_foto_dokumentasi_kegiatan == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$foto_dokumentasi_kegiatan, 'all');
+            }
+            if ($status_fotocopy_sertifikasi_peserta == "Terverifikasi") {
+              # code...
+              $pdf->addPDF('upload/'.$fotocopy_sertifikasi_peserta, 'all');
+            }
             $pdf->merge('browser','Laporan Renlakgiat Id-'.$id.'.pdf');
 		}
         public function cari(Request $request){
@@ -1251,5 +1356,11 @@ class AdminController extends Controller
                 return redirect()->back();
             }
 
+        }
+
+        public function cetakDraf($id){
+            $renlakgiat = Renlakgiat::where('id', $id)->get();
+            $pdf = PDF::loadView('dokumen.draf',compact('renlakgiat'));
+            return $pdf->stream('Draf_Laporan_'.$id.'.pdf');
         }
 }
