@@ -4,10 +4,16 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
+          @foreach($renlakgiat as $data)
+            <div class="panel-heading">
+              <strong>Dashboard Detail Renlakgiat dan Laporan</strong>
+              <div class="pull-right">
+                <a href="{{url('admin/draf/')}}">Cetak Draft Laporan</a>
+              </div>
+            </div>
 
                 <div class="panel-body">
-                    @foreach($renlakgiat as $data)
+
                     <table class="table">
                         <tr>
                             <td>Id Renlakgiat</td>

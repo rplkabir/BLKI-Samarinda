@@ -4,10 +4,16 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default" style="width: 100% !important;">
-            <div class="panel-heading"><strong>Dashboard Detail Renlakgiat dan Laporan</strong></div>
+            <div class="panel-heading">
+              @foreach($renlakgiat as $data)
+              <strong>Dashboard Detail Renlakgiat dan Laporan</strong>
+              <div class="pull-right">
+                <a href="{{url('admin/draf/'.$data->id)}}">Cetak Draft Laporan</a>
+              </div>
+            </div>
                 <div class="panel-body">
                  <table>
-                @foreach($renlakgiat as $data)
+
                     <table class="table" style="position: fixed; width: 40% ;">
                                 <tr>
                                     <th>Id Renlakgiat/kejuruan</th>
@@ -109,11 +115,11 @@
                                     <td>
                                         <a href="{{url('admin/detailhistori/'.$data->id)}}"><button class="btn btn-link">Perubahan rencana: {{ DB::table('historis')->where('renlakgiat_id',$data->id)->count() }}</button></a>
 
-                                        
+
 
                                             <a href="{{url('admin/cetak/'.$data->id)}}"><button class="btn btn-success">Cetak</button></a>
 
-                                       
+
 
 
                                         <a href="{{url('admin/edit-tanggal-laporan/'.$data->id)}}"><button class="btn btn-ink" title="Ubah Batas Tanggal Pengumpulan Laporan"><i class="large material-icons">date_range</i></button></a>

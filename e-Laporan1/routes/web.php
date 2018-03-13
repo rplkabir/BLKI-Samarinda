@@ -126,6 +126,8 @@ Route::post('/admin/updateemail/{id}', 'AdminController@updateEmail');
 Route::get('/admin/editpass/{id}','AdminController@editpass');
 Route::post('/admin/updatepass/{id}', 'AdminController@verif');
 
+Route::get('/admin/draf/{id}','AdminController@cetakDraf');
+
 //uptd renlakgiat
 Route::get('/uptd/renlakgiat','UptdController@indexRenlakgiat')->name('uptd.renlakgiat');
 Route::get('/uptd/laporan/detail/{id}','UptdController@detailRenlakgiat');
