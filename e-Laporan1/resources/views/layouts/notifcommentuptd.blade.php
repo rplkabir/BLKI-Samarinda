@@ -1,7 +1,7 @@
 <?php
 if (Auth::guard('admin')->check()) {
 	$data = \DB::table('notifications')
-					->where('type', 'App\Notifications\notifuptd')
+					->where('type', 'App\Notifications\Newlaporan')
 					->whereNull('read_at')
 					->get();
 	$result = count($data);

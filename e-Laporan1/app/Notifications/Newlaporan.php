@@ -17,17 +17,19 @@ class Newlaporan extends Notification
     public $nama;
     public $namauptd;
     public $aidi;
+    public $file;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($jenis, $nama, $namauptd, $aidi)
+    public function __construct($jenis, $nama, $namauptd, $aidi, $file)
     {   
         $this->jenis = $jenis;
         $this->nama = $nama;
         $this->namauptd = $namauptd;
         $this->aidi = $aidi;
+        $this->file = $file;
     }
 
     /**
@@ -56,6 +58,7 @@ class Newlaporan extends Notification
             'nama'=>$this->nama,
             'namauptd'=>$this->namauptd,
             'aidi'=>$this->aidi,
+            'file'=>$this->file,
 
         ];
         
@@ -69,6 +72,7 @@ class Newlaporan extends Notification
             'nama'=>$this->nama,
             'namauptd'=>$this->namauptd,
             'aidi'=>$this->aidi,
+            'file'=>$this->file,
         ]);
         
     }

@@ -145,10 +145,11 @@ class UptdController extends Controller
             $nama = $valuer->kejuruan;
             }
             $aidi = $id;
+            $file = "cover";
             $jenis = $renlakgiat->cover;
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
 
@@ -189,9 +190,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->pendahuluan;
             $aidi = $id;
+            $file = "pendahuluan";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
     }
@@ -229,9 +231,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->surat_keputusan;
             $aidi = $id;
+            $file = "sk";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
 
@@ -273,9 +276,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->nominatif_peserta_pelatihan;
             $aidi = $id;
+            $file = "npp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
 
@@ -317,9 +321,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->nominatif_instruktur;
             $aidi = $id;
+            $file = "ni";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
 
@@ -361,9 +366,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->kurikulum;
             $aidi = $id;
+            $file = "kurikulum";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -404,9 +410,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->jadwal_pelatihan_mingguan;
             $aidi = $id;
+            $file = "jpm";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -447,9 +454,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_hadir_instrukturn;
             $aidi = $id;
+            $file = "dhi";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -490,9 +498,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_jam_mengajar_instruktur;
             $aidi = $id;
+            $file = "djmi";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -533,9 +542,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_hadir_peserta_pelatihan;
             $aidi = $id;
+            $file = "dhpp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -576,9 +586,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_permintaan_bahan_pelatihan;
             $aidi = $id;
+            $file = "dpbl";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -619,9 +630,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->bukti_penerimaan_bahan_pelatihan;
             $aidi = $id;
+            $file = "bpbl";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -662,9 +674,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->laporan_mingguan_penggunaan_bahan_pelatihan;
             $aidi = $id;
+            $file = "lmpbl";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -705,9 +718,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->undangan_sidang_kelulusan;
             $aidi = $id;
+            $file = "usk";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -748,9 +762,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->berita_acara_sidang_kelulusan;
             $aidi = $id;
+            $file = "bask";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -791,9 +806,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_hadir_pertemuan_sidang_kelulusan;
             $aidi = $id;
+            $file = "dhpsk";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -834,9 +850,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->daftar_nilai_akhir;
             $aidi = $id;
+            $file = "dna";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -877,9 +894,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->rekap_penilaian_pelatihan_berbasis_kompetensi;
             $aidi = $id;
+            $file = "rppbk";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -920,9 +938,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->rekapitulasi_akhir_hasil_pelatihan;
             $aidi = $id;
+            $file = "rahp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -963,9 +982,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_transport_peserta;
             $aidi = $id;
+            $file = "tttp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1007,9 +1027,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_asuransi_peserta;
             $aidi = $id;
+            $file = "ttap";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1051,9 +1072,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_pakaian_kerja_peserta;
             $aidi = $id;
+            $file = "ttpkp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1095,9 +1117,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_atk_peserta;
             $aidi = $id;
+            $file = "ttatkp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1139,9 +1162,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_modul;
             $aidi = $id;
+            $file = "ttm";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1183,9 +1207,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->tanda_terima_konsumsi_peserta;
             $aidi = $id;
+            $file = "ttkp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1227,9 +1252,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->foto_dokumentasi_kegiatan;
             $aidi = $id;
+            $file = "fdk";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
@@ -1271,9 +1297,10 @@ class UptdController extends Controller
             }
             $jenis = $renlakgiat->fotocopy_sertifikasi_peserta;
             $aidi = $id;
+            $file = "fsp";
             $admen = Admin::all();
             foreach ($admen as $key => $asu) {
-               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi));
+               $asu->notify(new Newlaporan($jenis, $nama, $namauptd, $aidi, $file));
             }
 
             return redirect('uptd/laporan/detail/'.$request->renlakgiat_id);
