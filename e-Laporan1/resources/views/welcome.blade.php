@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
+<head>
+	<title>BLK Samarinda</title>
 
-  <head>
-
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <link rel="shortcut icon" href="{{URL::asset('image/log.png')}}" />
-    <title>BLK Samarinda</title>
 
-
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- materialize css -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -24,53 +24,70 @@
         .navbar-brand{
             color: white;
         }
+        .nav-item{
+        	background-color: grey;
+        }
         body {
           background-size: 100%;
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-position: center;
           background-image: url({{ asset('image/bg/20171206_102719.jpg') }});
+			-webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
         }
     </style>
-  </head>
+</head>
+<body>
 
-  <body style="background-image: ">
-
-    <!-- Navigation -->
-    <nav style="background-color: #2c3e50 !important;">
-    <div class="nav-wrapper">
-      <a class="navbar-brand" href="{{URL('/')}}" style="padding-left: 20px;">BLK Samarinda</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" class="nav-link">About</a></li>
-        <li><a href="#" class="nav-link">Contact</a></li>
-        <li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">            
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="{{URL('/')}}" style="padding-left: 20px;">BLK Samarinda</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item">
           @if (Route::has('login'))
                 @if (Auth::guard('web')->check())
                     <a href="{{ url('/home') }}" class="nav-link">Home</a>
                 @elseif(Auth::guard('admin')->check())
                     <a href="{{ route('admin') }}" class="nav-link">Home</a>
-                
+             </li>
                 @else
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                    	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+				         	<a class="dropdown-item" href="{{ url('/login') }}" >Login UPTD</a>
+				         	<div class="dropdown-divider"></div>
+            				<a class="dropdown-item" href="{{ route('admin.login') }}">Login Admin</a>
+				          
+				        </div>
+                    </li>
                 @endif
           @endif
-        </li>
-      </ul>
+        
+        </ul>
+        
     </div>
-  </nav>
+         
+</nav>
 
-        <ul id="dropdown1" class="dropdown-content" style="background-color: #2c3e50;">
-            <li><a class="waves-effect waves-light" href="{{ url('/login') }}" style="color: white">Login UPTD</a></li>
-            <li><a class="waves-effect waves-light" href="{{ route('admin.login') }}" style="color: white">Login Admin</a></li>
-          </ul>
-<header>
-</header>
-    <!-- Footer -->
+
+<!-- Footer -->
     <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
           <div class="footer-copyright" >
             <div class="container" style="color: white">
                 <p align="center">
-                    © Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
+                    © Copyright BLK Samarinda 2018
                 </p>
             
             
@@ -78,12 +95,15 @@
           </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{asset('gg/vendor/jquery/jquery.min.js')}} "></script>
+
+<!-- javascripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{asset('gg/vendor/jquery/jquery.min.js')}} "></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
      $('.dropdown-button').dropdown();
     </script>
-  </body>
-
+</body>
 </html>

@@ -214,13 +214,7 @@ Route::get('uptd/dokumen/upload','DokumenUptdController@create');
 Route::post('uptd/dokumen/simpan','DokumenUptdController@store');
 Route::get('uptd/dokumen/hapus/{id}','DokumenUptdController@destroy');
 
-Route::get('/markAsRead', function() {
-	$user = App\Admin::find(1);
-
-foreach ($user->unreadNotifications as $notification) {
-    $notification->markAsRead();
-}
-});
+Route::get('/markAsRead', 'AdminController@mark');
 
 Route::get('/usermark', function()
 {
@@ -244,4 +238,39 @@ Route::get('/admin/laporanuptd', 'DokumenController@laporanuptd');
 
 Route::get('/uptd/commentadmin', function() {
 	return view ('dokumenuptd.commentadmin');
+});
+
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
+});
+
+Route::get('/route-clear', function() {
+    $exitCode = Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
+
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return '<h1>Clear Config cleared</h1>';
+});
+
+Route::get('/layout', function(){
+    return view('layouts.app');
 });

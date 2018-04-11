@@ -14,7 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <ul class="collapsible" data-collapsible="accordion" style="">
+                    <ul class="collapsible " data-collapsible="accordion" style="">
                         @if(count($profile) < 1)
                             <strong>Belum Ada data</strong>
                         @else
@@ -33,7 +33,7 @@
                                                     ->title($datauser->nama_lembaga)
                                                     ->labels(['Belum Berjalan', 'Sedang Berjalan', 'Sudah Selesai','Belum Direncanakan'])
                                                     ->values([count($belum),count($sedang),count($telah),count($null)])
-                                                    ->dimensions(1000,500)
+                                                    ->dimensions(500,300)
                                                     ->responsive(false)
                                                     ->credits(false);
                                             ?>

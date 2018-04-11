@@ -136,4 +136,6 @@ class DokumenController extends Controller
         $dataread = Auth::user()->unreadNotificationsLaporan;
         return view('dokumen.laporanuptd', compact('useruptd'));
     }
+
+    
 }

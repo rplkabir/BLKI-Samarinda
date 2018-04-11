@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard Dokumen</div>
+                <div class="panel-heading">Dashboard Laporan </div>
                 <div class="panel-body">
                    @if(Auth::guard('admin')->check())
                         <?php $data = \DB::table('notifications')->where('type', 'App\Notifications\Newlaporan')->whereNull('read_at')->get();

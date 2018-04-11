@@ -1363,4 +1363,16 @@ class AdminController extends Controller
             $pdf = PDF::loadView('dokumen.draf',compact('renlakgiat'));
             return $pdf->stream('Draf_Laporan_'.$id.'.pdf');
         }
+
+        public function mark()
+        {
+        
+        $iduser = Auth::user()->id;
+        $user = Admin::find($iduser);
+
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+        
+        }
 }

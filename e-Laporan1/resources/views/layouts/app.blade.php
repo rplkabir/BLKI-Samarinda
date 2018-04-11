@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html  lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{URL::asset('image/log.png')}}" />
+    <title></title>
     <title>BLK Samarinda</title>
 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <link rel="shortcut icon" href="{{URL::asset('image/log.png')}}" />
+
     <!-- Styles -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
     <style type="text/css">
         nav {
-            color: white !important;
+            background-color: #2c3e50 !important;
+            color: #2c3e50 !important;
         }
 
      html, body {
@@ -57,6 +59,9 @@
         .dropdown{
             color: white;
         }
+        .nav-link{
+            color: black;
+        }
 
         hr {
             border: 0;
@@ -66,107 +71,113 @@
             color: #FFFF00;
             height: 1px;
             }
+            .navbar-toggler{
+                display: block;
+                z-index: 9999;
+            }
+            .dual-collapse2{
+
+                background-color:  #2c3e50;
+            }
         </style>
 </head>
 <body>
-        <nav class="navbar navbar-fixed-top" style=" background-color: #2c3e50; " >
-            <div class="nav-wrapper">
-                    <!-- Left Side Of Navbar -->
-                    @if (Auth::guest())
+
+<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top" id="defaultNavbar1">    
+    <div class="container-fluid">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">            
+        
+        </ul>
+    </div>
+
+     @if (Auth::guest())
                     @else
                     <ul class="nav navbar-nav navbar-left" >
                         <li>
-                            <a href="#" data-activates="slide-out" class="button-collapse menu" style="background-color: rgba(190,200,255,0.8) !important;"><i class="material-icons" style=" color: white;">dehaze</i></a>
+                            <a href="#" data-activates="slide-out" class="button-collapse menu" style="background-color: rgba(190,200,255,0.8) !important;"><i class="material-icons" style=" color: white;">menu</i></a>
                         </li>
                     </ul>
-                    @endif
-                    <a href="/">
-                    <img class="brand-logo center" src="{{ asset('image/logo.png') }}" height="60" style="padding-top: 5"></a>
+            @endif
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right" style="padding-right: 30px">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                        <li class="dropdown">
-                                <a href="#"  style="font-size: 15px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Login <span class="caret"></span>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{route('login')}}">Login as UPTD</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{route('admin.login')}}">Login as Admin</a></li>
-                                    </ul>
-                                </a>
-                        </li>
+    <div class="mx-auto order-0">
+        
+        <button style="position: top; background-color: white" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".dual-collapse2" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 
-                        @elseif (Auth::guard('web')->check())
-
-                            <li><a onclick="marknotifasreads()" href="{{route('uptd.dokumen')}}"><strong>Pemberitahuan</strong><span class="badge" style="color: pink;"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a></li>
-                            <li>
-                                <a href="{{url('uptd/commentadmin')}}"><strong>Notif Laporan</strong>
+        <ul class="navbar-nav ml-auto pull-right">
+            <li class="nav-item"><a class="navbar-brand mx-auto" href="{{URL('/')}}" style="padding-left: 20px;">BLK Samarinda</a></li>
+          @if (Auth::guest())
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('/login') }}" >Login UPTD</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('admin.login') }}">Login Admin</a>
+                          
+                        </div>
+                    </li>
+         @elseif (Auth::guard('web')->check())
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="marknotifasreads()" href="{{route('uptd.dokumen')}}"><strong>Pemberitahuan</strong><span class="badge" style="color: pink;"><strong id="load_notif">{{ count(Auth::user()->unreadNotificationsByType ) }}</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="{{url('uptd/commentadmin')}}"><strong>Notif Laporan</strong>
                                 <span class="badge" style="color: pink;"> <strong id="load_comment">{{ count(Auth::user()->unreadNotificationsnotifcomment ) }}</strong>     </span></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" style="font-size: 13px; font-weight:bold;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a href="#" style="font-size: 13px; font-weight:bold;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownweb" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" role="menu">
-                                @if(DB::table('profils')->where('users_id','=',Auth::user()->id)->count() > 0)
-                                   <li>
-                                        @foreach(DB::table('profils')->where('users_id','=',Auth::user()->id)->get() as $data)
-                                            <a href="{{ url('/profile/edit/'.$data->id) }}"><i class="material-icons">person</i> Edit Profile</a>
-                                        </li>
-                                        @endforeach
-                                @else
-                                        <li>
-                                            <a href="{{url('profile/tambah')}}"><i class="material-icons">person</i>Tambah Profile</a>
-                                        </li>
-                                @endif
-                                    <li>
-                                      <a href="{{ url('uptd/editemail/'.Auth::user()->id)}}"><i class="material-icons">email</i> Edit Email</a>
-                                    </li>
-                                    <li>
-                                       <a href="{{ url('/uptd/editpass/'.Auth::user()->id) }}"><i class="material-icons">lock</i> Ubah Password</a>
-                                    </li>
-                                    <li>
-                                       <a href="{{route('user.logout')}}"><i class="material-icons">power_settings_new</i> Logout</a>
-                                    </li>
 
-                                </ul>
-                            </li>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownweb">
+                            @if(DB::table('profils')->where('users_id','=',Auth::user()->id)->count() > 0)
+                                @foreach(DB::table('profils')->where('users_id','=',Auth::user()->id)->get() as $data)
+                                <a class="dropdown-item" href="{{ url('/profile/edit/'.$data->id) }}" style="color: grey;"><i class="material-icons">person</i> Edit Profile</a>
+                                @endforeach 
+                            @else
+                                <a class="dropdown-item" href="{{url('profile/tambah')}}" style="color: grey;"><i class="material-icons">person</i>Tambah Profile</a>
+                            @endif
+                                <a class="dropdown-item" href="{{ url('uptd/editemail/'.Auth::user()->id)}}" style="color: grey;"><i class="material-icons">email</i> Edit Email</a>
+                                <a class="dropdown-item" href="{{ url('/uptd/editpass/'.Auth::user()->id) }}" style="color: grey;"><i class="material-icons">lock</i> Ubah Password</a>
+                                <a class="dropdown-item" href="{{route('user.logout')}}"><i class="material-icons" style="color: grey;" >power_settings_new</i> Logout</a>
+                          
+                        </div>
+                    </li>
+             
+         @elseif(Auth::guard('admin')->check())
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="marknotifasread()" href="{{url('admin/dokumenuptd')}}">
+                                <span class="badge" style="color: #42f459; font-size: 15px "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong></span><strong>Dokumen Uptd</strong></a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="{{url('admin/laporanuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px   "> <strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong>     </span><strong>Laporan UPTD</strong></a>
+                    </li>
 
-                        @elseif(Auth::guard('admin')->check())
-                            <li>
-                                <a onclick="marknotifasread()" href="{{url('admin/dokumenuptd')}}">
-                                <span class="badge" style="color: #42f459; font-size: 15px "> <strong id="load_notif">{{ count(Auth::user()->unreadNotificationsuptd ) }}</strong>     </span><strong>Dokumen Uptd</strong></a>
-                            </li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownadm" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: grey;"> {{Auth::user()->name}} <span class="caret"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownadm">
+                            <a class="dropdown-item" href="{{ url('admin/editemail/'.Auth::user()->id)}}" style="color: grey;"><i class="material-icons">email</i> Edit Email</a>
+                                    
+                            <a class="dropdown-item" href="{{ url('/admin/editpass/'.Auth::user()->id) }}" style="color: grey;"><i class="material-icons">lock</i> Ubah Password</a>
+                                    
+                            <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="material-icons" style="color: grey;">power_settings_new</i> Logout</a>
+                          
+                        </div>
+                    </li>
+                
+          @endif
+        
+        </ul>
 
-                            <li>
-                                <a href="{{url('admin/laporanuptd')}}"><span class="badge" style="color: #42f459; font-size: 15px   "> <strong id="load_notifuptd">{{ count(Auth::user()->unreadNotificationsByAdmin ) }}</strong>     </span><strong>Laporan UPTD</strong></a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a style="font-size: 15px; font-weight:bold;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{Auth::user()->name}} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                      <a href="{{ url('admin/editemail/'.Auth::user()->id)}}"><i class="material-icons">email</i> Edit Email</a>
-                                    </li>
-                                    <li>
-                                       <a href="{{ url('/admin/editpass/'.Auth::user()->id) }}"><i class="material-icons">lock</i> Ubah Password</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('admin.logout')}}"><i class="material-icons">power_settings_new</i> Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        @endif
-                    </ul>
-
-
-                        @if(Auth::guard('admin')->check())
-                          <ul id="slide-out" class="side-nav">
+        @if(Auth::guard('admin')->check())
+            <ul id="slide-out" class="side-nav">
                             <li><div class="user-view">
                               <div class="background">
                                 <img src="{{ URL::asset('image/bghome.jpg') }}">
@@ -181,9 +192,7 @@
                             <li><div class="divider"></div></li>
                             <li><a class="subheader">Other</a></li>
                             <li><a href="{{route('dokumen')}}"><i class="material-icons">list</i> Upload Dokumen Khusus</a></li>
-
-
-                        @elseif (Auth::guard('web')->check())
+        @elseif (Auth::guard('web')->check())
 
                         <ul id="slide-out" class="side-nav">
                             @foreach(DB::table('profils')->where('users_id','=',Auth::user()->id)->get() as $data)
@@ -208,9 +217,14 @@
                         </ul>
 
                         @endif
-            </div>
-        </nav>
-       <div id="app" style="background-color: rgba(255,255,255,0.4) !important;">
+        
+    </div>
+        </div> 
+    </nav>
+</div>
+
+
+<div id="app" style="background-color: rgba(255,255,255,0.4) !important;">
             <div class="container" >
 
             </div>
@@ -227,25 +241,25 @@
                 @yield('content')
             </div>
         </div>
-    <footer class="footer" style=" position: fixed; bottom: 0; width: 100%; background-color: #2c3e50;">
-          <div class="footer-copyright" >
-            <div class="container" style="color: white">
-                <p align="center">
-                    &copy Copyright BLK Samarinda 2018 | Powered By: D'canteen Corp
-                </p>
 
 
-            </div>
-          </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- javascripts -->
+<!-- javascripts -->
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{asset('gg/vendor/jquery/jquery.min.js')}} "></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
+     $(function () {
+    $('.dropdown-menu').click(function (e) {
+        $('.active').removeClass('active');
+    });
+});
+    </script>
+<script type="text/javascript">
         $(".button-collapse").sideNav({
               menuWidth: 300,
               edge: 'left',

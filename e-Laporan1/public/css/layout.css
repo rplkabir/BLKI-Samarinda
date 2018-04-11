@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,100italic,300italic,300,500,400italic,500italic,700,700italic)
+html, body
+	height: 100%
+	background-color: #eee
+	position: relative
+	z-index: 1
+nav
+	background-color: #03a9f4
+	box-shadow: 0 0 0 0
+header
+	height: 80%
+	background-color: #03a9f4
+.holder
+	position: relative
+	height: 100%
+	z-index: 0
+#typedtext
+	font-family: 'Roboto Mono', Roboto, sans-serif
+	font-size: 2em
+	width: 629px //611px
+	height: 60px
+	position: fixed
+	top: 50%
+	left: 50%
+	margin: -30px 0 0 -305.5px
+	color: #fff
+	.dot::after
+		content: "."
+		opacity: .4
+		margin-top: -20px
+		margin-left: -38px
+		position: absolute
+		
+	r
+		margin: 0
+		padding: 0
+		&::before
+			content: "$ "
+			color: #c86762
+	.cursor
+		opacity: 0
+		animation: cursor 1s infinite	
+	
+@keyframes cursor 
+	0% 
+		opacity: 0
+	40% 
+		opacity: 0
+	50% 
+		opacity: 1
+	90% 
+		opacity: 1
+	100% 
+		opacity: 0
+#content
+	position: relative
+	margin-top: -125px
+	.container
+		.row
+			.section
+				height: 500px
+				background-color: #fff
+		
+.material-tooltip, .backdrop
+	display: block !important
+	opacity: 1 !important
+
+.custommodal
+	height: 600px
+i.material-icons
+	line-height: 100px
+.card.small
+	height: auto
+	.card-content 
+		height: auto
+	.card-action
+		position: relative

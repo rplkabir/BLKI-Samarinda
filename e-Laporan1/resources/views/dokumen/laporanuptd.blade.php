@@ -16,7 +16,7 @@ height: 1px;
 <div class="container">
     <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard Dokumen</div>
+                <div class="panel-heading">Dashboard Dokumen </button> </div>
                 <div class="panel-body">
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
